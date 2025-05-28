@@ -138,8 +138,10 @@ body {
   margin-bottom: 2rem;
 }
 .hero-special-text {
-  font-family: "Ancizar Serif", serif; /* Use the font name */
-  font-weight: 600; /* Set the semi-bold weight */
+  font-family: "Share Tech", sans-serif;
+  font-weight: 400;
+  font-style: bold;
+  font-size: 1rem;
   /* font-style: italic;  */
   /* You might want to adjust font size or color here if needed */
   /* font-size: 1.1em; */
