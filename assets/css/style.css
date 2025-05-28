@@ -147,10 +147,12 @@ body {
   /* font-size: 1.1em; */
   /* color: var(--primary-color); */
 }
+
 .about-text p {
-  font-family: "Ancizar Serif", serif; /* Apply the font */
-  font-weight: 400; /* Set to Regular */
-  font-size: 18px; /* Set the font size */
+  font-family: "Share Tech", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 16px; /* Set the font size */
   margin-bottom: 1.5rem; /* Keep existing margin */
   color: var(--text-secondary); /* Keep existing color */
   /* You might want to adjust line-height if the larger font size makes text too dense */
@@ -165,6 +167,18 @@ body {
   /* You might want to adjust font-size or line-height if needed */
   /* font-size: 1rem; */ /* Example: adjust if needed */
   /* line-height: 1.5; */ /* Example: adjust if needed */
+}
+.section-content-container {
+  max-width: 900px; /* Adjust this value as needed for your preferred width */
+  margin: 0 auto; /* This centers the div horizontally */
+  padding: 0 1rem; /* Add some padding on smaller screens */
+}
+
+/* You might want to adjust the padding of the .section itself if it now looks too wide */
+.section {
+  padding: 6rem 2rem; /* Keep this, but the inner container will control width */
+  max-width: none; /* Remove max-width from section if it's now on the container */
+  margin: 0 auto;
 }
 
 .social-links {
