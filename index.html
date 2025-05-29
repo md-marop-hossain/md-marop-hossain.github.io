@@ -140,6 +140,7 @@
         box-shadow: var(--card-shadow);
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         border: 1px solid rgba(128, 128, 128, 0.2);
+        opacity: 0; /* Initial state for new animation */
       }
       .project-card-featured:hover {
         transform: translateY(-5px);
@@ -170,7 +171,7 @@
         text-decoration: underline;
       }
 
-      /* --- Advanced "About Me" Animations --- */
+      /* --- Advanced "About Me" Animations (Reduced Delays) --- */
       #about .about-text p,
       #about .skills-highlight,
       #about .skills-highlight h3,
@@ -181,12 +182,12 @@
       }
 
       #about.visible h2 .fa-user {
-        animation: icon-pop 0.5s ease-out 0.3s forwards;
+        animation: icon-pop 0.5s ease-out 0.1s forwards; /* Reduced delay */
       }
 
       #about.visible h2 .about-heading-text {
         display: inline-block;
-        animation: text-slide-in-heading 0.6s ease-out 0.5s forwards;
+        animation: text-slide-in-heading 0.6s ease-out 0.2s forwards; /* Reduced delay */
       }
 
       @keyframes icon-pop {
@@ -220,11 +221,11 @@
       }
 
       #about.visible .about-text p:nth-child(1) {
-        animation-delay: 0.5s;
-      }
+        animation-delay: 0.3s;
+      } /* Reduced delay */
       #about.visible .about-text p:nth-child(2) {
-        animation-delay: 0.6s;
-      }
+        animation-delay: 0.4s;
+      } /* Reduced delay */
 
       @keyframes paragraph-slide-in-left {
         0% {
@@ -238,7 +239,7 @@
       }
 
       #about.visible .skills-highlight {
-        animation: card-slide-in-right 0.7s ease-out 0.8s forwards;
+        animation: card-slide-in-right 0.6s ease-out 0.5s forwards; /* Reduced delay & duration */
       }
 
       @keyframes card-slide-in-right {
@@ -253,31 +254,31 @@
       }
 
       #about.visible .skills-highlight h3 {
-        animation: text-fade-in 0.5s ease-out 1.2s forwards;
+        animation: text-fade-in 0.5s ease-out 0.7s forwards; /* Reduced delay */
       }
 
       #about.visible .skills-highlight ul li {
-        animation: list-item-fade-in-up 0.5s ease-out forwards;
+        animation: list-item-fade-in-up 0.4s ease-out forwards; /* Reduced duration */
       }
 
       #about.visible .skills-highlight ul li:nth-child(1) {
-        animation-delay: 1.4s;
-      }
+        animation-delay: 0.8s;
+      } /* Reduced delay */
       #about.visible .skills-highlight ul li:nth-child(2) {
-        animation-delay: 1.5s;
-      }
+        animation-delay: 0.85s;
+      } /* Reduced delay */
       #about.visible .skills-highlight ul li:nth-child(3) {
-        animation-delay: 1.6s;
-      }
+        animation-delay: 0.9s;
+      } /* Reduced delay */
       #about.visible .skills-highlight ul li:nth-child(4) {
-        animation-delay: 1.7s;
-      }
+        animation-delay: 0.95s;
+      } /* Reduced delay */
       #about.visible .skills-highlight ul li:nth-child(5) {
-        animation-delay: 1.8s;
-      }
+        animation-delay: 1s;
+      } /* Reduced delay */
       #about.visible .skills-highlight ul li:nth-child(6) {
-        animation-delay: 1.9s;
-      }
+        animation-delay: 1.05s;
+      } /* Reduced delay */
 
       @keyframes list-item-fade-in-up {
         0% {
@@ -299,23 +300,22 @@
         }
       }
 
-      /* --- Advanced "Skills" Section Animations --- */
+      /* --- Advanced "Skills" Section Animations (Reduced Delays) --- */
       #skills h2 .fa-tools,
       #skills h2 .skills-heading-text,
       #skills .section-subtitle,
       #skills .skills-category {
-        opacity: 0; /* Initial state */
+        opacity: 0;
       }
-      /* Tags will be hidden initially because their parent .skills-category is opacity 0 */
 
       #skills.visible h2 .fa-tools {
         display: inline-block;
-        animation: icon-spin-fade-in 0.6s ease-out 0.3s forwards;
+        animation: icon-spin-fade-in 0.6s ease-out 0.1s forwards; /* Reduced delay */
       }
 
       #skills.visible h2 .skills-heading-text {
         display: inline-block;
-        animation: text-slide-in-heading 0.6s ease-out 0.5s forwards; /* Reusing heading animation */
+        animation: text-slide-in-heading 0.6s ease-out 0.2s forwards; /* Reduced delay */
       }
 
       @keyframes icon-spin-fade-in {
@@ -334,19 +334,19 @@
       }
 
       #skills.visible .section-subtitle {
-        opacity: 0; /* Ensure it starts from 0 before animation */
-        animation: text-fade-in 0.7s ease-out 0.7s forwards; /* Reusing text-fade-in */
+        opacity: 0;
+        animation: text-fade-in 0.7s ease-out 0.4s forwards; /* Reduced delay */
       }
 
       #skills.visible .skills-category {
-        animation: category-card-reveal 0.7s
-          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        animation: category-card-reveal 0.6s
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Reduced duration */
       }
 
       @keyframes category-card-reveal {
         0% {
           opacity: 0;
-          transform: translateY(60px) scale(0.9);
+          transform: translateY(50px) scale(0.9);
         }
         100% {
           opacity: 1;
@@ -354,35 +354,34 @@
         }
       }
 
-      /* Staggering for Skill Categories */
+      /* Staggering for Skill Categories (Reduced Delays) */
       #skills.visible .skills-section > div:nth-child(1) {
-        animation-delay: 0.9s;
+        animation-delay: 0.5s;
       }
       #skills.visible .skills-section > div:nth-child(2) {
-        animation-delay: 1.05s;
+        animation-delay: 0.6s;
       }
       #skills.visible .skills-section > div:nth-child(3) {
-        animation-delay: 1.2s;
+        animation-delay: 0.7s;
       }
       #skills.visible .skills-section > div:nth-child(4) {
-        animation-delay: 1.35s;
+        animation-delay: 0.8s;
       }
       #skills.visible .skills-section > div:nth-child(5) {
-        animation-delay: 1.5s;
+        animation-delay: 0.9s;
       }
       #skills.visible .skills-section > div:nth-child(6) {
-        animation-delay: 1.65s;
+        animation-delay: 1s;
       }
       #skills.visible .skills-section > div:nth-child(7) {
-        animation-delay: 1.8s;
+        animation-delay: 1.1s;
       }
 
-      /* Skill Tags Animation - Pop-in effect */
       #skills.visible .skills-category .tag {
         display: inline-block;
         opacity: 0;
-        animation: tag-pop-in 0.4s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-          forwards;
+        animation: tag-pop-in 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+          forwards; /* Reduced duration */
       }
 
       @keyframes tag-pop-in {
@@ -396,31 +395,105 @@
         }
       }
 
-      /* Staggered animation for tags within each category */
-      /* Delays are set so tags appear after their parent category card has mostly animated in */
+      /* Staggered animation for tags (Reduced Delays) */
       #skills.visible .skills-section > div:nth-child(1) .tag {
-        animation-delay: 1.4s;
+        animation-delay: 0.8s;
       }
       #skills.visible .skills-section > div:nth-child(2) .tag {
-        animation-delay: 1.55s;
+        animation-delay: 0.9s;
       }
       #skills.visible .skills-section > div:nth-child(3) .tag {
-        animation-delay: 1.7s;
+        animation-delay: 1s;
       }
       #skills.visible .skills-section > div:nth-child(4) .tag {
-        animation-delay: 1.85s;
+        animation-delay: 1.1s;
       }
       #skills.visible .skills-section > div:nth-child(5) .tag {
-        animation-delay: 2s;
+        animation-delay: 1.2s;
       }
       #skills.visible .skills-section > div:nth-child(6) .tag {
-        animation-delay: 2.15s;
+        animation-delay: 1.3s;
       }
       #skills.visible .skills-section > div:nth-child(7) .tag {
-        animation-delay: 2.3s;
+        animation-delay: 1.4s;
       }
-      /* For more granular staggering of individual tags *within* a category, JS would be more maintainable.
-         This setup makes all tags in one category pop in together after the category card appears. */
+
+      /* --- NEW: Creative Animations for "Featured Projects" Section --- */
+      #featured-projects h2 .fa-star,
+      #featured-projects h2 .featured-heading-text,
+      #featured-projects .project-card-featured {
+        opacity: 0; /* Initial state for animation */
+      }
+
+      @keyframes project-icon-pop {
+        0% {
+          transform: scale(0.5) rotate(-60deg);
+          opacity: 0;
+        }
+        70% {
+          transform: scale(1.2) rotate(20deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes project-heading-slide-in {
+        0% {
+          transform: translateX(-30px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0px);
+          opacity: 1;
+        }
+      }
+
+      #featured-projects.visible h2 .fa-star {
+        display: inline-block;
+        animation: project-icon-pop 0.7s cubic-bezier(0.68, -0.55, 0.265, 1.55)
+          0.1s forwards;
+      }
+
+      #featured-projects.visible h2 .featured-heading-text {
+        display: inline-block; /* Needed for transform to work correctly */
+        animation: project-heading-slide-in 0.7s ease-out 0.2s forwards;
+      }
+
+      @keyframes project-card-fly-in {
+        0% {
+          opacity: 0;
+          transform: translateY(80px) translateX(50px) rotate(5deg) scale(0.8);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) translateX(0) rotate(0deg) scale(1);
+        }
+      }
+
+      #featured-projects.visible .projects-grid .project-card-featured {
+        animation: project-card-fly-in 0.8s cubic-bezier(0.215, 0.61, 0.355, 1)
+          forwards;
+      }
+
+      /* Staggering for Featured Project Cards */
+      #featured-projects.visible
+        .projects-grid
+        .project-card-featured:nth-child(1) {
+        animation-delay: 0.3s;
+      }
+      #featured-projects.visible
+        .projects-grid
+        .project-card-featured:nth-child(2) {
+        animation-delay: 0.45s;
+      }
+      #featured-projects.visible
+        .projects-grid
+        .project-card-featured:nth-child(3) {
+        animation-delay: 0.6s;
+      }
     </style>
   </head>
   <body>
@@ -526,7 +599,10 @@
     </section>
 
     <section id="featured-projects" class="section animated-section">
-      <h2><i class="fa fa-star"></i> Featured Projects</h2>
+      <h2>
+        <i class="fa fa-star"></i>
+        <span class="featured-heading-text">Featured Projects</span>
+      </h2>
       <div class="projects-grid">
         <div class="project-card-featured">
           <div class="project-content">
@@ -678,12 +754,15 @@
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                observer.unobserve(entry.target); // So it only animates once
+                // observer.unobserve(entry.target); // Removed to allow re-animation on scroll up/down
+              } else {
+                // Optional: Remove visible class if you want animations to replay when scrolling back up
+                // entry.target.classList.remove("visible");
               }
             });
           },
           {
-            threshold: 0.1, // Trigger when 10% of the item is visible
+            threshold: 0.05, // Trigger when 5% of the item is visible for quicker feeling
           }
         );
 

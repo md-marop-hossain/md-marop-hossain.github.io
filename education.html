@@ -13,12 +13,12 @@
     <style>
       /* --- Styles for Advanced Education Page --- */
       .education-section {
-        max-width: 850px;
+        max-width: 800px; /* Reduced max-width */
         margin: 0 auto;
-        padding: 3rem 1rem;
+        padding: 2.5rem 1rem; /* Slightly reduced padding */
         opacity: 0;
         transform: translateY(20px);
-        transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Slightly faster section transition */
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
       }
       .education-section.visible {
         opacity: 1;
@@ -27,12 +27,12 @@
 
       .education-section h2 {
         text-align: center;
-        margin-bottom: 3rem;
+        margin-bottom: 2.5rem; /* Reduced margin */
       }
 
       .education-container {
         display: grid;
-        gap: 2rem;
+        gap: 2rem; /* Reduced gap */
       }
 
       /* --- Creative Education Page Animations & Design --- */
@@ -48,42 +48,53 @@
         opacity: 0; /* Initial state for animation */
       }
 
-      /* --- Heading Animation (Reduced Delays) --- */
+      /* --- Heading Animation --- */
       .education-section.visible h2 .fa-graduation-cap {
         display: inline-block;
         opacity: 0;
-        animation: icon-sway 1.2s ease-in-out 0.1s forwards,
-          text-fade-in 0.4s ease-out 0.1s forwards;
+        animation: icon-pulse-rotate 1.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+            0.2s forwards,
+          text-fade-in 0.5s ease-out 0.2s forwards;
       }
       .education-section.visible h2 .education-heading-text {
         display: inline-block;
         opacity: 0;
-        animation: text-slide-from-right 0.7s cubic-bezier(0.23, 1, 0.32, 1)
-          0.2s forwards;
+        animation: text-reveal-from-bottom 0.8s cubic-bezier(0.23, 1, 0.32, 1)
+          0.4s forwards;
       }
 
-      @keyframes icon-sway {
-        0%,
-        100% {
-          transform: rotate(0deg);
+      @keyframes icon-pulse-rotate {
+        0% {
+          transform: scale(0.8) rotate(0deg);
+          opacity: 0;
         }
         25% {
-          transform: rotate(8deg);
+          transform: scale(1.1) rotate(-10deg);
+        }
+        50% {
+          transform: scale(1) rotate(5deg);
+          opacity: 1;
         }
         75% {
-          transform: rotate(-8deg);
+          transform: scale(1.05) rotate(-5deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
         }
       }
-      @keyframes text-slide-from-right {
+
+      @keyframes text-reveal-from-bottom {
         0% {
           opacity: 0;
-          transform: translateX(25px);
+          transform: translateY(30px);
         }
         100% {
           opacity: 1;
-          transform: translateX(0);
+          transform: translateY(0);
         }
       }
+
       @keyframes text-fade-in {
         to {
           opacity: 1;
@@ -93,13 +104,13 @@
       /* --- Education Card Advanced - Base Style for Animation --- */
       .education-card-advanced {
         position: relative;
-        background: rgba(var(--card-bg-rgb, 40, 40, 40), 0.6);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 0.75rem;
-        padding: 2rem;
-        box-shadow: var(--card-shadow);
+        background: rgba(var(--card-bg-rgb, 30, 35, 40), 0.7);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(var(--primary-color-rgb, 37, 99, 235), 0.3);
+        border-radius: 0.75rem; /* Slightly less rounded than before for a tighter look */
+        padding: 1.8rem; /* Reduced padding for smaller card */
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25); /* Adjusted shadow */
         overflow: hidden;
         opacity: 0;
       }
@@ -107,256 +118,267 @@
       .education-card-advanced.visible {
         opacity: 1;
         transform: translateY(0);
-        animation: card-creative-enter 0.8s cubic-bezier(0.25, 1, 0.5, 1)
-          forwards; /* Faster card animation */
+        animation: card-pop-in-swirl 0.9s
+          cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
       }
 
-      /* Staggering the cards' entrance (Reduced Delays) */
       .education-container > .education-card-advanced.visible:nth-child(1) {
-        animation-delay: 0.3s;
+        animation-delay: 0.4s;
       }
       .education-container > .education-card-advanced.visible:nth-child(2) {
-        animation-delay: 0.5s;
+        animation-delay: 0.65s;
       }
 
-      @keyframes card-creative-enter {
+      @keyframes card-pop-in-swirl {
         0% {
           opacity: 0;
-          transform: translateY(50px) rotateX(-15deg) scale(0.96);
+          transform: translateY(50px) rotate(-4deg) scale(0.92); /* Adjusted transform */
           filter: blur(3px);
         }
-        60% {
-          opacity: 0.8;
-          transform: translateY(-8px) rotateX(4deg) scale(1.01);
+        70% {
+          opacity: 0.9;
+          transform: translateY(-8px) rotate(1deg) scale(1.01); /* Adjusted transform */
           filter: blur(1px);
         }
         100% {
           opacity: 1;
-          transform: translateY(0) rotateX(0deg) scale(1);
+          transform: translateY(0) rotate(0deg) scale(1);
           filter: blur(0);
         }
       }
 
       .education-card-advanced:hover {
-        transform: translateY(-6px) scale(1.03);
-        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3),
-          0 0 0 2px var(--primary-color);
-        border-color: var(--primary-color);
+        transform: translateY(-6px) scale(1.03); /* Adjusted hover effect */
+        box-shadow: 0 12px 30px rgba(var(--primary-color-rgb, 37, 99, 235), 0.2),
+          0 0 0 2px rgba(var(--primary-color-rgb, 37, 99, 235), 0.4);
+        border-color: rgba(var(--primary-color-rgb, 37, 99, 235), 0.6);
         transition: transform 0.35s ease, box-shadow 0.35s ease,
           border-color 0.35s ease;
       }
 
-      /* --- Inner Card Content Animations (Reduced Delays) --- */
-      @keyframes inner-icon-pop {
+      /* --- Inner Card Content Animations --- */
+      @keyframes icon-jump-in {
         0% {
           opacity: 0;
-          transform: scale(0.4) rotate(-45deg);
-        }
+          transform: scale(0.3) translateY(15px) rotate(-25deg);
+        } /* Adjusted */
+        70% {
+          opacity: 1;
+          transform: scale(1.1) translateY(-4px) rotate(8deg);
+        } /* Adjusted */
         100% {
           opacity: 1;
-          transform: scale(1) rotate(0deg);
+          transform: scale(1) translateY(0) rotate(0deg);
         }
       }
-      @keyframes inner-text-slide-up {
+
+      @keyframes text-slide-up-fade {
         0% {
           opacity: 0;
-          transform: translateY(15px);
-        }
+          transform: translateY(20px);
+        } /* Adjusted */
         100% {
           opacity: 1;
           transform: translateY(0);
         }
       }
-      @keyframes coursework-tag-pop {
+
+      @keyframes tag-materialize {
         0% {
           opacity: 0;
-          transform: scale(0.5) rotateY(90deg);
-        }
+          transform: scale(0.5) rotateX(-70deg);
+        } /* Adjusted */
         100% {
           opacity: 1;
-          transform: scale(1) rotateY(0deg);
+          transform: scale(1) rotateX(0deg);
         }
       }
 
-      /* Card 1 (animation-delay: 0.3s, duration: 0.8s) */
+      /* Applying Inner Animations with Adjusted Delays (example for card 1) */
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .education-icon {
-        animation: inner-icon-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+        animation: icon-jump-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)
           forwards;
-        animation-delay: calc(0.3s + 0.3s); /* Card delay + offset */
+        animation-delay: calc(0.4s + 0.35s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .education-header-text
         h3 {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.3s + 0.35s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.4s + 0.45s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .education-header-text
         .degree {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.3s + 0.4s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.4s + 0.5s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .education-header-text
         .duration {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.3s + 0.45s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.4s + 0.55s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework
         h4 {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.3s + 0.5s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.4s + 0.65s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag {
         display: inline-block;
-        animation: coursework-tag-pop 0.35s ease-out forwards;
+        animation: tag-materialize 0.4s ease-out forwards;
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(1) {
-        animation-delay: calc(0.3s + 0.55s + 0.04s);
-      }
+        animation-delay: calc(0.4s + 0.75s + 0.04s);
+      } /* Adjusted */
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(2) {
-        animation-delay: calc(0.3s + 0.55s + 0.08s);
+        animation-delay: calc(0.4s + 0.75s + 0.08s);
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(3) {
-        animation-delay: calc(0.3s + 0.55s + 0.12s);
+        animation-delay: calc(0.4s + 0.75s + 0.12s);
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(4) {
-        animation-delay: calc(0.3s + 0.55s + 0.16s);
+        animation-delay: calc(0.4s + 0.75s + 0.16s);
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(5) {
-        animation-delay: calc(0.3s + 0.55s + 0.2s);
+        animation-delay: calc(0.4s + 0.75s + 0.2s);
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(6) {
-        animation-delay: calc(0.3s + 0.55s + 0.24s);
+        animation-delay: calc(0.4s + 0.75s + 0.24s);
       }
       .education-container
         > .education-card-advanced.visible:nth-child(1)
         .coursework-tags
         .tag:nth-child(7) {
-        animation-delay: calc(0.3s + 0.55s + 0.28s);
+        animation-delay: calc(0.4s + 0.75s + 0.28s);
       }
 
-      /* Card 2 (animation-delay: 0.5s, duration: 0.8s) */
+      /* Base delay for card 2: 0.65s (card anim) + offset */
       .education-container
         > .education-card-advanced.visible:nth-child(2)
         .education-icon {
-        animation: inner-icon-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+        animation: icon-jump-in 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55)
           forwards;
-        animation-delay: calc(0.5s + 0.3s);
+        animation-delay: calc(0.65s + 0.35s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(2)
         .education-header-text
         h3 {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.5s + 0.35s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.65s + 0.45s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(2)
         .education-header-text
         .degree {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.5s + 0.4s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.65s + 0.5s); /* Adjusted */
       }
       .education-container
         > .education-card-advanced.visible:nth-child(2)
         .education-header-text
         .duration {
-        animation: inner-text-slide-up 0.4s ease-out forwards;
-        animation-delay: calc(0.5s + 0.45s);
+        animation: text-slide-up-fade 0.5s ease-out forwards;
+        animation-delay: calc(0.65s + 0.55s); /* Adjusted */
       }
 
-      /* Original .education-card-advanced inner styles */
+      /* Original .education-card-advanced inner styles - Adjusted for new look */
       .education-header {
         display: flex;
         align-items: flex-start;
-        gap: 1.5rem;
-        margin-bottom: 1rem;
+        gap: 1.5rem; /* Reduced gap */
+        margin-bottom: 1.2rem; /* Reduced margin */
       }
       .education-icon {
-        font-size: 2rem;
+        font-size: 2rem; /* Reduced icon size */
         color: var(--primary-color);
-        margin-top: 5px;
+        margin-top: 2px; /* Fine-tune alignment */
       }
       .education-header-text h3 {
-        font-size: 1.6rem;
-        color: var(--primary-color);
+        font-size: 1.55rem; /* Reduced title font size */
+        color: var(--primary-light);
         margin: 0;
+        font-weight: 600; /* Slightly less heavy */
       }
       .education-header-text .degree {
-        font-size: 1.2rem;
-        font-weight: 600;
+        font-size: 1.1rem; /* Reduced degree font size */
+        font-weight: 500;
         color: var(--text-primary);
-        margin-top: 0.25rem;
+        margin-top: 0.25rem; /* Adjusted margin */
       }
       .education-header-text .duration {
-        font-size: 0.95rem;
+        font-size: 0.9rem; /* Reduced duration font size */
         color: var(--text-secondary);
-        margin-top: 0.5rem;
+        margin-top: 0.4rem; /* Adjusted margin */
       }
       .coursework {
-        margin-top: 1.5rem;
-        padding-top: 1.5rem;
-        border-top: 1px solid rgba(128, 128, 128, 0.3);
+        margin-top: 1.5rem; /* Reduced margin */
+        padding-top: 1.2rem; /* Reduced padding */
+        border-top: 1px solid rgba(var(--primary-color-rgb, 37, 99, 235), 0.2);
       }
       .coursework h4 {
-        font-size: 1.1rem;
-        color: var(--text-primary);
-        margin-bottom: 1rem;
+        font-size: 1.05rem; /* Reduced coursework heading font size */
+        color: var(--primary-light);
+        margin-bottom: 1rem; /* Reduced margin */
+        font-weight: 600;
       }
       .coursework-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.6rem; /* Reduced gap between tags */
       }
       .coursework-tags .tag {
-        background-color: #34383a; /* CHANGED: Teal background color */
-        color: white;
-        padding: 0.3rem 0.8rem;
-        border-radius: 9999px;
-        font-size: 0.85rem;
+        background-color: rgba(var(--primary-color-rgb, 37, 99, 235), 0.15);
+        color: var(--primary-light);
+        padding: 0.3rem 0.8rem; /* Reduced tag padding */
+        border-radius: 12px; /* Adjusted border-radius */
+        font-size: 0.8rem; /* Reduced tag font size */
         font-weight: 500;
-        transition: transform 0.2s ease-out, background-color 0.3s ease; /* ADDED: For hover effect */
+        border: 1px solid rgba(var(--primary-color-rgb, 37, 99, 235), 0.3);
+        transition: transform 0.25s ease-out, background-color 0.3s ease,
+          box-shadow 0.3s ease;
       }
       .coursework-tags .tag:hover {
-        /* ADDED: Hover effect for coursework tags */
-        transform: translateY(-2px) scale(1.05);
-        background-color: #678eba; /* Lighter teal on hover */
+        transform: translateY(-2px) scale(1.06); /* Adjusted hover */
+        background-color: rgba(var(--primary-color-rgb, 37, 99, 235), 0.3);
+        box-shadow: 0 1px 6px rgba(var(--primary-color-rgb, 37, 99, 235), 0.2);
       }
 
-      html[data-theme="light"] {
-        --card-bg-rgb: 255, 255, 255;
+      :root {
+        --primary-color-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250; /* Slightly off-white for light theme */
       }
-      html[data-theme="dark"] {
-        --card-bg-rgb: 40, 40, 40;
+      [data-theme="dark"] {
+        --primary-color-rgb: 112, 158, 192;
+        --card-bg-rgb: 28, 32, 36; /* Adjusted dark theme card base */
       }
     </style>
   </head>
@@ -443,7 +465,9 @@
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
                 entry.target.classList.add("visible");
-                observer.unobserve(entry.target);
+              } else {
+                // Optional: Remove 'visible' to re-animate if scrolled out of view
+                // entry.target.classList.remove("visible");
               }
             });
           },
