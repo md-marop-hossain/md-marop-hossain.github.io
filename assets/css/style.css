@@ -181,6 +181,13 @@ body {
   margin: 0 auto;
 }
 
+.projects-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* This is the key to forcing a single column */
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
 .social-links {
   display: flex;
   justify-content: center;
@@ -387,6 +394,7 @@ body {
 }
 
 .project-card {
+  margin-bottom: 1em;
   background-color: var(--bg-secondary);
   border-radius: 0.5rem;
   overflow: hidden;
