@@ -24,10 +24,98 @@
       referrerpolicy="no-referrer"
     />
     <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+
+    <style>
+      /* --- New Styles for Sidebar and Project Layout --- */
+
+      /* Ensure smooth scrolling behavior */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      /* Page container to hold sidebar and main content */
+      .page-container {
+        display: flex;
+        padding-top: 70px; /* Adjust for fixed nav */
+      }
+
+      /* Left-hand sidebar */
+      .sidebar {
+        width: 280px; /* Sidebar width */
+        position: fixed; /* Fixed position */
+        top: 70px; /* Position below the navbar */
+        left: 0;
+        height: calc(100vh - 70px); /* Full height minus navbar */
+        background-color: var(--bg-secondary);
+        padding: 2rem 1rem;
+        overflow-y: auto; /* Allow scrolling within sidebar */
+        border-right: 1px solid var(--primary-dark);
+        transition: all 0.3s ease;
+      }
+
+      .sidebar h3 {
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        font-size: 1.3rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px solid var(--primary-dark);
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar li a {
+        display: block;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.8rem 1rem;
+        border-radius: 0.3rem;
+        margin-bottom: 0.5rem;
+        transition: background-color 0.3s ease, color 0.3s ease;
+        font-size: 0.95rem;
+        line-height: 1.4;
+      }
+
+      .sidebar li a:hover {
+        background-color: var(--primary-dark);
+        color: #fff;
+      }
+
+      /* Style for the active link */
+      .sidebar li a.active {
+        background-color: var(--primary-color);
+        color: #fff;
+        font-weight: bold;
+      }
+
+      /* Main content area */
+      .projects-main-content {
+        margin-left: 280px; /* Space for the sidebar */
+        flex-grow: 1;
+        padding: 0;
+      }
+
+      .project-card {
+        scroll-margin-top: 90px; /* Offset for fixed header */
+      }
+
+      /* Responsive design: hide sidebar on smaller screens */
+      @media (max-width: 992px) {
+        .sidebar {
+          display: none; /* Hide the sidebar */
+        }
+
+        .projects-main-content {
+          margin-left: 0; /* Remove the margin */
+        }
+      }
+    </style>
   </head>
 
   <body>
-    <!-- Navigation -->
     <nav class="nav" role="navigation" aria-label="Main Navigation">
       <div class="nav-content">
         <div class="logo" aria-label="Website Logo">MMH</div>
@@ -49,368 +137,429 @@
           <a href="projects.html" class="active"
             ><i class="fa fa-code-branch"></i> Projects</a
           >
-
           <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
           <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
         </div>
       </div>
     </nav>
 
-    <!-- Main Content -->
-    <main>
-      <section class="section" aria-labelledby="projects-heading">
-        <div class="section-content-container">
-          <h2 id="projects-heading">
-            <i class="fa fa-code-branch"></i> Projects
-          </h2>
+    <div class="page-container">
+      <aside class="sidebar" role="complementary">
+        <h3>Project Navigation</h3>
+        <ul id="project-links">
+          <li><a href="#project-1">AI Agent Chatbot Platform</a></li>
+          <li><a href="#project-2">Hybrid Log Classification</a></li>
+          <li><a href="#project-3">GPT-Powered Email Assistant</a></li>
+          <li><a href="#project-4">EdTech LLM Q&A Suite</a></li>
+          <li><a href="#project-5">Ocular Disease Diagnosis</a></li>
+          <li><a href="#project-6">Diabetic Retinopathy Diagnosis</a></li>
+          <li><a href="#project-7">Salary Prediction Model</a></li>
+          <li><a href="#project-8">Virtual Learning Nexus</a></li>
+          <li><a href="#project-9">TechTrans E-commerce</a></li>
+        </ul>
+      </aside>
 
-          <div class="project-card">
-            <div class="project-content">
-              <h3>
-                Next-Generation Multi-Model Personal AI Agent Chatbot Platform
-                with Real-Time Web Search
-              </h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Combinesadvanced language models from OpenAI and Groq with
-                  real-time web search, enabling dynamic, up-to-date, and
-                  intelligent conversational experiences.
-                </li>
-                <li>
-                  Developed using FastAPI (backend), LangGraph and LangChain
-                  (agent logic and tool integration), Streamlit (frontend), and
-                  Uvicorn (hosting), making the platform robust, extensible, and
-                  production-ready.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
+      <main class="projects-main-content">
+        <section class="section" aria-labelledby="projects-heading">
+          <div class="section-content-container">
+            <h2 id="projects-heading">
+              <i class="fa fa-code-branch"></i> Projects
+            </h2>
 
-          <div class="project-card">
-            <div class="project-content">
-              <h3>
-                Hybrid Log Classification System with Deepseek-R1 LLM, BERT, NLP
-                and Regex
-              </h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Developed a hybrid AI system for automated log message
-                  classification using Regex pattern matching, BERT embeddings
-                  with logistic regression, and Deepseek R1 Large Language
-                  Models (LLM), with DBSCAN clustering for regex discovery to
-                  automatically categorize log messages from enterprise systems,
-                  ensuring high accuracy and adaptability for both common and
-                  rare log types.
-                </li>
-                <li>
-                  Designed a scalable pipeline that combines rule-based, machine
-                  learning, and GenAI methods-helping organizations detect
-                  errors, security threats, and system events faster, reduce
-                  manual log review, and improve IT operations in real-world
-                  industry environments.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
+            <div id="project-1" class="project-card">
+              <div class="project-content">
+                <h3>
+                  Next-Generation Multi-Model Personal AI Agent Chatbot Platform
+                  with Real-Time Web Search
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
                 >
+                  <li>
+                    Combines advanced language models from OpenAI and Groq with
+                    real-time web search, enabling dynamic, up-to-date, and
+                    intelligent conversational experiences.
+                  </li>
+                  <li>
+                    Developed using FastAPI (backend), LangGraph and LangChain
+                    (agent logic and tool integration), Streamlit (frontend),
+                    and Uvicorn (hosting), making the platform robust,
+                    extensible, and production-ready.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="project-card">
-            <div class="project-content">
-              <h3>GPT-Powered Email Assistant</h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Built an AI-driven email assistant using Python and OpenAI GPT
-                  model (GPT-4.1 and 3.5) to automate email scanning, smart
-                  prioritization, and automatic categorization of business and
-                  sponsorship messages, compatible with any email provider.
-                </li>
-                <li>
-                  Enabled AI-generated professional reply suggestions and user
-                  review workflows, supporting both OpenAI and local LLMs for
-                  privacy, resulting in significant time savings and improved
-                  inbox organization.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
+            <div id="project-2" class="project-card">
+              <div class="project-content">
+                <h3>
+                  Hybrid Log Classification System with Deepseek-R1 LLM, BERT,
+                  NLP and Regex
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
                 >
+                  <li>
+                    Developed a hybrid AI system for automated log message
+                    classification using Regex pattern matching, BERT embeddings
+                    with logistic regression, and Deepseek R1 Large Language
+                    Models (LLM), with DBSCAN clustering for regex discovery to
+                    automatically categorize log messages from enterprise
+                    systems, ensuring high accuracy and adaptability for both
+                    common and rare log types.
+                  </li>
+                  <li>
+                    Designed a scalable pipeline that combines rule-based,
+                    machine learning, and GenAI methods-helping organizations
+                    detect errors, security threats, and system events faster,
+                    reduce manual log review, and improve IT operations in
+                    real-world industry environments.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
               </div>
             </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3>EdTech LLM Q&A Suite: LangChain + Gemini + Streamlit</h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Developed an AI-powered Q&A platform using LangChain, Google
-                  Gemini (PaLM), and Streamlit, delivering instant,
-                  context-aware answers for educational and online platforms
-                  through a user-friendly interface.
-                </li>
-                <li>
-                  Integrated a centralized CSV knowledge base for efficient
-                  information retrieval, streamlining support and knowledge
-                  management to reduce repetitive queries and enhance
-                  scalability.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3>
-                Enhancing Ocular Disease Diagnosis, Blood Vessel Segmentation,
-                and Vessel Diameter Estimation Using an Advanced Deep Learning
-                Approach
-              </h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Developed retinal vessel segmentation and diameter estimation
-                  algorithms for diagnosing ischemia, macular degeneration, and
-                  cardiovascular diseases, enabling early, cost-effective
-                  detection with potential for mobile or web integration.
-                </li>
-                <li>
-                  Designed an advanced system using pre-trained models
-                  (EfficientNetV2S, ResNet50, DenseNet121) to classify ocular
-                  diseases (cataracts, glaucoma, diabetic retinopathy) with high
-                  accuracy, improving diagnostic efficiency.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3>
-                Segmentation of Blood Vessels, Optic Disc Localization, Exudates
-                Detection for Diabetic Retinopathy, and Glaucoma Diagnosis From
-                Fundus Images
-              </h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Developed an automated diagnostic system using image
-                  processing and machine learning to detect diabetic retinopathy
-                  and glau coma, achieving 98.77% accuracy in optic disc
-                  localization and 75.73% accuracy in retinal feature
-                  classification.
-                </li>
-                <li>
-                  Engineered blood vessel segmentation algorithms with improved
-                  accuracy and noise reduction using morphological operations,
-                  Otsu thresholding, and deep learning techniques.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3>
-                Predictive Modeling and Analysis of Software Engineers Salary
-                Using Machine Learning
-              </h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Built a ML framework using regression models (Decision Trees,
-                  Random Forest, Linear Regression, XGBoost) to predict software
-                  engineer salaries with 76% accuracy, leveraging 60,000+
-                  entries from the 2023 Stack Overflow Developer Survey.
-                </li>
-                <li>
-                  Deployed a user-friendly web application for real-time salary
-                  predictions, supporting job seekers and recruiters in salary
-                  negotiations and career planning.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3>Virtual Learning Nexus</h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Developed a responsive web-based educational platform using
-                  HTML, CSS, JS, PHP, and MySQL with role-based student and
-                  admin panels.
-                </li>
-                <li>
-                  Implemented course management, feedback collection, and secure
-                  authentication.
-                </li>
-                <li>
-                  Integrated Stripe payments and designed system workflows with
-                  StarUML for scalable planning.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
-          <div class="project-card">
-            <div class="project-content">
-              <h3>TechTrans E-commerce Website</h3>
-              <ul
-                style="
-                  margin-left: 20px;
-                  font-size: 15px;
-                  font-family: 'Outfit', sans-serif;
-                "
-              >
-                <li>
-                  Built a full-stack electronics marketplace using React.js,
-                  Node.js, Express, MongoDB, Firebase, and Material UI.
-                </li>
-                <li>
-                  Enabled product browsing, real-time search, secure
-                  authentication, cart/order management, and Stripe payment
-                  gateway.
-                </li>
-                <li>
-                  Delivered user-friendly UX and tools for small businesses to
-                  manage inventory and orders efficiently.
-                </li>
-              </ul>
-              <div class="tech-stack" style="margin-top: 10px">
-                <span>FastAPI</span><span>LangGraph</span><span>LangChain</span
-                ><span>Streamlit</span><span>Uvicorn</span><span>OpenAI</span
-                ><span>Groq</span>
-              </div>
-              <div class="project-links">
-                <a href="#" target="_blank" rel="noopener noreferrer"
-                  >Project Link</a
-                >
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
 
-    <!-- Footer -->
+            <div id="project-3" class="project-card">
+              <div class="project-content">
+                <h3>GPT-Powered Email Assistant</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Built an AI-driven email assistant using Python and OpenAI
+                    GPT model (GPT-4.1 and 3.5) to automate email scanning,
+                    smart prioritization, and automatic categorization of
+                    business and sponsorship messages, compatible with any email
+                    provider.
+                  </li>
+                  <li>
+                    Enabled AI-generated professional reply suggestions and user
+                    review workflows, supporting both OpenAI and local LLMs for
+                    privacy, resulting in significant time savings and improved
+                    inbox organization.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="project-4" class="project-card">
+              <div class="project-content">
+                <h3>EdTech LLM Q&A Suite: LangChain + Gemini + Streamlit</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed an AI-powered Q&A platform using LangChain, Google
+                    Gemini (PaLM), and Streamlit, delivering instant,
+                    context-aware answers for educational and online platforms
+                    through a user-friendly interface.
+                  </li>
+                  <li>
+                    Integrated a centralized CSV knowledge base for efficient
+                    information retrieval, streamlining support and knowledge
+                    management to reduce repetitive queries and enhance
+                    scalability.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="project-5" class="project-card">
+              <div class="project-content">
+                <h3>
+                  Enhancing Ocular Disease Diagnosis, Blood Vessel Segmentation,
+                  and Vessel Diameter Estimation Using an Advanced Deep Learning
+                  Approach
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed retinal vessel segmentation and diameter
+                    estimation algorithms for diagnosing ischemia, macular
+                    degeneration, and cardiovascular diseases, enabling early,
+                    cost-effective detection with potential for mobile or web
+                    integration.
+                  </li>
+                  <li>
+                    Designed an advanced system using pre-trained models
+                    (EfficientNetV2S, ResNet50, DenseNet121) to classify ocular
+                    diseases (cataracts, glaucoma, diabetic retinopathy) with
+                    high accuracy, improving diagnostic efficiency.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="project-6" class="project-card">
+              <div class="project-content">
+                <h3>
+                  Segmentation of Blood Vessels, Optic Disc Localization,
+                  Exudates Detection for Diabetic Retinopathy, and Glaucoma
+                  Diagnosis From Fundus Images
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed an automated diagnostic system using image
+                    processing and machine learning to detect diabetic
+                    retinopathy and glau coma, achieving 98.77% accuracy in
+                    optic disc localization and 75.73% accuracy in retinal
+                    feature classification.
+                  </li>
+                  <li>
+                    Engineered blood vessel segmentation algorithms with
+                    improved accuracy and noise reduction using morphological
+                    operations, Otsu thresholding, and deep learning techniques.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="project-7" class="project-card">
+              <div class="project-content">
+                <h3>
+                  Predictive Modeling and Analysis of Software Engineers Salary
+                  Using Machine Learning
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Built a ML framework using regression models (Decision
+                    Trees, Random Forest, Linear Regression, XGBoost) to predict
+                    software engineer salaries with 76% accuracy, leveraging
+                    60,000+ entries from the 2023 Stack Overflow Developer
+                    Survey.
+                  </li>
+                  <li>
+                    Deployed a user-friendly web application for real-time
+                    salary predictions, supporting job seekers and recruiters in
+                    salary negotiations and career planning.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="project-8" class="project-card">
+              <div class="project-content">
+                <h3>Virtual Learning Nexus</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed a responsive web-based educational platform using
+                    HTML, CSS, JS, PHP, and MySQL with role-based student and
+                    admin panels.
+                  </li>
+                  <li>
+                    Implemented course management, feedback collection, and
+                    secure authentication.
+                  </li>
+                  <li>
+                    Integrated Stripe payments and designed system workflows
+                    with StarUML for scalable planning.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div id="project-9" class="project-card">
+              <div class="project-content">
+                <h3>TechTrans E-commerce Website</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Built a full-stack electronics marketplace using React.js,
+                    Node.js, Express, MongoDB, Firebase, and Material UI.
+                  </li>
+                  <li>
+                    Enabled product Browse, real-time search, secure
+                    authentication, cart/order management, and Stripe payment
+                    gateway.
+                  </li>
+                  <li>
+                    Delivered user-friendly UX and tools for small businesses to
+                    manage inventory and orders efficiently.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>FastAPI</span><span>LangGraph</span
+                  ><span>LangChain</span><span>Streamlit</span
+                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
+                </div>
+                <div class="project-links">
+                  <a href="#" target="_blank" rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
     <footer role="contentinfo">
       <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script>
+      // --- New JavaScript for Active Link Highlighting ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".project-card");
+        const navLinks = document.querySelectorAll("#project-links li a");
+
+        if (sections.length === 0 || navLinks.length === 0) {
+          return; // Exit if no sections or links are found
+        }
+
+        // This function will be called on scroll
+        const highlightNavLink = () => {
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            // 95 is a pixel offset to trigger the highlight a bit sooner
+            if (pageYOffset >= sectionTop - 95) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((a) => {
+            a.classList.remove("active");
+            // Check if the link's href matches the current section's ID
+            if (a.getAttribute("href") === `#${current}`) {
+              a.classList.add("active");
+            }
+          });
+        };
+
+        // Add scroll event listener
+        window.addEventListener("scroll", highlightNavLink);
+
+        // Initial call to set the active link on page load
+        highlightNavLink();
+      });
+    </script>
   </body>
 </html>
