@@ -65,7 +65,7 @@
         animation: gradient-animation 15s ease infinite;
         overflow: hidden; /* Ensure gradient animation doesn't cause scrollbars if it has pseudo-elements */
         z-index: 1; /* Ensure hero content is above fixed background canvas */
-        position: relative; /* For z-index to work */
+        /* position: relative; /* For z-index to work - already specified */
       }
 
       @keyframes gradient-animation {
@@ -115,6 +115,17 @@
         border: 1px solid rgba(255, 255, 255, 0.1);
         border-radius: 0.75rem;
         padding: 2rem;
+        /* ADDED for hover effect */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
+      }
+
+      .about-text:hover,
+      .skills-highlight:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
+          0 0 0 2px rgba(var(--primary-rgb), 0.4);
+        border-color: rgba(var(--primary-rgb), 0.6);
       }
 
       html[data-theme="light"] {
@@ -138,7 +149,18 @@
         border-radius: 0.75rem;
         padding: 1.5rem;
         border: 1px solid rgba(255, 255, 255, 0.1);
+        /* ADDED for hover effect */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
       }
+
+      .skills-category:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
+          0 0 0 2px rgba(var(--primary-rgb), 0.4);
+        border-color: rgba(var(--primary-rgb), 0.6);
+      }
+
       .skills-category h3 {
         margin-bottom: 1rem;
       }
@@ -162,26 +184,33 @@
       }
 
       /* Featured Projects Section */
-      /* #featured-projects background is now transparent (see above) */
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
       }
-      /* .project-card-featured background is now semi-transparent (see above) */
       .project-card-featured {
+        /* background has been updated above for orb visibility */
+        backdrop-filter: blur(8px);
         border-radius: 0.75rem;
         overflow: hidden;
-        box-shadow: var(--card-shadow);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        border: 1px solid rgba(128, 128, 128, 0.2);
-        opacity: 0; /* Initial state for new animation */
+        box-shadow: var(--card-shadow); /* Base shadow */
+        border: 1px solid rgba(128, 128, 128, 0.2); /* Base border */
+        opacity: 0; /* Initial state for entry animation */
+        /* UPDATED transitions for hover effects. Entry animation for opacity/transform is handled by 'animation' property with keyframes. */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
       }
+
       .project-card-featured:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        /* REPLACED existing hover */
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
+          0 0 0 2px rgba(var(--primary-rgb), 0.4);
+        border-color: rgba(var(--primary-rgb), 0.6);
       }
+
       .project-card-featured .project-content {
         padding: 1.5rem;
       }
@@ -218,12 +247,12 @@
       }
 
       #about.visible h2 .fa-user {
-        animation: icon-pop 0.5s ease-out 0.1s forwards; /* Reduced delay */
+        animation: icon-pop 0.5s ease-out 0.1s forwards;
       }
 
       #about.visible h2 .about-heading-text {
         display: inline-block;
-        animation: text-slide-in-heading 0.6s ease-out 0.2s forwards; /* Reduced delay */
+        animation: text-slide-in-heading 0.6s ease-out 0.2s forwards;
       }
 
       @keyframes icon-pop {
@@ -258,10 +287,10 @@
 
       #about.visible .about-text p:nth-child(1) {
         animation-delay: 0.3s;
-      } /* Reduced delay */
+      }
       #about.visible .about-text p:nth-child(2) {
         animation-delay: 0.4s;
-      } /* Reduced delay */
+      }
 
       @keyframes paragraph-slide-in-left {
         0% {
@@ -275,7 +304,7 @@
       }
 
       #about.visible .skills-highlight {
-        animation: card-slide-in-right 0.6s ease-out 0.5s forwards; /* Reduced delay & duration */
+        animation: card-slide-in-right 0.6s ease-out 0.5s forwards;
       }
 
       @keyframes card-slide-in-right {
@@ -290,31 +319,31 @@
       }
 
       #about.visible .skills-highlight h3 {
-        animation: text-fade-in 0.5s ease-out 0.7s forwards; /* Reduced delay */
+        animation: text-fade-in 0.5s ease-out 0.7s forwards;
       }
 
       #about.visible .skills-highlight ul li {
-        animation: list-item-fade-in-up 0.4s ease-out forwards; /* Reduced duration */
+        animation: list-item-fade-in-up 0.4s ease-out forwards;
       }
 
       #about.visible .skills-highlight ul li:nth-child(1) {
         animation-delay: 0.8s;
-      } /* Reduced delay */
+      }
       #about.visible .skills-highlight ul li:nth-child(2) {
         animation-delay: 0.85s;
-      } /* Reduced delay */
+      }
       #about.visible .skills-highlight ul li:nth-child(3) {
         animation-delay: 0.9s;
-      } /* Reduced delay */
+      }
       #about.visible .skills-highlight ul li:nth-child(4) {
         animation-delay: 0.95s;
-      } /* Reduced delay */
+      }
       #about.visible .skills-highlight ul li:nth-child(5) {
         animation-delay: 1s;
-      } /* Reduced delay */
+      }
       #about.visible .skills-highlight ul li:nth-child(6) {
         animation-delay: 1.05s;
-      } /* Reduced delay */
+      }
 
       @keyframes list-item-fade-in-up {
         0% {
@@ -346,12 +375,12 @@
 
       #skills.visible h2 .fa-tools {
         display: inline-block;
-        animation: icon-spin-fade-in 0.6s ease-out 0.1s forwards; /* Reduced delay */
+        animation: icon-spin-fade-in 0.6s ease-out 0.1s forwards;
       }
 
       #skills.visible h2 .skills-heading-text {
         display: inline-block;
-        animation: text-slide-in-heading 0.6s ease-out 0.2s forwards; /* Reduced delay */
+        animation: text-slide-in-heading 0.6s ease-out 0.2s forwards;
       }
 
       @keyframes icon-spin-fade-in {
@@ -371,12 +400,12 @@
 
       #skills.visible .section-subtitle {
         opacity: 0;
-        animation: text-fade-in 0.7s ease-out 0.4s forwards; /* Reduced delay */
+        animation: text-fade-in 0.7s ease-out 0.4s forwards;
       }
 
       #skills.visible .skills-category {
         animation: category-card-reveal 0.6s
-          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* Reduced duration */
+          cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
       }
 
       @keyframes category-card-reveal {
@@ -417,7 +446,7 @@
         display: inline-block;
         opacity: 0;
         animation: tag-pop-in 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55)
-          forwards; /* Reduced duration */
+          forwards;
       }
 
       @keyframes tag-pop-in {
@@ -458,7 +487,7 @@
       #featured-projects h2 .fa-star,
       #featured-projects h2 .featured-heading-text,
       #featured-projects .project-card-featured {
-        opacity: 0; /* Initial state for animation */
+        opacity: 0; /* Initial state for animation handled by keyframes now */
       }
 
       @keyframes project-icon-pop {
@@ -494,7 +523,7 @@
       }
 
       #featured-projects.visible h2 .featured-heading-text {
-        display: inline-block; /* Needed for transform to work correctly */
+        display: inline-block;
         animation: project-heading-slide-in 0.7s ease-out 0.2s forwards;
       }
 

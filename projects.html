@@ -30,6 +30,20 @@
     <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
 
     <style>
+      /* --- CSS Variables for RGBA colors (for hover effects) --- */
+      :root {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250;
+      }
+      html[data-theme="light"] {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250;
+      }
+      html[data-theme="dark"] {
+        --primary-rgb: 112, 158, 192;
+        --card-bg-rgb: 28, 32, 36;
+      }
+
       /* --- Styles for Sidebar and Project Layout --- */
 
       html {
@@ -134,20 +148,23 @@
 
       .project-card {
         scroll-margin-top: 90px;
-        /* Initial state for animation */
-        opacity: 0; /* Hidden by default */
-        transform: scale(0.8); /* Smaller by default */
-        /* Transition for hover effects will be inherited from style.css var(--transition) */
-        /* which is 'all 0.3s ease' */
+        opacity: 0; /* For entry animation */
+        transform: scale(0.8); /* For entry animation */
+        /* Added transitions for new hover effect properties */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease, opacity 0.6s ease-out; /* Retained opacity for entry animation */
+        /* Note: Base border is defined in style.css: border: 1px solid var(--accent-color); */
+        /* Base box-shadow is in style.css: box-shadow: var(--card-shadow); */
       }
 
-      /* ADDED/MODIFIED HOVER ANIMATION FOR PROJECT CARD */
+      /* UPDATED HOVER ANIMATION FOR PROJECT CARD (from education.html) */
       .project-card:hover {
-        transform: translateY(-8px) scale(1.02); /* Lift and slightly zoom */
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
-          0 6px 6px rgba(0, 0, 0, 0.23); /* Enhanced shadow for depth */
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
+          0 0 0 2px rgba(var(--primary-rgb), 0.4);
+        border-color: rgba(var(--primary-rgb), 0.6);
       }
-      /* END OF ADDED/MODIFIED HOVER ANIMATION */
+      /* END OF UPDATED HOVER ANIMATION */
 
       .project-card.animate__animated {
         opacity: 1; /* Made visible when animation starts */
