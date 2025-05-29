@@ -135,14 +135,14 @@ body {
 .hero-text {
   font-size: 1.2rem;
   color: var(--primary-color);
-  margin-bottom: 2rem;
+  /* margin-bottom: 2rem; */
 }
 .hero-special-text {
   font-family: "Share Tech", sans-serif;
-  font-weight: 400;
-  font-style: bold;
+  font-weight: 700;
+  /* font-style: bolder; */
   font-size: 0.9rem;
-  /* font-style: italic;  */
+  /* font-style: italic; */
   /* You might want to adjust font size or color here if needed */
   /* font-size: 1.1em; */
   /* color: var(--primary-color); */

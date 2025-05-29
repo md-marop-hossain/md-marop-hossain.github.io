@@ -14,6 +14,150 @@
       rel="stylesheet"
     />
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <style>
+      /* --- Styles for Advanced Index Page --- */
+
+      /* Animated Gradient Background for Hero */
+      .hero-animated-bg {
+        position: relative;
+        background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a2930);
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+        overflow: hidden;
+      }
+
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero .subtitle {
+        font-size: 1.5rem;
+        color: var(--primary-light);
+        min-height: 70px; /* Reserve space for typed text */
+      }
+
+      /* Typed.js Cursor Style */
+      .typed-cursor {
+        color: var(--primary-light);
+        font-size: 1.6rem;
+      }
+
+      /* General Section Styling for Fade-in Animation */
+      .animated-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .animated-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Enhanced About Section Cards */
+      .about-content {
+        gap: 2rem;
+      }
+      .about-text,
+      .skills-highlight {
+        background: rgba(var(--card-bg-rgb, 40, 40, 40), 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+
+      html[data-theme="light"] {
+        --card-bg-rgb: 255, 255, 255;
+      }
+      html[data-theme="dark"] {
+        --card-bg-rgb: 40, 40, 40;
+      }
+
+      /* Enhanced Skills Section */
+      .skills-section {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      .skills-category {
+        background: rgba(var(--card-bg-rgb, 40, 40, 40), 0.5);
+        backdrop-filter: blur(8px);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .skills-category h3 {
+        margin-bottom: 1rem;
+      }
+      .skill-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+      }
+      .skill-tags .tag {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 9999px;
+        font-size: 0.9rem;
+      }
+
+      /* Featured Projects Section */
+      #featured-projects {
+        background-color: var(--bg-secondary);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .project-card-featured {
+        background: var(--bg-primary);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(128, 128, 128, 0.2);
+      }
+      .project-card-featured:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+      .project-card-featured .project-content {
+        padding: 1.5rem;
+      }
+      .project-card-featured h3 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+        min-height: 55px;
+      }
+      .project-card-featured p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        min-height: 80px;
+      }
+      .project-card-featured .project-link {
+        display: inline-block;
+        color: var(--primary-light);
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .project-card-featured .project-link:hover {
+        text-decoration: underline;
+      }
+    </style>
   </head>
   <body>
     <nav class="nav">
@@ -33,17 +177,13 @@
             ><i class="fa fa-briefcase"></i> Experience</a
           >
           <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
-          <!-- <a href="publications.html"
-            ><i class="fa fa-book"></i> Publications</a
-          > -->
           <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
           <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="hero" class="section hero">
+    <section id="hero" class="section hero hero-animated-bg">
       <div class="hero-content">
         <img
           src="assets/img/profile.jpg"
@@ -51,7 +191,7 @@
           class="profile-img"
         />
         <h1>Md. Marop Hossain</h1>
-        <p class="subtitle">Machine Learning Engineer | Software Engineer</p>
+        <p class="subtitle"><span id="typed-subtitle"></span></p>
         <p class="hero-text hero-special-text">
           Specializing in Computer Vision, NLP, Business Intelligence, and
           Healthcare, I'm passionate about Applied Machine Learning, Large
@@ -61,14 +201,12 @@
           <a href="mailto:marop.hossain21@gmail.com" aria-label="Email"
             ><i class="fas fa-envelope"></i
           ></a>
-
           <a
             href="https://wa.me/8801630751852"
             aria-label="WhatsApp"
             target="_blank"
-          >
-            <i class="fab fa-whatsapp"></i>
-          </a>
+            ><i class="fab fa-whatsapp"></i
+          ></a>
           <a
             href="https://www.linkedin.com/in/marop-hossain/"
             aria-label="LinkedIn"
@@ -85,8 +223,7 @@
       </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="section">
+    <section id="about" class="section animated-section">
       <h2><i class="fa fa-user"></i> About Me</h2>
       <div class="about-content">
         <div class="about-text">
@@ -98,24 +235,10 @@
             (RAG), and multi-modal architectures.
           </p>
           <p>
-            With a strong foundation in deep learning, NLP, and real-world
-            system integration, I specialize in designing and deploying AI
-            agents that are technically robust, ethical, and user-centric. These
-            systems reason, learn, and act autonomously in dynamic environments,
-            from adaptive personal assistants to scalable decision-support
-            tools.
-          </p>
-          <p>
             I thrive on solving complex problems, from designing intelligent
             pipelines to optimizing performance, always ensuring AI solutions
             are accessible and explainable. My approach combines technical rigor
             with a research mindset, bridging theory and practical deployment.
-          </p>
-          <p>
-            I'm also passionate about contributing to open-source and exploring
-            AI's evolving landscape. I bring a collaborative spirit and
-            commitment to innovation to all my endeavors, whether fine-tuning
-            LLMs, implementing RAG pipelines, or guiding peers.
           </p>
         </div>
         <div class="skills-highlight">
@@ -132,8 +255,49 @@
       </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="section">
+    <section id="featured-projects" class="section animated-section">
+      <h2><i class="fa fa-star"></i> Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card-featured">
+          <div class="project-content">
+            <h3>AI Agent Chatbot Platform with Real-Time Web Search</h3>
+            <p>
+              A multi-model agent combining OpenAI & Groq with live web search
+              for dynamic, intelligent conversations.
+            </p>
+            <a href="projects.html#project-1" class="project-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card-featured">
+          <div class="project-content">
+            <h3>Hybrid Log Classification System with LLMs & BERT</h3>
+            <p>
+              An AI system for automated log classification using Regex, BERT,
+              and Deepseek LLMs to ensure high accuracy.
+            </p>
+            <a href="projects.html#project-2" class="project-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card-featured">
+          <div class="project-content">
+            <h3>Ocular Disease Diagnosis with Deep Learning</h3>
+            <p>
+              An advanced system using pre-trained models (EfficientNet, ResNet)
+              to classify ocular diseases with high accuracy.
+            </p>
+            <a href="projects.html#project-5" class="project-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="section animated-section">
       <h2><i class="fa fa-tools"></i> Skills</h2>
       <p class="section-subtitle">
         A diverse toolkit for designing, building, and optimizing intelligent
@@ -142,45 +306,41 @@
       <div class="skills-section">
         <div class="skills-category">
           <h3>Large Language Models (LLMs)</h3>
-          <p>GPT, BERT, Claude, LLaMA, DeepSeek, LangChain, LangGraph</p>
+          <div class="skill-tags">
+            <span class="tag">GPT</span><span class="tag">BERT</span
+            ><span class="tag">Claude</span> <span class="tag">LLaMA</span
+            ><span class="tag">DeepSeek</span><span class="tag">LangChain</span>
+            <span class="tag">LangGraph</span>
+          </div>
         </div>
         <div class="skills-category">
           <h3>Machine Learning & AI</h3>
-          <p>
-            PyTorch, TensorFlow, Keras, Scikit-learn, OpenCV, NLTK, HuggingFace,
-            Fine-tuning, Prompt Engineering, Generative AI, RAG, FAISS, Chroma,
-            Pinecone, NLP, Statistical Analysis, Data Cleaning
-          </p>
+          <div class="skill-tags">
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span
+            ><span class="tag">Keras</span> <span class="tag">Scikit-learn</span
+            ><span class="tag">OpenCV</span
+            ><span class="tag">HuggingFace</span>
+            <span class="tag">Generative AI</span><span class="tag">RAG</span
+            ><span class="tag">FAISS</span><span class="tag">Chroma</span>
+          </div>
         </div>
         <div class="skills-category">
-          <h3>Programming Languages & Tools</h3>
-          <p>
-            Python, C/C++, Java, JavaScript, Git, SQL (advanced), MySQL,
-            MongoDB, Bash
-          </p>
+          <h3>Programming & Tools</h3>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">C/C++</span
+            ><span class="tag">Java</span><span class="tag">JavaScript</span>
+            <span class="tag">Git</span><span class="tag">SQL</span
+            ><span class="tag">MySQL</span><span class="tag">MongoDB</span>
+          </div>
         </div>
         <div class="skills-category">
-          <h3>Data Science & Visualization</h3>
-          <p>Pandas, NumPy, SciPy, Matplotlib, Seaborn</p>
-        </div>
-        <div class="skills-category">
-          <h3>Web & Application Development</h3>
-          <p>FastAPI, React.js, Django, PHP, Streamlit</p>
-        </div>
-        <div class="skills-category">
-          <h3>Cloud & DevOps</h3>
-          <p>
-            AWS (SageMaker, Lambda, Step Functions), Azure (Azure ML, Azure
-            Functions), GCP (Vertex AI, Google Cloud Functions), Docker, GitHub
-            Actions, CI/CD Tools
-          </p>
-        </div>
-        <div class="skills-category">
-          <h3>Soft Skills</h3>
-          <p>
-            Strong Communication, Team Collaboration, Analytical Thinking,
-            Quantitative Analysis, Problem-Solving, Adaptability
-          </p>
+          <h3>Web & Cloud</h3>
+          <div class="skill-tags">
+            <span class="tag">FastAPI</span><span class="tag">React.js</span
+            ><span class="tag">Django</span><span class="tag">Streamlit</span>
+            <span class="tag">AWS</span><span class="tag">GCP</span
+            ><span class="tag">Azure</span><span class="tag">Docker</span>
+          </div>
         </div>
       </div>
     </section>
@@ -189,6 +349,43 @@
       <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Typed.js Initialization ---
+        new Typed("#typed-subtitle", {
+          strings: [
+            "Machine Learning Engineer",
+            "Software Engineer",
+            "AI Researcher",
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 2000,
+          loop: true,
+        });
+
+        // --- Intersection Observer for Animations ---
+        const sections = document.querySelectorAll(".animated-section");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
+      });
+    </script>
   </body>
 </html>

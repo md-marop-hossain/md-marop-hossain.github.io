@@ -10,6 +10,119 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <style>
+      /* --- Styles for Advanced Education Page --- */
+      .education-section {
+        max-width: 850px;
+        margin: 0 auto;
+        padding: 3rem 1rem;
+      }
+      .education-section h2 {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .education-container {
+        display: grid;
+        gap: 2rem;
+      }
+
+      .education-card-advanced {
+        position: relative;
+        background: rgba(
+          var(--card-bg-rgb, 40, 40, 40),
+          0.6
+        ); /* Glassmorphism background */
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 0.75rem;
+        padding: 2rem;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        overflow: hidden;
+        opacity: 0; /* Initially hidden for animation */
+        transform: translateY(40px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .education-card-advanced.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Theme-specific background variable for RGBA */
+      html[data-theme="light"] {
+        --card-bg-rgb: 255, 255, 255;
+      }
+      html[data-theme="dark"] {
+        --card-bg-rgb: 40, 40, 40;
+      }
+
+      .education-card-advanced:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+
+      .education-header {
+        display: flex;
+        align-items: flex-start;
+        gap: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .education-icon {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-top: 5px;
+      }
+
+      .education-header-text h3 {
+        font-size: 1.6rem;
+        color: var(--primary-color);
+        margin: 0;
+      }
+
+      .education-header-text .degree {
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--text-primary);
+        margin-top: 0.25rem;
+      }
+
+      .education-header-text .duration {
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+      }
+
+      .coursework {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(128, 128, 128, 0.3);
+      }
+
+      .coursework h4 {
+        font-size: 1.1rem;
+        color: var(--text-primary);
+        margin-bottom: 1rem;
+      }
+
+      .coursework-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .coursework-tags .tag {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 9999px;
+        font-size: 0.85rem;
+        font-weight: 500;
+      }
+    </style>
   </head>
   <body>
     <nav class="nav">
@@ -19,53 +132,55 @@
           <i class="fas fa-bars"></i>
         </button>
         <div class="nav-links-container">
-          <a href="index.html" class="active"
-            ><i class="fa fa-home"></i> Home</a
-          >
-          <a href="education.html"
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html" class="active"
             ><i class="fa fa-graduation-cap"></i> Education</a
           >
           <a href="experience.html"
             ><i class="fa fa-briefcase"></i> Experience</a
           >
           <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
-          <!-- <a href="publications.html"
-            ><i class="fa fa-book"></i> Publications</a
-          > -->
           <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
           <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
         </div>
       </div>
     </nav>
 
-    <section class="section">
+    <section class="section education-section" style="margin-top: 25px">
       <h2><i class="fa fa-graduation-cap"></i> Education</h2>
-
-      <div class="education-grid">
-        <div class="education-card">
+      <div class="education-container">
+        <div class="education-card-advanced">
           <div class="education-header">
-            <h3>North South University, Dhaka</h3>
+            <div class="education-icon"><i class="fa fa-university"></i></div>
+            <div class="education-header-text">
+              <h3>North South University, Dhaka</h3>
+              <p class="degree">Bachelor of Science in CSE</p>
+              <p class="duration">January, 2020 − June, 2024</p>
+            </div>
           </div>
-          <p class="degree">Bachelor of Science in CSE</p>
-          <p class="duration">January, 2020 − June, 2024</p>
-          <!-- <p class="achievements">GPA: 3.95/4.00 (Summa Cum Laude)</p>
-          <p class="achievements">Full-merit scholarship (Top 1%)</p> -->
           <div class="coursework">
             <h4>Key Coursework:</h4>
-            <p>
-              Pattern Recognition and Neural Network, Machine Learning, Software
-              Engineering, Data Structures & Algorithms, Linear Algebra,
-              Probability & Statistics, Internet and Web Technology.
-            </p>
+            <div class="coursework-tags">
+              <span class="tag">Pattern Recognition</span>
+              <span class="tag">Machine Learning</span>
+              <span class="tag">Software Engineering</span>
+              <span class="tag">Data Structures & Algorithms</span>
+              <span class="tag">Linear Algebra</span>
+              <span class="tag">Probability & Statistics</span>
+              <span class="tag">Web Technology</span>
+            </div>
           </div>
         </div>
 
-        <div class="education-card">
+        <div class="education-card-advanced">
           <div class="education-header">
-            <h3>Al Amin Academy School & College, Chandpur</h3>
+            <div class="education-icon"><i class="fa fa-school"></i></div>
+            <div class="education-header-text">
+              <h3>Al Amin Academy School & College, Chandpur</h3>
+              <p class="degree">HSC & SSC (Science)</p>
+              <p class="duration">January, 2015 - November, 2020</p>
+            </div>
           </div>
-          <p class="degree">HSC & SSC (Background: Science)</p>
-          <p class="duration">Jan 2015 - Nov 2020</p>
         </div>
       </div>
     </section>
@@ -74,5 +189,31 @@
       <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
     </footer>
     <script src="assets/js/main.js"></script>
+    <script>
+      // JavaScript for fade-in animation on scroll
+      document.addEventListener("DOMContentLoaded", () => {
+        const educationCards = document.querySelectorAll(
+          ".education-card-advanced"
+        );
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        educationCards.forEach((card) => {
+          observer.observe(card);
+        });
+      });
+    </script>
   </body>
 </html>

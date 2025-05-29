@@ -3,565 +3,412 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Explore innovative AI, ML, and software development projects by Md. Marop Hossain."
-    />
-    <meta name="author" content="Md. Marop Hossain" />
-    <title>Projects - Md. Marop Hossain</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
+    <title>Md. Marop Hossain - Home</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
-      integrity="sha512-..."
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
-    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
-
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ancizar+Serif+Light:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
     <style>
-      /* --- Styles for Sidebar and Project Layout --- */
+      /* --- Styles for Advanced Index Page --- */
 
-      html {
-        scroll-behavior: smooth;
+      .hero-animated-bg {
+        position: relative;
+        background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1a2930);
+        background-size: 400% 400%;
+        animation: gradient-animation 15s ease infinite;
+        overflow: hidden;
       }
 
-      .page-container {
+      @keyframes gradient-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      .hero .subtitle {
+        font-size: 1.5rem;
+        color: var(--primary-light);
+        min-height: 70px;
+      }
+
+      .typed-cursor {
+        color: var(--primary-light);
+        font-size: 1.6rem;
+      }
+
+      .animated-section {
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+      .animated-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .about-content {
+        gap: 2rem;
+      }
+      .about-text,
+      .skills-highlight {
+        background: rgba(var(--card-bg-rgb, 40, 40, 40), 0.5);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 0.75rem;
+        padding: 2rem;
+      }
+
+      html[data-theme="light"] {
+        --card-bg-rgb: 255, 255, 255;
+      }
+      html[data-theme="dark"] {
+        --card-bg-rgb: 40, 40, 40;
+      }
+
+      .skills-section {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 1.5rem;
+      }
+      .skills-category {
+        background: rgba(var(--card-bg-rgb, 40, 40, 40), 0.5);
+        backdrop-filter: blur(8px);
+        border-radius: 0.75rem;
+        padding: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      .skills-category h3 {
+        margin-bottom: 1rem;
+      }
+      .skill-tags {
         display: flex;
-        padding-top: 70px;
+        flex-wrap: wrap;
+        gap: 0.6rem;
       }
-
-      .sidebar {
-        width: 280px;
-        position: fixed;
-        top: 70px;
-        left: 0;
-        height: calc(100vh - 70px);
-        background-color: var(--bg-secondary);
-        padding: 2rem 1rem;
-        overflow-y: auto;
-        border-right: 1px solid rgba(128, 128, 128, 0.3);
-        transition: all 0.3s ease;
-      }
-
-      .sidebar h3 {
-        color: var(--primary-color);
-        margin-bottom: 1.5rem;
-        font-size: 1.3rem;
-        padding-bottom: 0.5rem;
-        /* --- Fix 1: Horizontal line color changed --- */
-        border-bottom: 1px solid #2dd4bf; /* Changed from blue to teal */
-      }
-
-      .sidebar ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-      }
-
-      .sidebar li a {
-        display: block;
-        color: var(--text-secondary);
-        text-decoration: none;
-        padding: 0.8rem 1rem;
-        border-radius: 0.3rem;
-        margin-bottom: 0.5rem;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        font-size: 0.95rem;
-        line-height: 1.4;
-      }
-
-      .sidebar li a:hover {
-        background-color: var(--primary-dark);
-        color: #fff;
-      }
-
-      .sidebar li a.active {
+      .skill-tags .tag {
         background-color: var(--primary-color);
-        color: #fff;
-        font-weight: bold;
+        color: white;
+        padding: 0.3rem 0.8rem;
+        border-radius: 9999px;
+        font-size: 0.9rem;
       }
 
-      /* --- Fix 2: "Project Link" text color changed --- */
-      .project-links a {
-        color: #2dd4bf !important; /* Changed from blue to teal, !important to override external CSS */
+      #featured-projects {
+        background-color: var(--bg-secondary);
+      }
+      .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+      }
+      .project-card-featured {
+        background: var(--bg-primary);
+        border-radius: 0.75rem;
+        overflow: hidden;
+        box-shadow: var(--card-shadow);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        border: 1px solid rgba(128, 128, 128, 0.2);
+      }
+      .project-card-featured:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+      }
+      .project-card-featured .project-content {
+        padding: 1.5rem;
+      }
+      .project-card-featured h3 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        margin-bottom: 0.75rem;
+        min-height: 55px;
+      }
+      .project-card-featured p {
+        color: var(--text-secondary);
+        font-size: 0.95rem;
+        margin-bottom: 1rem;
+        min-height: 80px;
+      }
+      .project-card-featured .project-link {
+        display: inline-block;
+        color: var(--primary-light);
+        text-decoration: none;
         font-weight: 600;
       }
-      .project-links a:hover {
-        color: #5eead4 !important; /* Lighter teal for hover */
-      }
-
-      .projects-main-content {
-        margin-left: 280px;
-        flex-grow: 1;
-        padding: 0;
-      }
-
-      .project-card {
-        scroll-margin-top: 90px;
-      }
-
-      .projects-main-content > .section {
-        padding-top: 2.5rem;
-      }
-
-      @media (max-width: 992px) {
-        .sidebar {
-          display: none;
-        }
-
-        .projects-main-content {
-          margin-left: 0;
-        }
+      .project-card-featured .project-link:hover {
+        text-decoration: underline;
       }
     </style>
   </head>
-
   <body>
-    <nav class="nav" role="navigation" aria-label="Main Navigation">
+    <nav class="nav">
       <div class="nav-content">
-        <div class="logo" aria-label="Website Logo">MMH</div>
-        <button
-          id="mobile-menu-toggle"
-          class="mobile-menu-toggle"
-          aria-label="Toggle navigation menu"
-        >
+        <div class="logo">MMH</div>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
           <i class="fas fa-bars"></i>
         </button>
         <div class="nav-links-container">
-          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="index.html" class="active"
+            ><i class="fa fa-home"></i> Home</a
+          >
           <a href="education.html"
             ><i class="fa fa-graduation-cap"></i> Education</a
           >
           <a href="experience.html"
             ><i class="fa fa-briefcase"></i> Experience</a
           >
-          <a href="projects.html" class="active"
-            ><i class="fa fa-code-branch"></i> Projects</a
-          >
+          <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
           <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
           <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
         </div>
       </div>
     </nav>
 
-    <div class="page-container">
-      <aside class="sidebar" role="complementary">
-        <h3>Project Navigation</h3>
-        <ul id="project-links">
-          <li><a href="#project-1">AI Agent Chatbot Platform</a></li>
-          <li><a href="#project-2">Hybrid Log Classification</a></li>
-          <li><a href="#project-3">GPT-Powered Email Assistant</a></li>
-          <li><a href="#project-4">EdTech LLM Q&A Suite</a></li>
-          <li><a href="#project-5">Ocular Disease Diagnosis</a></li>
-          <li><a href="#project-6">Diabetic Retinopathy Diagnosis</a></li>
-          <li><a href="#project-7">Salary Prediction Model</a></li>
-          <li><a href="#project-8">Virtual Learning Nexus</a></li>
-          <li><a href="#project-9">TechTrans E-commerce</a></li>
-        </ul>
-      </aside>
+    <section id="hero" class="section hero hero-animated-bg">
+      <div class="hero-content">
+        <img
+          src="assets/img/profile.jpg"
+          alt="Md. Marop Hossain"
+          class="profile-img"
+        />
+        <h1>Md. Marop Hossain</h1>
+        <p class="subtitle"><span id="typed-subtitle"></span></p>
+        <p class="hero-text hero-special-text">
+          Specializing in Computer Vision, NLP, Business Intelligence, and
+          Healthcare, I'm passionate about Applied Machine Learning, Large
+          Language Models, and Generative AI.
+        </p>
+        <div class="social-links">
+          <a href="mailto:marop.hossain21@gmail.com" aria-label="Email"
+            ><i class="fas fa-envelope"></i
+          ></a>
+          <a
+            href="https://wa.me/8801630751852"
+            aria-label="WhatsApp"
+            target="_blank"
+            ><i class="fab fa-whatsapp"></i
+          ></a>
+          <a
+            href="https://www.linkedin.com/in/marop-hossain/"
+            aria-label="LinkedIn"
+            target="_blank"
+            ><i class="fab fa-linkedin"></i
+          ></a>
+          <a
+            href="https://github.com/md-marop-hossain"
+            aria-label="GitHub"
+            target="_blank"
+            ><i class="fab fa-github"></i
+          ></a>
+        </div>
+      </div>
+    </section>
 
-      <main class="projects-main-content">
-        <section class="section" aria-labelledby="projects-heading">
-          <div class="section-content-container">
-            <h2 id="projects-heading">
-              <i class="fa fa-code-branch"></i> Projects
-            </h2>
+    <section id="about" class="section animated-section">
+      <h2><i class="fa fa-user"></i> About Me</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            I'm an AI researcher and engineer focused on building intelligent,
+            responsible, and impactful technology. My work is in applied machine
+            learning and agentic AI, specifically developing advanced AI agents
+            using large language models (LLMs), retrieval-augmented generation
+            (RAG), and multi-modal architectures.
+          </p>
+          <p>
+            I thrive on solving complex problems, from designing intelligent
+            pipelines to optimizing performance, always ensuring AI solutions
+            are accessible and explainable. My approach combines technical rigor
+            with a research mindset, bridging theory and practical deployment.
+          </p>
+        </div>
+        <div class="skills-highlight">
+          <h3>Core Expertise</h3>
+          <ul>
+            <li>Large Language Models & NLP</li>
+            <li>Machine Learning & AI</li>
+            <li>Computer Vision & Deep Learning</li>
+            <li>Data Science & Visualization</li>
+            <li>Model Compression & Optimization</li>
+            <li>Web Development</li>
+          </ul>
+        </div>
+      </div>
+    </section>
 
-            <div id="project-1" class="project-card">
-              <div class="project-content">
-                <h3>
-                  Next-Generation Multi-Model Personal AI Agent Chatbot Platform
-                  with Real-Time Web Search
-                </h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Combines advanced language models from OpenAI and Groq with
-                    real-time web search, enabling dynamic, up-to-date, and
-                    intelligent conversational experiences.
-                  </li>
-                  <li>
-                    Developed using FastAPI (backend), LangGraph and LangChain
-                    (agent logic and tool integration), Streamlit (frontend),
-                    and Uvicorn (hosting), making the platform robust,
-                    extensible, and production-ready.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-2" class="project-card">
-              <div class="project-content">
-                <h3>
-                  Hybrid Log Classification System with Deepseek-R1 LLM, BERT,
-                  NLP and Regex
-                </h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Developed a hybrid AI system for automated log message
-                    classification using Regex pattern matching, BERT embeddings
-                    with logistic regression, and Deepseek R1 Large Language
-                    Models (LLM), with DBSCAN clustering for regex discovery to
-                    automatically categorize log messages from enterprise
-                    systems, ensuring high accuracy and adaptability for both
-                    common and rare log types.
-                  </li>
-                  <li>
-                    Designed a scalable pipeline that combines rule-based,
-                    machine learning, and GenAI methods-helping organizations
-                    detect errors, security threats, and system events faster,
-                    reduce manual log review, and improve IT operations in
-                    real-world industry environments.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-3" class="project-card">
-              <div class="project-content">
-                <h3>GPT-Powered Email Assistant</h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Built an AI-driven email assistant using Python and OpenAI
-                    GPT model (GPT-4.1 and 3.5) to automate email scanning,
-                    smart prioritization, and automatic categorization of
-                    business and sponsorship messages, compatible with any email
-                    provider.
-                  </li>
-                  <li>
-                    Enabled AI-generated professional reply suggestions and user
-                    review workflows, supporting both OpenAI and local LLMs for
-                    privacy, resulting in significant time savings and improved
-                    inbox organization.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-4" class="project-card">
-              <div class="project-content">
-                <h3>EdTech LLM Q&A Suite: LangChain + Gemini + Streamlit</h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Developed an AI-powered Q&A platform using LangChain, Google
-                    Gemini (PaLM), and Streamlit, delivering instant,
-                    context-aware answers for educational and online platforms
-                    through a user-friendly interface.
-                  </li>
-                  <li>
-                    Integrated a centralized CSV knowledge base for efficient
-                    information retrieval, streamlining support and knowledge
-                    management to reduce repetitive queries and enhance
-                    scalability.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-5" class="project-card">
-              <div class="project-content">
-                <h3>
-                  Enhancing Ocular Disease Diagnosis, Blood Vessel Segmentation,
-                  and Vessel Diameter Estimation Using an Advanced Deep Learning
-                  Approach
-                </h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Developed retinal vessel segmentation and diameter
-                    estimation algorithms for diagnosing ischemia, macular
-                    degeneration, and cardiovascular diseases, enabling early,
-                    cost-effective detection with potential for mobile or web
-                    integration.
-                  </li>
-                  <li>
-                    Designed an advanced system using pre-trained models
-                    (EfficientNetV2S, ResNet50, DenseNet121) to classify ocular
-                    diseases (cataracts, glaucoma, diabetic retinopathy) with
-                    high accuracy, improving diagnostic efficiency.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-6" class="project-card">
-              <div class="project-content">
-                <h3>
-                  Segmentation of Blood Vessels, Optic Disc Localization,
-                  Exudates Detection for Diabetic Retinopathy, and Glaucoma
-                  Diagnosis From Fundus Images
-                </h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Developed an automated diagnostic system using image
-                    processing and machine learning to detect diabetic
-                    retinopathy and glau coma, achieving 98.77% accuracy in
-                    optic disc localization and 75.73% accuracy in retinal
-                    feature classification.
-                  </li>
-                  <li>
-                    Engineered blood vessel segmentation algorithms with
-                    improved accuracy and noise reduction using morphological
-                    operations, Otsu thresholding, and deep learning techniques.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-7" class="project-card">
-              <div class="project-content">
-                <h3>
-                  Predictive Modeling and Analysis of Software Engineers Salary
-                  Using Machine Learning
-                </h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Built a ML framework using regression models (Decision
-                    Trees, Random Forest, Linear Regression, XGBoost) to predict
-                    software engineer salaries with 76% accuracy, leveraging
-                    60,000+ entries from the 2023 Stack Overflow Developer
-                    Survey.
-                  </li>
-                  <li>
-                    Deployed a user-friendly web application for real-time
-                    salary predictions, supporting job seekers and recruiters in
-                    salary negotiations and career planning.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-8" class="project-card">
-              <div class="project-content">
-                <h3>Virtual Learning Nexus</h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Developed a responsive web-based educational platform using
-                    HTML, CSS, JS, PHP, and MySQL with role-based student and
-                    admin panels.
-                  </li>
-                  <li>
-                    Implemented course management, feedback collection, and
-                    secure authentication.
-                  </li>
-                  <li>
-                    Integrated Stripe payments and designed system workflows
-                    with StarUML for scalable planning.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div id="project-9" class="project-card">
-              <div class="project-content">
-                <h3>TechTrans E-commerce Website</h3>
-                <ul
-                  style="
-                    margin-left: 20px;
-                    font-size: 15px;
-                    font-family: 'Outfit', sans-serif;
-                  "
-                >
-                  <li>
-                    Built a full-stack electronics marketplace using React.js,
-                    Node.js, Express, MongoDB, Firebase, and Material UI.
-                  </li>
-                  <li>
-                    Enabled product Browse, real-time search, secure
-                    authentication, cart/order management, and Stripe payment
-                    gateway.
-                  </li>
-                  <li>
-                    Delivered user-friendly UX and tools for small businesses to
-                    manage inventory and orders efficiently.
-                  </li>
-                </ul>
-                <div class="tech-stack" style="margin-top: 10px">
-                  <span>FastAPI</span><span>LangGraph</span
-                  ><span>LangChain</span><span>Streamlit</span
-                  ><span>Uvicorn</span><span>OpenAI</span><span>Groq</span>
-                </div>
-                <div class="project-links">
-                  <a href="#" target="_blank" rel="noopener noreferrer"
-                    >Project Link</a
-                  >
-                </div>
-              </div>
-            </div>
+    <section id="featured-projects" class="section animated-section">
+      <h2><i class="fa fa-star"></i> Featured Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card-featured">
+          <div class="project-content">
+            <h3>AI Agent Chatbot Platform with Real-Time Web Search</h3>
+            <p>
+              A multi-model agent combining OpenAI & Groq with live web search
+              for dynamic, intelligent conversations.
+            </p>
+            <a href="projects.html#project-1" class="project-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
           </div>
-        </section>
-      </main>
-    </div>
+        </div>
+        <div class="project-card-featured">
+          <div class="project-content">
+            <h3>Hybrid Log Classification System with LLMs & BERT</h3>
+            <p>
+              An AI system for automated log classification using Regex, BERT,
+              and Deepseek LLMs to ensure high accuracy.
+            </p>
+            <a href="projects.html#project-2" class="project-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+        <div class="project-card-featured">
+          <div class="project-content">
+            <h3>Ocular Disease Diagnosis with Deep Learning</h3>
+            <p>
+              An advanced system using pre-trained models (EfficientNet, ResNet)
+              to classify ocular diseases with high accuracy.
+            </p>
+            <a href="projects.html#project-5" class="project-link"
+              >Learn More <i class="fas fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer role="contentinfo">
+    <section id="skills" class="section animated-section">
+      <h2><i class="fa fa-tools"></i> Skills</h2>
+      <p class="section-subtitle">
+        A diverse toolkit for designing, building, and optimizing intelligent
+        systems.
+      </p>
+      <div class="skills-section">
+        <div class="skills-category">
+          <h3>Large Language Models (LLMs)</h3>
+          <div class="skill-tags">
+            <span class="tag">GPT</span><span class="tag">BERT</span
+            ><span class="tag">Claude</span><span class="tag">LLaMA</span
+            ><span class="tag">DeepSeek</span><span class="tag">LangChain</span
+            ><span class="tag">LangGraph</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3>Machine Learning & AI</h3>
+          <div class="skill-tags">
+            <span class="tag">PyTorch</span><span class="tag">TensorFlow</span
+            ><span class="tag">Keras</span><span class="tag">Scikit-learn</span
+            ><span class="tag">OpenCV</span><span class="tag">NLTK</span
+            ><span class="tag">HuggingFace</span
+            ><span class="tag">Fine-tuning</span
+            ><span class="tag">Prompt Engineering</span
+            ><span class="tag">Generative AI</span><span class="tag">RAG</span
+            ><span class="tag">FAISS</span><span class="tag">Chroma</span
+            ><span class="tag">Pinecone</span><span class="tag">NLP</span
+            ><span class="tag">Statistical Analysis</span
+            ><span class="tag">Data Cleaning</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3>Programming Languages & Tools</h3>
+          <div class="skill-tags">
+            <span class="tag">Python</span><span class="tag">C/C++</span
+            ><span class="tag">Java</span><span class="tag">JavaScript</span
+            ><span class="tag">Git</span><span class="tag">SQL (advanced)</span
+            ><span class="tag">MySQL</span><span class="tag">MongoDB</span
+            ><span class="tag">Bash</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3>Data Science & Visualization</h3>
+          <div class="skill-tags">
+            <span class="tag">Pandas</span><span class="tag">NumPy</span
+            ><span class="tag">SciPy</span><span class="tag">Matplotlib</span
+            ><span class="tag">Seaborn</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3>Web & Application Development</h3>
+          <div class="skill-tags">
+            <span class="tag">FastAPI</span><span class="tag">React.js</span
+            ><span class="tag">Django</span><span class="tag">PHP</span
+            ><span class="tag">Streamlit</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3>Cloud & DevOps</h3>
+          <div class="skill-tags">
+            <span class="tag">AWS</span><span class="tag">Azure</span
+            ><span class="tag">GCP</span><span class="tag">Docker</span
+            ><span class="tag">GitHub Actions</span
+            ><span class="tag">CI/CD Tools</span>
+          </div>
+        </div>
+        <div class="skills-category">
+          <h3>Soft Skills</h3>
+          <div class="skill-tags">
+            <span class="tag">Communication</span
+            ><span class="tag">Collaboration</span
+            ><span class="tag">Analytical Thinking</span
+            ><span class="tag">Problem-Solving</span
+            ><span class="tag">Adaptability</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
       <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
     </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="assets/js/main.js"></script>
     <script>
-      // --- New JavaScript for Active Link Highlighting ---
       document.addEventListener("DOMContentLoaded", () => {
-        const sections = document.querySelectorAll(".project-card");
-        const navLinks = document.querySelectorAll("#project-links li a");
+        new Typed("#typed-subtitle", {
+          strings: [
+            "Machine Learning Engineer",
+            "Software Engineer",
+            "AI Researcher",
+          ],
+          typeSpeed: 50,
+          backSpeed: 30,
+          backDelay: 2000,
+          loop: true,
+        });
 
-        if (sections.length === 0 || navLinks.length === 0) {
-          return;
-        }
+        const sections = document.querySelectorAll(".animated-section");
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
 
-        const highlightNavLink = () => {
-          let current = "";
-
-          sections.forEach((section) => {
-            const sectionTop = section.offsetTop;
-            if (pageYOffset >= sectionTop - 95) {
-              current = section.getAttribute("id");
-            }
-          });
-
-          navLinks.forEach((a) => {
-            a.classList.remove("active");
-            if (a.getAttribute("href") === `#${current}`) {
-              a.classList.add("active");
-            }
-          });
-        };
-
-        window.addEventListener("scroll", highlightNavLink);
-
-        highlightNavLink();
+        sections.forEach((section) => {
+          observer.observe(section);
+        });
       });
     </script>
   </body>
