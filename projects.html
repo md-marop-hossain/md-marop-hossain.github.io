@@ -34,29 +34,37 @@
 
       .page-container {
         display: flex;
-        padding-top: 70px;
+        padding-top: 70px; /* Assuming nav height is 70px */
       }
 
       .sidebar {
         width: 280px;
         position: fixed;
-        top: 70px;
+        top: 70px; /* Match page-container padding-top */
         left: 0;
-        height: calc(100vh - 70px);
-        background-color: var(--bg-secondary);
-        padding: 2rem 1rem;
+        height: calc(100vh - 70px); /* Full height minus nav */
+        background: linear-gradient(
+          180deg,
+          #0b0e12 0%,
+          #050609 100%
+        ); /* Dark sophisticated gradient */
+        padding: 2rem 0rem 2rem 1rem; /* Adjusted padding */
         overflow-y: auto;
-        border-right: 1px solid rgba(128, 128, 128, 0.3);
+        border-right: 1px solid #374151; /* Slightly lighter border for definition */
         transition: all 0.3s ease;
       }
 
       .sidebar h3 {
-        color: var(--primary-color);
+        color: #5eead4; /* Bright, inviting teal for the heading */
         margin-bottom: 1.5rem;
-        font-size: 1.3rem;
-        padding-bottom: 0.5rem;
-        /* --- Fix 1: Horizontal line color changed --- */
-        border-bottom: 1px solid #2dd4bf; /* Changed from blue to teal */
+        font-size: 1.1rem; /* Slightly smaller for a cleaner look */
+        font-weight: 600;
+        text-transform: uppercase; /* Adds a touch of class */
+        letter-spacing: 0.05em; /* Spacing out letters a bit */
+        padding-bottom: 0.75rem;
+        margin-left: 1rem; /* Align with items that will have left padding */
+        margin-right: 1rem;
+        border-bottom: 1px solid #374151; /* Subtle separator, updated from Fix 1 */
       }
 
       .sidebar ul {
@@ -67,34 +75,51 @@
 
       .sidebar li a {
         display: block;
-        color: var(--text-secondary);
+        color: var(
+          --text-secondary,
+          #d1d5db
+        ); /* Fallback if CSS var not found */
         text-decoration: none;
-        padding: 0.8rem 1rem;
-        border-radius: 0.3rem;
-        margin-bottom: 0.5rem;
-        transition: background-color 0.3s ease, color 0.3s ease;
-        font-size: 0.95rem;
+        padding: 0.9rem 1rem 0.9rem 2rem; /* More padding for a spacious feel, esp. left */
+        margin-bottom: 0.25rem; /* Reduced margin */
+        transition: background-color 0.2s ease, color 0.2s ease,
+          border-left-color 0.2s ease;
+        font-size: 0.9rem; /* Cleaner, modern font size */
         line-height: 1.4;
+        border-left: 4px solid transparent; /* Placeholder for active/hover indication */
+        position: relative;
       }
 
       .sidebar li a:hover {
-        background-color: var(--primary-dark);
-        color: #fff;
+        background-color: rgba(
+          45,
+          212,
+          191,
+          0.1
+        ); /* Very subtle teal background tint */
+        color: #5eead4; /* Teal text on hover */
+        border-left: 4px solid #2dd4bf; /* Teal accent line on hover */
       }
 
       .sidebar li a.active {
-        background-color: var(--primary-color);
-        color: #fff;
-        font-weight: bold;
+        background-color: rgba(
+          45,
+          212,
+          191,
+          0.15
+        ); /* Slightly more pronounced teal background */
+        color: #2dd4bf; /* Stronger teal for active text */
+        font-weight: 600; /* Bolder active link */
+        border-left: 4px solid #2dd4bf; /* Persistent teal accent line */
       }
 
-      /* --- Fix 2: "Project Link" text color changed --- */
+      /* --- Fix 2: "Project Link" text color changed (Kept your preferred style) --- */
       .project-links a {
-        color: #2dd4bf !important; /* Changed from blue to teal, !important to override external CSS */
+        color: #2dd4bf !important;
         font-weight: 600;
       }
       .project-links a:hover {
-        color: #5eead4 !important; /* Lighter teal for hover */
+        color: #5eead4 !important;
       }
 
       .projects-main-content {
