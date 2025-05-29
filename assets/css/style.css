@@ -1,12 +1,12 @@
 :root {
   --primary-color: #2563eb;
   --primary-light: #60a5fa;
-  --primary-dark: #1d4ed8;
+  --primary-dark: #2dd4bf;
   --text-primary: #81d9d9; /* Changed to light color */
   --text-secondary: #2f4e7c; /* Changed to light color */
   --bg-primary: #000000; /* Changed to solid black */
   --bg-secondary: #000000; /* Changed to solid black */
-  --accent-color: #3b82f6;
+  --accent-color: #2dd4bf;
   --transition: all 0.3s ease;
   --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
@@ -14,7 +14,7 @@
 [data-theme="dark"] {
   --primary-color: #709ec0;
   --primary-light: #93c5fd;
-  --primary-dark: #2563eb;
+  --primary-dark: #078675;
   --text-primary: #f3f4f6;
   --text-secondary: #d1d5db;
   --bg-primary: #070d0e; /* Changed to solid black */

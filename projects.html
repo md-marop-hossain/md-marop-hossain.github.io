@@ -26,30 +26,27 @@
     <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
 
     <style>
-      /* --- New Styles for Sidebar and Project Layout --- */
+      /* --- Styles for Sidebar and Project Layout --- */
 
-      /* Ensure smooth scrolling behavior */
       html {
         scroll-behavior: smooth;
       }
 
-      /* Page container to hold sidebar and main content */
       .page-container {
         display: flex;
-        padding-top: 70px; /* Adjust for fixed nav */
+        padding-top: 70px;
       }
 
-      /* Left-hand sidebar */
       .sidebar {
-        width: 280px; /* Sidebar width */
-        position: fixed; /* Fixed position */
-        top: 70px; /* Position below the navbar */
+        width: 280px;
+        position: fixed;
+        top: 70px;
         left: 0;
-        height: calc(100vh - 70px); /* Full height minus navbar */
+        height: calc(100vh - 70px);
         background-color: var(--bg-secondary);
         padding: 2rem 1rem;
-        overflow-y: auto; /* Allow scrolling within sidebar */
-        border-right: 1px solid var(--primary-dark);
+        overflow-y: auto;
+        border-right: 1px solid rgba(128, 128, 128, 0.3);
         transition: all 0.3s ease;
       }
 
@@ -58,7 +55,8 @@
         margin-bottom: 1.5rem;
         font-size: 1.3rem;
         padding-bottom: 0.5rem;
-        border-bottom: 1px solid var(--primary-dark);
+        /* --- Fix 1: Horizontal line color changed --- */
+        border-bottom: 1px solid #2dd4bf; /* Changed from blue to teal */
       }
 
       .sidebar ul {
@@ -84,42 +82,42 @@
         color: #fff;
       }
 
-      /* Style for the active link */
       .sidebar li a.active {
         background-color: var(--primary-color);
         color: #fff;
         font-weight: bold;
       }
 
-      /* Main content area */
+      /* --- Fix 2: "Project Link" text color changed --- */
+      .project-links a {
+        color: #2dd4bf !important; /* Changed from blue to teal, !important to override external CSS */
+        font-weight: 600;
+      }
+      .project-links a:hover {
+        color: #5eead4 !important; /* Lighter teal for hover */
+      }
+
       .projects-main-content {
-        margin-left: 280px; /* Space for the sidebar */
+        margin-left: 280px;
         flex-grow: 1;
         padding: 0;
       }
 
       .project-card {
-        scroll-margin-top: 90px; /* Offset for fixed header */
+        scroll-margin-top: 90px;
       }
 
-      /*
-      *
-      * --- Fix for Top Space ---
-      * This new rule reduces the top padding on the projects section.
-      *
-      */
       .projects-main-content > .section {
         padding-top: 2.5rem;
       }
 
-      /* Responsive design: hide sidebar on smaller screens */
       @media (max-width: 992px) {
         .sidebar {
-          display: none; /* Hide the sidebar */
+          display: none;
         }
 
         .projects-main-content {
-          margin-left: 0; /* Remove the margin */
+          margin-left: 0;
         }
       }
     </style>
@@ -540,16 +538,14 @@
         const navLinks = document.querySelectorAll("#project-links li a");
 
         if (sections.length === 0 || navLinks.length === 0) {
-          return; // Exit if no sections or links are found
+          return;
         }
 
-        // This function will be called on scroll
         const highlightNavLink = () => {
           let current = "";
 
           sections.forEach((section) => {
             const sectionTop = section.offsetTop;
-            // 95 is a pixel offset to trigger the highlight a bit sooner
             if (pageYOffset >= sectionTop - 95) {
               current = section.getAttribute("id");
             }
@@ -557,17 +553,14 @@
 
           navLinks.forEach((a) => {
             a.classList.remove("active");
-            // Check if the link's href matches the current section's ID
             if (a.getAttribute("href") === `#${current}`) {
               a.classList.add("active");
             }
           });
         };
 
-        // Add scroll event listener
         window.addEventListener("scroll", highlightNavLink);
 
-        // Initial call to set the active link on page load
         highlightNavLink();
       });
     </script>
