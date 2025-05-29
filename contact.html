@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-ar" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact - Md. Marop Hossain</title>
     <link rel="stylesheet" href="assets/css/style.css" />
@@ -11,11 +11,23 @@
     />
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
     <style>
+      /* --- Interactive Background Canvas --- */
+      #interactive-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place it behind all content */
+      }
+
       /* --- Styles for Advanced Contact Page --- */
       .contact-section-advanced {
         padding: 4rem 2rem;
         max-width: 1100px;
         margin: 0 auto;
+        position: relative; /* Ensure content is above the canvas */
+        z-index: 1;
       }
 
       .contact-section-advanced h2 {
@@ -42,21 +54,24 @@
         align-items: flex-start;
       }
 
-      .contact-details-group {
-        flex: 1;
-        min-width: 300px;
-        background-color: var(--bg-secondary);
+      .contact-details-group,
+      .contact-form-group {
+        background-color: rgba(var(--bg-secondary-rgb, 0, 0, 0), 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
         padding: 2rem;
         border-radius: 0.75rem;
         box-shadow: var(--card-shadow);
+        border: 1px solid rgba(128, 128, 128, 0.2);
       }
 
-      .contact-details-group h3 {
+      .contact-details-group h3,
+      .contact-form-group h3 {
         font-size: 1.75rem;
         color: var(--primary-color);
         margin-bottom: 1.5rem;
         padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(128, 128, 128, 0.3); /* <<< Color Changed Here */
+        border-bottom: 1px solid rgba(128, 128, 128, 0.3);
       }
 
       .contact-list-item {
@@ -66,6 +81,13 @@
         margin-bottom: 1.25rem;
         color: var(--text-secondary);
         font-size: 1.05rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .contact-list-item:hover {
+        background-color: rgba(var(--primary-rgb, 37, 99, 235), 0.1);
+        transform: scale(1.03);
       }
 
       .contact-list-item i {
@@ -83,13 +105,12 @@
 
       .contact-list-item a:hover {
         color: var(--primary-color);
-        text-decoration: underline;
       }
 
       .contact-social-links {
         margin-top: 2rem;
         padding-top: 1.5rem;
-        border-top: 1px solid rgba(128, 128, 128, 0.3); /* <<< Color Changed Here */
+        border-top: 1px solid rgba(128, 128, 128, 0.3);
       }
 
       .contact-social-links h4 {
@@ -101,46 +122,62 @@
       .social-icons-list {
         display: flex;
         flex-wrap: wrap;
-        gap: 1rem;
+        gap: 1.5rem; /* Increased gap */
       }
 
       .social-icons-list a {
         color: var(--text-primary);
         font-size: 1.75rem;
         transition: color 0.3s ease, transform 0.3s ease;
+        animation: pulse-glow-off 1.5s infinite;
       }
 
       .social-icons-list a:hover {
         color: var(--primary-color);
         transform: scale(1.1);
+        animation: pulse-glow-on 1.5s infinite;
+      }
+
+      @keyframes pulse-glow-on {
+        0%,
+        100% {
+          text-shadow: 0 0 5px rgba(var(--primary-rgb, 37, 99, 235), 0.5);
+        }
+        50% {
+          text-shadow: 0 0 15px rgba(var(--primary-rgb, 37, 99, 235), 1);
+        }
+      }
+      @keyframes pulse-glow-off {
+        0%,
+        100% {
+          text-shadow: none;
+        }
       }
 
       .contact-form-group {
         flex: 1.5;
         min-width: 320px;
-        background-color: var(--bg-secondary);
-        padding: 2rem;
-        border-radius: 0.75rem;
-        box-shadow: var(--card-shadow);
-      }
-
-      .contact-form-group h3 {
-        font-size: 1.75rem;
-        color: var(--primary-color);
-        margin-bottom: 1.5rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid rgba(128, 128, 128, 0.3); /* <<< Color Changed Here */
       }
 
       .form-field {
         margin-bottom: 1.5rem;
+        position: relative;
       }
 
-      .form-field label {
-        display: block;
-        color: var(--text-primary);
-        margin-bottom: 0.5rem;
-        font-weight: 500;
+      /* Animated line under form fields */
+      .form-field::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .form-field input:focus ~ ::after,
+      .form-field textarea:focus ~ ::after {
+        width: 100%;
       }
 
       .form-field input[type="text"],
@@ -148,9 +185,10 @@
       .form-field textarea {
         width: 100%;
         padding: 0.8rem 1rem;
-        border: 1px solid rgba(128, 128, 128, 0.3); /* <<< Color Changed Here */
-        border-radius: 0.3rem;
-        background-color: var(--bg-primary);
+        border: none;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+        border-radius: 0;
+        background-color: transparent;
         color: var(--text-primary);
         font-size: 1rem;
         transition: border-color 0.3s ease;
@@ -160,8 +198,28 @@
       .form-field input[type="email"]:focus,
       .form-field textarea:focus {
         outline: none;
-        border-color: var(--primary-color);
-        box-shadow: 0 0 0 2px var(--primary-light);
+        border-bottom-color: transparent;
+      }
+
+      .form-field label {
+        display: block;
+        color: var(--text-secondary);
+        font-weight: 500;
+        position: absolute;
+        top: 0.8rem;
+        left: 1rem;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .form-field input:focus + label,
+      .form-field textarea:focus + label,
+      .form-field input:not(:placeholder-shown) + label,
+      .form-field textarea:not(:placeholder-shown) + label {
+        top: -1.2rem;
+        left: 0;
+        font-size: 0.9rem;
+        color: var(--primary-color);
       }
 
       .form-field textarea {
@@ -191,21 +249,18 @@
         transform: translateY(0);
       }
 
-      @media (max-width: 768px) {
-        .contact-content-wrapper {
-          flex-direction: column;
-        }
-        .contact-section-advanced h2 {
-          font-size: 2.2rem;
-        }
-        .contact-details-group,
-        .contact-form-group {
-          width: 100%;
-        }
+      :root {
+        --primary-rgb: 37, 99, 235;
+        --bg-secondary-rgb: 0, 0, 0;
+      }
+      [data-theme="dark"] {
+        --primary-rgb: 112, 158, 192;
+        --bg-secondary-rgb: 0, 0, 0;
       }
     </style>
   </head>
   <body>
+    <canvas id="interactive-bg"></canvas>
     <nav class="nav">
       <div class="nav-content">
         <a href="index.html" class="logo">MMH</a>
@@ -283,48 +338,46 @@
               >
                 <i class="fab fa-github"></i>
               </a>
-              <!-- Example:
-              <a
-                href="https://twitter.com/yourprofile"
-                target="_blank"
-                aria-label="Twitter"
-                title="Twitter"
-              >
-                <i class="fab fa-twitter"></i>
-              </a>
-              -->
             </div>
           </div>
         </div>
 
         <div class="contact-form-group">
           <h3>Send a Message</h3>
-          <!-- 
-            Note: For this form to work, you'll need to integrate it with a backend service 
-            or a service like Formspree (formspree.io) for static sites.
-            The action attribute should point to your backend endpoint or Formspree URL.
-          -->
           <form action="https://formspree.io/f/mrbqnjkq" method="POST">
             <div class="form-field">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder=" "
+              />
               <label for="name">Full Name</label>
-              <input type="text" id="name" name="name" required />
             </div>
             <div class="form-field">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder=" "
+              />
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" required />
             </div>
             <div class="form-field">
+              <input type="text" id="subject" name="subject" placeholder=" " />
               <label for="subject">Subject</label>
-              <input type="text" id="subject" name="subject" />
             </div>
             <div class="form-field">
-              <label for="message">Your Message</label>
               <textarea
                 id="message"
                 name="message"
                 rows="5"
                 required
+                placeholder=" "
               ></textarea>
+              <label for="message">Your Message</label>
             </div>
             <button type="submit" class="submit-button">Send Message</button>
           </form>
@@ -336,5 +389,89 @@
       <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
     </footer>
     <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("interactive-bg");
+        const ctx = canvas.getContext("2d");
+
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const mouse = {
+          x: width / 2,
+          y: height / 2,
+        };
+
+        window.addEventListener("mousemove", (event) => {
+          mouse.x = event.clientX;
+          mouse.y = event.clientY;
+        });
+
+        // The orb that follows the cursor
+        const orb = {
+          x: mouse.x,
+          y: mouse.y,
+          radius: 15,
+          color: `rgba(var(--primary-rgb, 37, 99, 235), 0.7)`, // Default color
+        };
+
+        // Function to get the current theme's primary color
+        function updateOrbColor() {
+          const style = getComputedStyle(document.documentElement);
+          const primaryRgb = style.getPropertyValue("--primary-rgb").trim();
+          orb.color = `rgba(${primaryRgb}, 0.7)`;
+        }
+
+        // Initial color set
+        updateOrbColor();
+
+        // Update color if theme changes
+        new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === "data-theme") {
+              updateOrbColor();
+            }
+          });
+        }).observe(document.documentElement, { attributes: true });
+
+        function animate() {
+          // Create a trailing effect by clearing the canvas with transparency
+          ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+          ctx.fillRect(0, 0, width, height);
+
+          // Linear interpolation for smooth movement (easing)
+          orb.x += (mouse.x - orb.x) * 0.08;
+          orb.y += (mouse.y - orb.y) * 0.08;
+
+          // Draw the orb
+          ctx.beginPath();
+          ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+
+          // Create a gradient for a softer look
+          const gradient = ctx.createRadialGradient(
+            orb.x,
+            orb.y,
+            0,
+            orb.x,
+            orb.y,
+            orb.radius
+          );
+          gradient.addColorStop(0, orb.color);
+          gradient.addColorStop(1, "transparent");
+
+          ctx.fillStyle = gradient;
+          ctx.fill();
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      });
+    </script>
   </body>
 </html>
