@@ -19,7 +19,7 @@
   --text-secondary: #d1d5db;
   --bg-primary: #000000; /* Changed to solid black */
   --bg-secondary: #000000; /* Changed to solid black */
-  --accent-color: #60a5fa;
+  --accent-color: #151d27;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark theme cards */
 }
 
@@ -404,6 +404,7 @@ body {
   overflow: hidden;
   transition: var(--transition);
   box-shadow: var(--card-shadow);
+  border: 1px solid var(--accent-color); /* Added this line for the border */
 }
 
 .project-card:hover {
