@@ -13,6 +13,17 @@
       href="https://fonts.googleapis.com/css2?family=Ancizar+Serif+Light:wght@300&family=Share+Tech&display=swap"
       rel="stylesheet"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Audiowide&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap"
+      rel="stylesheet"
+    />
+
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
     <style>
       /* --- Styles for Advanced Index Page --- */
@@ -171,16 +182,16 @@
       }
       /* --- Skill Tag Color Change --- */
       .skill-tags .tag {
-        background-color: #1b1c1e; /* Teal color */
-        color: white; /* Text color */
+        background-color: #1b1c1e;
+        color: white;
         padding: 0.3rem 0.8rem;
         border-radius: 9999px;
         font-size: 0.9rem;
-        transition: transform 0.2s ease-out, background-color 0.3s ease; /* For hover effect */
+        transition: transform 0.2s ease-out, background-color 0.3s ease;
       }
       .skill-tags .tag:hover {
         transform: translateY(-3px) scale(1.05);
-        background-color: #445f73; /* Lighter teal on hover */
+        background-color: #445f73;
       }
 
       /* Featured Projects Section */
@@ -195,16 +206,14 @@
         backdrop-filter: blur(8px);
         border-radius: 0.75rem;
         overflow: hidden;
-        box-shadow: var(--card-shadow); /* Base shadow */
-        border: 1px solid rgba(128, 128, 128, 0.2); /* Base border */
-        opacity: 0; /* Initial state for entry animation */
-        /* UPDATED transitions for hover effects. Entry animation for opacity/transform is handled by 'animation' property with keyframes. */
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+        opacity: 0;
         transition: transform 0.35s ease, box-shadow 0.35s ease,
           border-color 0.35s ease;
       }
 
       .project-card-featured:hover {
-        /* REPLACED existing hover */
         transform: translateY(-6px) scale(1.03);
         box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
           0 0 0 2px rgba(var(--primary-rgb), 0.4);
@@ -558,6 +567,33 @@
         .projects-grid
         .project-card-featured:nth-child(3) {
         animation-delay: 0.6s;
+      }
+
+      /* Font change for specific section headings */
+      #about h2 .about-heading-text,
+      #featured-projects h2 .featured-heading-text,
+      #skills h2 .skills-heading-text {
+        font-family: "Audiowide", sans-serif;
+      }
+
+      /* Updated: Font change for Featured Projects content to Abyssinica SIL */
+      #featured-projects .project-card-featured h3,
+      #featured-projects .project-card-featured p {
+        font-family: "Abyssinica SIL", serif;
+      }
+
+      /* Updated: Font change for Skills content to Abyssinica SIL */
+      #skills .section-subtitle,
+      #skills .skills-category h3,
+      #skills .skills-category .skill-tags .tag {
+        font-family: "Abyssinica SIL", serif;
+      }
+
+      /* Added: Rule to reduce top padding for specific sections */
+      #about,
+      #featured-projects,
+      #skills {
+        padding-top: 3rem; /* Was 6rem by default from .section */
       }
     </style>
   </head>
