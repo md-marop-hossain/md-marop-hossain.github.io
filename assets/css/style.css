@@ -2,13 +2,13 @@
   --primary-color: #2563eb;
   --primary-light: #60a5fa;
   --primary-dark: #2dd4bf;
-  --text-primary: #81d9d9; /* Changed to light color */
-  --text-secondary: #2f4e7c; /* Changed to light color */
+  --text-primary: #f3f4f6; /* Changed to light color for better contrast on dark */
+  --text-secondary: #d1d5db; /* Changed to lighter color for better contrast on dark */
   --bg-primary: #000000; /* Changed to solid black */
   --bg-secondary: #000000; /* Changed to solid black */
   --accent-color: #2dd4bf;
   --transition: all 0.3s ease;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --card-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); /* Slightly stronger shadow for depth */
 }
 
 [data-theme="dark"] {
@@ -17,10 +17,10 @@
   --primary-dark: #078675;
   --text-primary: #f3f4f6;
   --text-secondary: #d1d5db;
-  --bg-primary: #070d0e; /* Changed to solid black */
-  --bg-secondary: #0e1212; /* Changed to solid black */
+  --bg-primary: #000000; /* Changed to solid black */
+  --bg-secondary: #000000; /* Changed to solid black */
   --accent-color: #60a5fa;
-  --card-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark theme cards */
 }
 
 * {
@@ -251,6 +251,8 @@ body {
 }
 
 .skills-highlight h3 {
+  font-family: "Share Tech", sans-serif; /* Added font-family */
+  font-weight: 700; /* Added font-weight */
   color: var(--primary-color);
   margin-bottom: 1rem;
   font-size: 1.5rem;
@@ -261,6 +263,8 @@ body {
 }
 
 .skills-highlight li {
+  font-family: "Share Tech", sans-serif; /* Added font-family */
+  font-weight: 400; /* Added font-weight */
   margin-bottom: 0.5rem;
   padding-left: 1.5rem;
   position: relative;
