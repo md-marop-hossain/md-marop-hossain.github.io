@@ -26,17 +26,17 @@
       :root {
         --primary-rgb: 37, 99, 235;
         --card-bg-rgb: 250, 250, 250;
-        --nav-footer-bg-rgb: 0, 0, 0;
+        --nav-footer-bg-rgb: 0, 0, 0; /* Default for themes unless overridden */
       }
       html[data-theme="light"] {
         --primary-rgb: 37, 99, 235;
         --card-bg-rgb: 250, 250, 250;
-        --nav-footer-bg-rgb: 230, 230, 230;
+        --nav-footer-bg-rgb: 230, 230, 230; /* Specific for light theme nav/footer */
       }
       html[data-theme="dark"] {
         --primary-rgb: 112, 158, 192;
         --card-bg-rgb: 28, 32, 36;
-        --nav-footer-bg-rgb: 10, 10, 15;
+        --nav-footer-bg-rgb: 10, 10, 15; /* Specific for dark theme nav/footer */
       }
 
       /* --- Interactive Background Canvas --- */
@@ -50,22 +50,30 @@
       }
 
       body {
-        background-color: transparent;
+        background-color: transparent; /* To see the canvas background */
       }
-      .nav,
+
+      /* Ensure .education-section and footer are layered above the canvas */
       .education-section,
       footer {
         position: relative;
-        z-index: 1;
+        z-index: 1; /* Ensure these are above the canvas */
       }
 
+      /* Specific styling for .nav on this page, if different from global style.css */
+      /* Note: position:fixed is inherited from style.css and should not be overridden here for .nav */
       .nav {
-        background-color: rgba(var(--nav-footer-bg-rgb), 0.7);
+        background-color: rgba(
+          var(--nav-footer-bg-rgb),
+          0.7
+        ); /* Transparent background for nav */
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
+        /* z-index is 1000 from style.css, which is fine */
       }
 
       footer {
+        /* Style for footer, ensuring it's above canvas too */
         background-color: rgba(var(--nav-footer-bg-rgb), 0.7);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
@@ -279,7 +287,7 @@
       </div>
     </nav>
 
-    <section class="section education-section" style="margin-top: -35px">
+    <section class="section education-section" style="margin-top: 30px">
       <h2>
         <i class="fa fa-graduation-cap"></i>
         <span class="education-heading-text">Education</span>
