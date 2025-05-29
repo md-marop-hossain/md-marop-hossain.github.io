@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificates - Md. Marop Hossain</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <style>
+      /* --- Styles for Sidebar and Certificate Layout (New Style) --- */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .page-container {
+        display: flex;
+        padding-top: 70px; /* Adjust if your nav height is different */
+      }
+
+      .sidebar {
+        width: 260px; /* Slightly narrower */
+        position: fixed;
+        top: 70px; /* Should match .page-container padding-top */
+        left: 0;
+        height: calc(100vh - 70px); /* Full height minus nav */
+        background-color: var(--bg-secondary);
+        padding: 1.5rem 0.5rem 1.5rem 1rem; /* Adjusted padding */
+        overflow-y: auto;
+        border-right: 1px solid rgba(128, 128, 128, 0.2); /* Softer border */
+        transition: all 0.3s ease;
+      }
+
+      .sidebar h3 {
+        color: var(--primary-light); /* Lighter heading color */
+        margin-bottom: 1.2rem;
+        font-size: 1.25rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px dashed var(--accent-color); /* Dashed accent border */
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar li a {
+        display: block;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.7rem 1rem 0.7rem 1.2rem; /* Adjusted padding for left border */
+        margin-bottom: 0.3rem;
+        transition: color 0.2s ease, border-left-color 0.2s ease;
+        font-size: 0.9rem; /* Slightly smaller font */
+        line-height: 1.3;
+        border-left: 4px solid transparent; /* Placeholder for active state */
+        position: relative;
+      }
+
+      .sidebar li a:hover {
+        color: var(--primary-light);
+        border-left-color: var(
+          --primary-light
+        ); /* Subtle border highlight on hover */
+      }
+
+      .sidebar li a.active {
+        color: var(--primary-color);
+        font-weight: 600; /* Slightly bolder */
+        border-left: 4px solid var(--primary-color); /* Prominent left border for active */
+      }
+
+      .certificates-main-content {
+        margin-left: 260px; /* Same as new sidebar width */
+        flex-grow: 1;
+        padding: 0;
+      }
+
+      .certificates-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 3rem 1rem;
+      }
+      .certificates-section h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .certificate-card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 2rem;
+        border: 1px solid var(--accent-color);
+        opacity: 0;
+        transform: translateY(40px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        scroll-margin-top: 90px;
+      }
+
+      .certificate-card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .certificate-card h3 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+      .certificate-card .issuer {
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+      }
+      .certificate-card .date {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+      .certificate-card .certificate-link {
+        display: inline-block;
+        color: var(--primary-light);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .certificate-card .certificate-link:hover {
+        text-decoration: underline;
+      }
+      .certificate-card ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+      }
+      .certificate-card ul li {
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.5;
+        font-family: "Share Tech", sans-serif;
+        font-size: 0.95rem;
+      }
+      .certificate-card ul li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 992px) {
+        .sidebar {
+          display: none;
+        }
+        .certificates-main-content {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-content">
+        <a href="index.html" class="logo">MMH</a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links-container">
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html"
+            ><i class="fa fa-graduation-cap"></i> Education</a
+          >
+          <a href="experience.html"
+            ><i class="fa fa-briefcase"></i> Experience</a
+          >
+          <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
+          <a href="certificates.html" class="active"
+            ><i class="fa fa-certificate"></i> Certificates</a
+          >
+          <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
+          <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-container">
+      <aside class="sidebar" role="complementary">
+        <h3>Certificate Navigation</h3>
+        <ul id="certificate-links">
+          <li><a href="#cert-llm-finetuning">LLM Fine-Tuning</a></li>
+          <li>
+            <a href="#cert-gen-ai-essentials">Generative AI Essentials</a>
+          </li>
+          <li><a href="#cert-ai-engineering">AI Engineering Essentials</a></li>
+          <li>
+            <a href="#cert-ml-simplilearn">Machine Learning (Simplilearn)</a>
+          </li>
+          <li><a href="#cert-web-dev-p हीरो">Web Development (P. Hero)</a></li>
+          <li><a href="#cert-python-datastruct">Python Data Structures</a></li>
+        </ul>
+      </aside>
+
+      <main class="certificates-main-content">
+        <section class="section certificates-section">
+          <h2><i class="fa fa-certificate"></i> My Certificates</h2>
+
+          <div id="cert-llm-finetuning" class="certificate-card">
+            <h3>Fine-Tuning for LLMs: from Beginner to Advanced</h3>
+            <p class="issuer">by LinkedIn</p>
+            <p class="date">
+              May 2025
+              <a href="#" class="certificate-link" target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Gainedpractical expertise in large language models (LLMs) such
+                as FLAN-T5, including their architecture, evolution, and
+                significance in modern AI, with hands-on training in prompt
+                engineering, transfer learning, and PEFT fine-tuning using LoRA.
+              </li>
+              <li>
+                Applied advanced LLM techniques to build a project for sentiment
+                analysis, summarization, and question answering, leveraging live
+                demos and real-world challenges to solidify skills.
+              </li>
+            </ul>
+          </div>
+
+          <div id="cert-gen-ai-essentials" class="certificate-card">
+            <h3>Career Essentials in Generative AI</h3>
+            <p class="issuer">by Microsoft and LinkedIn</p>
+            <p class="date">
+              April 2025
+              <a href="#" class="certificate-link" target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Developed foundational skills in Generative AI, Responsible AI,
+                Artificial Intelligence for Business, Microsoft Copilot, and
+                Prompt Engineering through a comprehensive learning path created
+                by Microsoft and LinkedIn.
+              </li>
+              <li>
+                Gained practical experience in applying AI tools such as Copilot
+                for workflow automation, explored ethical considerations in AI,
+                and learned strategies for integrating generative AI into
+                business and productivity contexts.
+              </li>
+            </ul>
+          </div>
+
+          <div id="cert-ai-engineering" class="certificate-card">
+            <h3>AI Engineering Essentials: Navigating the Tech Revolution</h3>
+            <p class="issuer">by LinkedIn</p>
+            <p class="date">
+              March 2025
+              <a href="#" class="certificate-link" target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Acquired foundational knowledge and practical understanding of
+                how software development integrates with AI technologies to
+                drive innovation in the tech industry.
+              </li>
+            </ul>
+          </div>
+
+          <div id="cert-ml-simplilearn" class="certificate-card">
+            <h3>Machine Learning</h3>
+            <p class="issuer">SkillUp by Simplilearn</p>
+            <p class="date">
+              August 6, 2023
+              <a href="#" class="certificate-link" target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Completed a comprehensive course covering core machine learning
+                concepts, including supervised, unsupervised, and reinforcement
+                learning algorithms such as linear regression, decision trees,
+                random forests, and K-means clustering.
+              </li>
+              <li>
+                Gained practical knowledge of machine learning applications and
+                techniques through self-paced video lessons.
+              </li>
+            </ul>
+          </div>
+
+          <div id="cert-web-dev-p हीरो" class="certificate-card">
+            <h3>Complete Web Development Course</h3>
+            <p class="issuer">by Programming Hero (Batch 4)</p>
+            <p class="date">
+              January 2021 – August 2021
+              <a href="#" class="certificate-link" target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Successfully completed with 96% marks in assessments and
+                projects. Gained expertise in modern web development
+                technologies, including React.js, Node.js, Express.js, and
+                MongoDB, through practical projects and evaluations.
+              </li>
+              <li>
+                Gained proficiency in CSS3, HTML5, TypeScript, Tailwind,
+                Firebase, Bootstrap, Git, and integrating Stripe gateways.
+              </li>
+            </ul>
+          </div>
+
+          <div id="cert-python-datastruct" class="certificate-card">
+            <h3>Python Data Structures</h3>
+            <p class="issuer">by Coursera (University of Michigan)</p>
+            <p class="date">
+              August 12, 2020
+              <a href="#" class="certificate-link" target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Gained hands-on experience in data modeling, file operations,
+                and algorithmic problem-solving using Python, with a focus on
+                efficient implementation and data manipulation techniques.
+              </li>
+              <li>
+                Applied key/value storage strategies and built multi-step
+                programming solutions for real-world scenarios through
+                interactive, projectbased learning.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // --- Animation for certificate cards (existing observer) ---
+        const certificateCardsForAnimation =
+          document.querySelectorAll(".certificate-card");
+        if (certificateCardsForAnimation.length > 0) {
+          const cardAnimationObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("visible");
+                  cardAnimationObserver.unobserve(entry.target);
+                }
+              });
+            },
+            { threshold: 0.1 }
+          );
+          certificateCardsForAnimation.forEach((card) => {
+            cardAnimationObserver.observe(card);
+          });
+        }
+
+        // --- Sidebar active link highlighting using IntersectionObserver ---
+        const sectionsForHighlight =
+          document.querySelectorAll(".certificate-card"); // These are the target elements
+        const navLinksForHighlight = document.querySelectorAll(
+          "#certificate-links li a"
+        );
+        let currentlyActiveLink = null;
+
+        if (
+          sectionsForHighlight.length > 0 &&
+          navLinksForHighlight.length > 0
+        ) {
+          const setActiveLink = (sectionId) => {
+            navLinksForHighlight.forEach((link) => {
+              if (link.getAttribute("href") === `#${sectionId}`) {
+                if (link !== currentlyActiveLink) {
+                  // Only add if not already active
+                  link.classList.add("active");
+                  currentlyActiveLink = link;
+                }
+              } else {
+                link.classList.remove("active");
+              }
+            });
+          };
+
+          const observerOptions = {
+            root: null, // Observing intersections relative to the viewport
+            rootMargin: "-90px 0px -55% 0px",
+            // Explanation of rootMargin: "top right bottom left"
+            // - "-90px" from top: The "viewport" for intersection effectively starts 90px below the actual viewport top.
+            //   This aligns with your `scroll-margin-top: 90px;` on the cards, meaning a section is considered
+            //   for activation when its top edge (where it visually lands after scroll) enters this adjusted viewport.
+            // - "-55%" from bottom: This significantly shrinks the height of the intersection viewport from the bottom.
+            //   It means we're primarily interested in sections that are in the top part (roughly top 45% - 90px) of the main content area.
+            //   This helps ensure that a section fully scrolled to the top becomes active, rather than one that's just partially visible at the bottom.
+            threshold: 0.01, // Trigger when even a tiny part (1%) of the section is visible within the defined rootMargin area
+          };
+
+          const highlightObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  // When a section intersects according to our options, make its link active.
+                  // As you scroll, new sections entering this "hot zone" will trigger this.
+                  setActiveLink(entry.target.id);
+                }
+              });
+            },
+            observerOptions
+          );
+
+          sectionsForHighlight.forEach((section) => {
+            highlightObserver.observe(section);
+          });
+
+          // Initial check in case a section is already in view on load (e.g. from a hash in URL)
+          // For this, we can manually check once or let the observer fire.
+          // Let's do a quick initial check:
+          let initialActiveId = null;
+          const initialOffset = 90;
+          for (let i = sectionsForHighlight.length - 1; i >= 0; i--) {
+            const section = sectionsForHighlight[i];
+            const sectionTop = section.offsetTop;
+            if (window.pageYOffset >= sectionTop - initialOffset) {
+              initialActiveId = section.getAttribute("id");
+              break;
+            }
+          }
+          if (initialActiveId) {
+            setActiveLink(initialActiveId);
+          } else if (sectionsForHighlight.length > 0) {
+            // Fallback to the first section if nothing else is active initially
+            // setActiveLink(sectionsForHighlight[0].id);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
