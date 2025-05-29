@@ -16,7 +16,15 @@
         max-width: 850px;
         margin: 0 auto;
         padding: 3rem 1rem;
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.5s ease-out, transform 0.5s ease-out; /* Slightly faster section transition */
       }
+      .education-section.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
       .education-section h2 {
         text-align: center;
         margin-bottom: 3rem;
@@ -27,100 +35,328 @@
         gap: 2rem;
       }
 
+      /* --- Creative Education Page Animations & Design --- */
+
+      .education-section h2 .fa-graduation-cap,
+      .education-section h2 .education-heading-text,
+      .education-card-advanced .education-icon,
+      .education-card-advanced .education-header-text h3,
+      .education-card-advanced .education-header-text .degree,
+      .education-card-advanced .education-header-text .duration,
+      .education-card-advanced .coursework h4,
+      .education-card-advanced .coursework-tags .tag {
+        opacity: 0; /* Initial state for animation */
+      }
+
+      /* --- Heading Animation (Reduced Delays) --- */
+      .education-section.visible h2 .fa-graduation-cap {
+        display: inline-block;
+        opacity: 0;
+        animation: icon-sway 1.2s ease-in-out 0.1s forwards,
+          text-fade-in 0.4s ease-out 0.1s forwards;
+      }
+      .education-section.visible h2 .education-heading-text {
+        display: inline-block;
+        opacity: 0;
+        animation: text-slide-from-right 0.7s cubic-bezier(0.23, 1, 0.32, 1)
+          0.2s forwards;
+      }
+
+      @keyframes icon-sway {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(8deg);
+        }
+        75% {
+          transform: rotate(-8deg);
+        }
+      }
+      @keyframes text-slide-from-right {
+        0% {
+          opacity: 0;
+          transform: translateX(25px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+      @keyframes text-fade-in {
+        to {
+          opacity: 1;
+        }
+      }
+
+      /* --- Education Card Advanced - Base Style for Animation --- */
       .education-card-advanced {
         position: relative;
-        background: rgba(
-          var(--card-bg-rgb, 40, 40, 40),
-          0.6
-        ); /* Glassmorphism background */
+        background: rgba(var(--card-bg-rgb, 40, 40, 40), 0.6);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
         border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 0.75rem;
         padding: 2rem;
         box-shadow: var(--card-shadow);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
         overflow: hidden;
-        opacity: 0; /* Initially hidden for animation */
-        transform: translateY(40px);
-        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        opacity: 0;
       }
 
       .education-card-advanced.visible {
         opacity: 1;
         transform: translateY(0);
+        animation: card-creative-enter 0.8s cubic-bezier(0.25, 1, 0.5, 1)
+          forwards; /* Faster card animation */
       }
 
-      /* Theme-specific background variable for RGBA */
-      html[data-theme="light"] {
-        --card-bg-rgb: 255, 255, 255;
+      /* Staggering the cards' entrance (Reduced Delays) */
+      .education-container > .education-card-advanced.visible:nth-child(1) {
+        animation-delay: 0.3s;
       }
-      html[data-theme="dark"] {
-        --card-bg-rgb: 40, 40, 40;
+      .education-container > .education-card-advanced.visible:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes card-creative-enter {
+        0% {
+          opacity: 0;
+          transform: translateY(50px) rotateX(-15deg) scale(0.96);
+          filter: blur(3px);
+        }
+        60% {
+          opacity: 0.8;
+          transform: translateY(-8px) rotateX(4deg) scale(1.01);
+          filter: blur(1px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0) rotateX(0deg) scale(1);
+          filter: blur(0);
+        }
       }
 
       .education-card-advanced:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3),
+          0 0 0 2px var(--primary-color);
+        border-color: var(--primary-color);
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease;
       }
 
+      /* --- Inner Card Content Animations (Reduced Delays) --- */
+      @keyframes inner-icon-pop {
+        0% {
+          opacity: 0;
+          transform: scale(0.4) rotate(-45deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotate(0deg);
+        }
+      }
+      @keyframes inner-text-slide-up {
+        0% {
+          opacity: 0;
+          transform: translateY(15px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      @keyframes coursework-tag-pop {
+        0% {
+          opacity: 0;
+          transform: scale(0.5) rotateY(90deg);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1) rotateY(0deg);
+        }
+      }
+
+      /* Card 1 (animation-delay: 0.3s, duration: 0.8s) */
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .education-icon {
+        animation: inner-icon-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+          forwards;
+        animation-delay: calc(0.3s + 0.3s); /* Card delay + offset */
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .education-header-text
+        h3 {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.3s + 0.35s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .education-header-text
+        .degree {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.3s + 0.4s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .education-header-text
+        .duration {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.3s + 0.45s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework
+        h4 {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.3s + 0.5s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag {
+        display: inline-block;
+        animation: coursework-tag-pop 0.35s ease-out forwards;
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(1) {
+        animation-delay: calc(0.3s + 0.55s + 0.04s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(2) {
+        animation-delay: calc(0.3s + 0.55s + 0.08s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(3) {
+        animation-delay: calc(0.3s + 0.55s + 0.12s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(4) {
+        animation-delay: calc(0.3s + 0.55s + 0.16s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(5) {
+        animation-delay: calc(0.3s + 0.55s + 0.2s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(6) {
+        animation-delay: calc(0.3s + 0.55s + 0.24s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(1)
+        .coursework-tags
+        .tag:nth-child(7) {
+        animation-delay: calc(0.3s + 0.55s + 0.28s);
+      }
+
+      /* Card 2 (animation-delay: 0.5s, duration: 0.8s) */
+      .education-container
+        > .education-card-advanced.visible:nth-child(2)
+        .education-icon {
+        animation: inner-icon-pop 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55)
+          forwards;
+        animation-delay: calc(0.5s + 0.3s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(2)
+        .education-header-text
+        h3 {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.5s + 0.35s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(2)
+        .education-header-text
+        .degree {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.5s + 0.4s);
+      }
+      .education-container
+        > .education-card-advanced.visible:nth-child(2)
+        .education-header-text
+        .duration {
+        animation: inner-text-slide-up 0.4s ease-out forwards;
+        animation-delay: calc(0.5s + 0.45s);
+      }
+
+      /* Original .education-card-advanced inner styles */
       .education-header {
         display: flex;
         align-items: flex-start;
         gap: 1.5rem;
         margin-bottom: 1rem;
       }
-
       .education-icon {
         font-size: 2rem;
         color: var(--primary-color);
         margin-top: 5px;
       }
-
       .education-header-text h3 {
         font-size: 1.6rem;
         color: var(--primary-color);
         margin: 0;
       }
-
       .education-header-text .degree {
         font-size: 1.2rem;
         font-weight: 600;
         color: var(--text-primary);
         margin-top: 0.25rem;
       }
-
       .education-header-text .duration {
         font-size: 0.95rem;
         color: var(--text-secondary);
         margin-top: 0.5rem;
       }
-
       .coursework {
         margin-top: 1.5rem;
         padding-top: 1.5rem;
         border-top: 1px solid rgba(128, 128, 128, 0.3);
       }
-
       .coursework h4 {
         font-size: 1.1rem;
         color: var(--text-primary);
         margin-bottom: 1rem;
       }
-
       .coursework-tags {
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
       }
-
       .coursework-tags .tag {
-        background-color: var(--primary-color);
+        background-color: #34383a; /* CHANGED: Teal background color */
         color: white;
         padding: 0.3rem 0.8rem;
         border-radius: 9999px;
         font-size: 0.85rem;
         font-weight: 500;
+        transition: transform 0.2s ease-out, background-color 0.3s ease; /* ADDED: For hover effect */
+      }
+      .coursework-tags .tag:hover {
+        /* ADDED: Hover effect for coursework tags */
+        transform: translateY(-2px) scale(1.05);
+        background-color: #678eba; /* Lighter teal on hover */
+      }
+
+      html[data-theme="light"] {
+        --card-bg-rgb: 255, 255, 255;
+      }
+      html[data-theme="dark"] {
+        --card-bg-rgb: 40, 40, 40;
       }
     </style>
   </head>
@@ -150,7 +386,10 @@
     </nav>
 
     <section class="section education-section" style="margin-top: 25px">
-      <h2><i class="fa fa-graduation-cap"></i> Education</h2>
+      <h2>
+        <i class="fa fa-graduation-cap"></i>
+        <span class="education-heading-text">Education</span>
+      </h2>
       <div class="education-container">
         <div class="education-card-advanced">
           <div class="education-header">
@@ -193,11 +432,11 @@
     </footer>
     <script src="assets/js/main.js"></script>
     <script>
-      // JavaScript for fade-in animation on scroll
       document.addEventListener("DOMContentLoaded", () => {
         const educationCards = document.querySelectorAll(
           ".education-card-advanced"
         );
+        const educationSection = document.querySelector(".education-section");
 
         const observer = new IntersectionObserver(
           (entries) => {
@@ -212,6 +451,10 @@
             threshold: 0.1,
           }
         );
+
+        if (educationSection) {
+          observer.observe(educationSection);
+        }
 
         educationCards.forEach((card) => {
           observer.observe(card);
