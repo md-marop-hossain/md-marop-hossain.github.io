@@ -137,7 +137,17 @@
         /* Initial state for animation */
         opacity: 0; /* Hidden by default */
         transform: scale(0.8); /* Smaller by default */
+        /* Transition for hover effects will be inherited from style.css var(--transition) */
+        /* which is 'all 0.3s ease' */
       }
+
+      /* ADDED/MODIFIED HOVER ANIMATION FOR PROJECT CARD */
+      .project-card:hover {
+        transform: translateY(-8px) scale(1.02); /* Lift and slightly zoom */
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+          0 6px 6px rgba(0, 0, 0, 0.23); /* Enhanced shadow for depth */
+      }
+      /* END OF ADDED/MODIFIED HOVER ANIMATION */
 
       .project-card.animate__animated {
         opacity: 1; /* Made visible when animation starts */
