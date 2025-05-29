@@ -17,6 +17,40 @@
     <style>
       /* --- Styles for Advanced Index Page --- */
 
+      /* ADDED FOR ORB BACKGROUND */
+      #interactive-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place it behind all content */
+      }
+
+      /* Ensure sections that should show the orb are layered correctly and are transparent enough */
+      #about,
+      #featured-projects,
+      #skills {
+        position: relative; /* Ensure z-index works if needed */
+        z-index: 1; /* Explicitly layer above canvas */
+      }
+
+      /* Modify #featured-projects section background for transparency */
+      #featured-projects {
+        /* background-color: var(--bg-secondary); /* Original */
+        background-color: transparent; /* Make section background transparent for orb visibility in padding */
+      }
+
+      /* Modify .project-card-featured for transparency to see orb THROUGH them */
+      .project-card-featured {
+        /* background: var(--bg-primary); /* Original opaque background */
+        background: rgba(
+          var(--card-bg-rgb, 40, 40, 40),
+          0.5
+        ); /* Semi-transparent background, consistent with other cards */
+        backdrop-filter: blur(8px); /* Consistent blur effect */
+      }
+
       /* Animated Gradient Background for Hero */
       .hero-animated-bg {
         position: relative;
@@ -29,7 +63,9 @@
         ); /* Subtle dark theme integration - UPDATED */
         background-size: 400% 400%;
         animation: gradient-animation 15s ease infinite;
-        overflow: hidden;
+        overflow: hidden; /* Ensure gradient animation doesn't cause scrollbars if it has pseudo-elements */
+        z-index: 1; /* Ensure hero content is above fixed background canvas */
+        position: relative; /* For z-index to work */
       }
 
       @keyframes gradient-animation {
@@ -83,9 +119,11 @@
 
       html[data-theme="light"] {
         --card-bg-rgb: 255, 255, 255;
+        --primary-rgb: 37, 99, 235; /* Added for orb color consistency */
       }
       html[data-theme="dark"] {
         --card-bg-rgb: 40, 40, 40;
+        --primary-rgb: 112, 158, 192; /* Added for orb color consistency */
       }
 
       /* Enhanced Skills Section */
@@ -124,17 +162,15 @@
       }
 
       /* Featured Projects Section */
-      #featured-projects {
-        background-color: var(--bg-secondary);
-      }
+      /* #featured-projects background is now transparent (see above) */
       .projects-grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
         gap: 2rem;
         margin-top: 2rem;
       }
+      /* .project-card-featured background is now semi-transparent (see above) */
       .project-card-featured {
-        background: var(--bg-primary);
         border-radius: 0.75rem;
         overflow: hidden;
         box-shadow: var(--card-shadow);
@@ -497,6 +533,7 @@
     </style>
   </head>
   <body>
+    <canvas id="interactive-bg"></canvas>
     <nav class="nav">
       <div class="nav-content">
         <div class="logo">MMH</div>
@@ -769,6 +806,96 @@
         sections.forEach((section) => {
           observer.observe(section);
         });
+
+        // --- START: Interactive Orb Background ---
+        const canvas = document.getElementById("interactive-bg");
+        if (canvas) {
+          // Ensure canvas element exists
+          const ctx = canvas.getContext("2d");
+
+          let width = (canvas.width = window.innerWidth);
+          let height = (canvas.height = window.innerHeight);
+
+          window.addEventListener("resize", () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+          });
+
+          const mouse = {
+            x: width / 2,
+            y: height / 2,
+          };
+
+          window.addEventListener("mousemove", (event) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+          });
+
+          const orb = {
+            x: mouse.x,
+            y: mouse.y,
+            radius: 15,
+            color: "rgba(37, 99, 235, 0.7)", // Default color, will be updated
+          };
+
+          function updateOrbColor() {
+            const style = getComputedStyle(document.documentElement);
+            let primaryRgb = style.getPropertyValue("--primary-rgb")?.trim();
+
+            if (!primaryRgb) {
+              const primaryColor =
+                style.getPropertyValue("--primary-color")?.trim() || "#2563eb";
+              if (primaryColor.startsWith("#")) {
+                const r = parseInt(primaryColor.slice(1, 3), 16) || 37;
+                const g = parseInt(primaryColor.slice(3, 5), 16) || 99;
+                const b = parseInt(primaryColor.slice(5, 7), 16) || 235;
+                primaryRgb = `${r}, ${g}, ${b}`;
+              } else {
+                primaryRgb = "37, 99, 235";
+              }
+            }
+            orb.color = `rgba(${primaryRgb}, 0.7)`;
+          }
+
+          updateOrbColor();
+
+          new MutationObserver((mutations) => {
+            mutations.forEach((mutation) => {
+              if (mutation.attributeName === "data-theme") {
+                updateOrbColor();
+              }
+            });
+          }).observe(document.documentElement, { attributes: true });
+
+          function animateOrb() {
+            ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+            ctx.fillRect(0, 0, width, height);
+
+            orb.x += (mouse.x - orb.x) * 0.08;
+            orb.y += (mouse.y - orb.y) * 0.08;
+
+            ctx.beginPath();
+            ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+
+            const gradient = ctx.createRadialGradient(
+              orb.x,
+              orb.y,
+              0,
+              orb.x,
+              orb.y,
+              orb.radius
+            );
+            gradient.addColorStop(0, orb.color);
+            gradient.addColorStop(1, "transparent");
+
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            requestAnimationFrame(animateOrb);
+          }
+          animateOrb();
+        }
+        // --- END: Interactive Orb Background ---
       });
     </script>
   </body>
