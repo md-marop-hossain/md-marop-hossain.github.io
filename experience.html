@@ -62,32 +62,31 @@
         width: 100%;
         height: 100%;
         z-index: -1; /* Place it behind all content */
-        /* filter: blur(5px); */ /* Blur is currently commented out as per user's last version */
+        /* filter: blur(5px); */ /* Blur is currently commented out */
       }
 
+      /* CORRECTED: .nav removed from this rule to allow position:fixed from style.css */
       .experience-section,
-      footer,
-      .nav {
+      footer {
         position: relative;
         z-index: 1; /* Sections above canvas */
       }
 
       .nav {
-        z-index: 1000; /* Ensure nav is well above other page content, matching style.css */
+        /* This rule ensures .nav's z-index is high, position:fixed is inherited from style.css */
+        z-index: 1000;
       }
 
       .experience-section {
         max-width: 900px;
         margin: 0 auto;
-        /* Adjust padding-top here to bring content higher */
-        padding: 0.5rem 1rem 1.5rem 1rem; /* e.g., 0.5rem top, 1.5rem bottom, 1rem sides */
-        /* Ensure this margin-top is correct for your navbar's height */
-        margin-top: 0px; /* Or your actual navbar height */
+        padding: 0.5rem 1rem 1.5rem 1rem;
+        /* CORRECTED: margin-top to clear fixed navbar. Adjust '70px' to your navbar's actual height. */
+        margin-top: 70px;
       }
       .experience-section h2 {
         text-align: center;
-        /* You might also want to reduce margin-bottom on h2 if it's too large */
-        margin-bottom: 2rem; /* Was 3rem, try 2rem or 1.5rem */
+        margin-bottom: 2rem;
         display: flex;
         justify-content: center;
         align-items: center;
