@@ -22,10 +22,24 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+    <link
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Noto+Sans:wght@400;500&display=swap"
       rel="stylesheet"
     />
     <style>
+      /* Apply Share Tech to the body of this page */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      /* Ensure navbar links on this page also use Share Tech */
+      .nav-links-container a {
+        font-family: "Share Tech", sans-serif;
+      }
+
       /* --- CSS Variables for RGBA colors (updated for consistency) --- */
       :root {
         --primary-rgb: 37, 99, 235;
@@ -92,7 +106,7 @@
         text-align: center;
         /* margin-bottom: 2.5rem; */
         /* ADDED: Unique font for main heading */
-        font-family: "Cormorant Garamond", serif;
+        font-family: "Cormorant Garamond", serif; /* This will remain Cormorant Garamond */
         font-weight: 700;
         font-size: 3rem; /* Adjusted size for the new font */
       }
@@ -194,7 +208,7 @@
       }
       .education-header-text h3 {
         /* ADDED: Unique font for institution name */
-        font-family: "Cormorant Garamond", serif;
+        font-family: "Cormorant Garamond", serif; /* This will remain Cormorant Garamond */
         font-weight: 600;
         font-size: 1.75rem; /* Adjusted size for the new font */
         color: var(--primary-light);
@@ -203,7 +217,7 @@
       .education-header-text .degree,
       .education-header-text .duration {
         /* ADDED: Unique font for degree and duration */
-        font-family: "Noto Sans", sans-serif;
+        font-family: "Noto Sans", sans-serif; /* This will remain Noto Sans */
         font-weight: 400;
       }
       .education-header-text .degree {
@@ -224,7 +238,7 @@
       }
       .coursework h4 {
         /* ADDED: Unique font for coursework heading */
-        font-family: "Noto Sans", sans-serif;
+        font-family: "Noto Sans", sans-serif; /* This will remain Noto Sans */
         font-weight: 500; /* Noto Sans Medium */
         font-size: 1.1rem; /* Adjusted size */
         color: var(--primary-light);
@@ -237,7 +251,7 @@
       }
       .coursework-tags .tag {
         /* ADDED: Unique font for tags */
-        font-family: "Noto Sans", sans-serif;
+        font-family: "Noto Sans", sans-serif; /* This will remain Noto Sans */
         font-weight: 400;
         background-color: rgba(var(--primary-rgb), 0.15);
         color: var(--primary-light);

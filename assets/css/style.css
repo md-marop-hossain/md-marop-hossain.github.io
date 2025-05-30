@@ -788,6 +788,7 @@ footer {
 
 /* General link styling for navigation */
 .nav-links-container a {
+  font-family: "Share Tech", sans-serif; /* <--- Add this line */
   text-decoration: none;
   color: var(--text-primary); /* Set your desired default color */
   font-weight: 500;

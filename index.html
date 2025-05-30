@@ -27,6 +27,16 @@
       href="https://fonts.googleapis.com/css2?family=Abyssinica+SIL&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Consolas&family=Monaco&family=Andale+Mono&family=Ubuntu+Mono&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
     <style>
@@ -86,15 +96,28 @@
       }
 
       .hero .subtitle {
+        font-family: "Consolas", "Monaco", "Andale Mono", "Ubuntu Mono",
+          monospace; /* Console font */
         font-size: 1.5rem;
-        color: var(--primary-light);
         min-height: 70px; /* Reserve space for typed text */
+
+        /* Gradient text color */
+        background-image: linear-gradient(
+          45deg,
+          var(--primary-dark),
+          var(--primary-color),
+          var(--primary-light)
+        );
+        -webkit-background-clip: text; /* For Safari/Chrome */
+        -moz-background-clip: text; /* For Firefox (older) */
+        background-clip: text;
+        color: transparent; /* Makes the text transparent so the background (gradient) shows through */
       }
 
       /* Typed.js Cursor Style */
       .typed-cursor {
-        color: var(--primary-light);
-        font-size: 1.6rem;
+        color: var(--primary-light); /* Keeps cursor a solid theme color */
+        font-size: 1.6rem; /* Matches subtitle font size for cursor */
       }
 
       /* General Section Styling for Fade-in Animation */
@@ -567,21 +590,21 @@
       #about h2 .about-heading-text,
       #featured-projects h2 .featured-heading-text,
       #skills h2 .skills-heading-text {
-        font-family: "Audiowide", sans-serif;
+        font-family: "Share Tech", sans-serif;
       }
 
       /* Updated: Font change for Featured Projects content to Abyssinica SIL */
-      #featured-projects .project-card-featured h3,
+      /* #featured-projects .project-card-featured h3,
       #featured-projects .project-card-featured p {
         font-family: "Abyssinica SIL", serif;
-      }
+      } */
 
       /* Updated: Font change for Skills content to Abyssinica SIL */
-      #skills .section-subtitle,
+      /* #skills .section-subtitle,
       #skills .skills-category h3,
       #skills .skills-category .skill-tags .tag {
         font-family: "Abyssinica SIL", serif;
-      }
+      } */
 
       /* Added: Rule to reduce top padding for specific sections */
       #about,
@@ -589,6 +612,28 @@
       #skills {
         padding-top: 3rem; /* Was 6rem by default from .section */
       }
+
+      /* --- USER REQUESTED FONT CHANGES --- */
+      /* Apply 'Share Tech' to About Me content (p, skills-highlight h3 & li) */
+      #about .about-text p,
+      #about .skills-highlight h3,
+      #about .skills-highlight ul li {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      /* Apply 'Share Tech' to Featured Projects content (card h3 and p) */
+      #featured-projects .project-card-featured h3,
+      #featured-projects .project-card-featured p {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      /* Apply 'Share Tech' to Skills content (section-subtitle, category h3, and tags) */
+      #skills .section-subtitle,
+      #skills .skills-category h3,
+      #skills .skills-category .skill-tags .tag {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* --- END USER REQUESTED FONT CHANGES --- */
     </style>
   </head>
   <body>
