@@ -33,6 +33,10 @@
       /* Apply Share Tech to the body of this page */
       body {
         font-family: "Share Tech", sans-serif;
+        background-color: var(--bg-primary); /* Ensure body has a background */
+        /* Allow content to scroll over fixed background */
+        position: relative;
+        z-index: 0;
       }
 
       /* Ensure navbar links on this page also use Share Tech */
@@ -44,48 +48,41 @@
       :root {
         --primary-rgb: 37, 99, 235;
         --card-bg-rgb: 250, 250, 250;
-        --nav-footer-bg-rgb: 0, 0, 0; /* Default for themes unless overridden */
+        --nav-footer-bg-rgb: 0, 0, 0;
+        --bg-primary-rgb: 0, 0, 0; /* Default for dark theme */
       }
       html[data-theme="light"] {
         --primary-rgb: 37, 99, 235;
         --card-bg-rgb: 250, 250, 250;
-        --nav-footer-bg-rgb: 230, 230, 230; /* Specific for light theme nav/footer */
+        --nav-footer-bg-rgb: 230, 230, 230;
+        --bg-primary-rgb: 243, 244, 246; /* Assuming a light gray for light theme background */
       }
       html[data-theme="dark"] {
         --primary-rgb: 112, 158, 192;
         --card-bg-rgb: 28, 32, 36;
-        --nav-footer-bg-rgb: 10, 10, 15; /* Specific for dark theme nav/footer */
+        --nav-footer-bg-rgb: 10, 10, 15;
+        --bg-primary-rgb: 0, 0, 0; /* Solid black for dark theme background */
       }
 
       /* --- Interactive Background Canvas --- */
-      /* #interactive-bg (removed) */
+      #matrix-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Behind all other content */
+        filter: blur(5px); /* Apply the blur effect */
+      }
 
-      /* body (background-color: transparent removed) */
-
-      /* Ensure .education-section and footer are layered above the canvas */
       .education-section,
       footer {
         position: relative;
-        z-index: 1; /* Ensure these are above the canvas */
+        z-index: 1;
       }
 
-      /* Specific styling for .nav on this page, if different from global style.css */
-      /* Note: position:fixed is inherited from style.css and should not be overridden here for .nav */
       .nav {
-        /* background-color: rgba(
-          var(--nav-footer-bg-rgb),
-          0.7
-        ); */ /* Transparent background for nav - Removed */
-        /* backdrop-filter: blur(10px); */ /* Removed */
-        /* -webkit-backdrop-filter: blur(10px); */ /* Removed */
-        /* z-index is 1000 from style.css, which is fine */
-      }
-
-      footer {
-        /* Style for footer, ensuring it's above canvas too */
-        /* background-color: rgba(var(--nav-footer-bg-rgb), 0.7); */ /* Removed */
-        /* backdrop-filter: blur(10px); */ /* Removed */
-        /* -webkit-backdrop-filter: blur(10px); */ /* Removed */
+        z-index: 1000; /* from style.css, ensure it's above canvas */
       }
 
       /* --- Styles for Advanced Education Page --- */
@@ -96,6 +93,14 @@
         opacity: 0;
         transform: translateY(20px);
         transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        margin-top: 25px; /* Account for fixed nav */
+        background-color: rgba(
+          var(--bg-primary-rgb),
+          0.6
+        ); /* Semi-transparent overlay for readability */
+        backdrop-filter: blur(3px);
+        border-radius: 8px;
+        margin-bottom: 2rem;
       }
       .education-section.visible {
         opacity: 1;
@@ -104,11 +109,9 @@
 
       .education-section h2 {
         text-align: center;
-        /* margin-bottom: 2.5rem; */
-        /* ADDED: Unique font for main heading */
-        font-family: "Cormorant Garamond", serif; /* This will remain Cormorant Garamond */
+        font-family: "Cormorant Garamond", serif;
         font-weight: 700;
-        font-size: 3rem; /* Adjusted size for the new font */
+        font-size: 3rem;
       }
 
       .education-container {
@@ -175,24 +178,28 @@
 
       .education-card-advanced {
         position: relative;
-        /* background: rgba(var(--card-bg-rgb), 0.75); */ /* Removed */
-        /* backdrop-filter: blur(10px); */ /* Removed */
-        /* -webkit-backdrop-filter: blur(10px); */ /* Removed */
-        border: 1px solid rgba(var(--primary-rgb), 0.3);
+        background-color: rgba(
+          var(--card-bg-rgb),
+          0.9
+        ); /* More opaque for readability */
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(var(--primary-rgb), 0.4); /* Themed border */
         border-radius: 0.75rem;
         padding: 1.8rem;
-        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
         overflow: hidden;
         opacity: 0;
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease, background-color 0.35s ease;
       }
 
       .education-card-advanced:hover {
-        transform: translateY(-6px) scale(1.03);
-        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
-          0 0 0 2px rgba(var(--primary-rgb), 0.4);
-        border-color: rgba(var(--primary-rgb), 0.6);
-        transition: transform 0.35s ease, box-shadow 0.35s ease,
-          border-color 0.35s ease;
+        transform: translateY(-8px) scale(1.04);
+        box-shadow: 0 16px 40px rgba(var(--primary-rgb), 0.3),
+          0 0 0 3px rgba(var(--primary-rgb), 0.55);
+        border-color: rgba(var(--primary-rgb), 0.7);
+        background-color: rgba(var(--card-bg-rgb), 0.95);
       }
 
       .education-header {
@@ -202,74 +209,82 @@
         margin-bottom: 1.2rem;
       }
       .education-icon {
-        font-size: 2rem;
+        font-size: 2.2rem; /* Slightly larger icon */
         color: var(--primary-color);
-        margin-top: 2px;
+        margin-top: 0px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: rgba(var(--primary-rgb), 0.1);
+        border-radius: 50%;
       }
       .education-header-text h3 {
-        /* ADDED: Unique font for institution name */
-        font-family: "Cormorant Garamond", serif; /* This will remain Cormorant Garamond */
-        font-weight: 600;
-        font-size: 1.75rem; /* Adjusted size for the new font */
+        font-family: "Cormorant Garamond", serif;
+        font-weight: 700; /* Bolder */
+        font-size: 1.85rem;
         color: var(--primary-light);
         margin: 0;
       }
       .education-header-text .degree,
       .education-header-text .duration {
-        /* ADDED: Unique font for degree and duration */
-        font-family: "Noto Sans", sans-serif; /* This will remain Noto Sans */
+        font-family: "Noto Sans", sans-serif;
         font-weight: 400;
       }
       .education-header-text .degree {
-        font-size: 1.1rem; /* Maintained size */
-        font-weight: 500; /* Noto Sans Medium */
+        font-size: 1.15rem;
+        font-weight: 500;
         color: var(--text-primary);
-        margin-top: 0.25rem;
+        margin-top: 0.3rem;
       }
       .education-header-text .duration {
-        font-size: 0.9rem; /* Maintained size */
+        font-size: 0.95rem;
         color: var(--text-secondary);
-        margin-top: 0.4rem;
+        margin-top: 0.45rem;
       }
       .coursework {
         margin-top: 1.5rem;
         padding-top: 1.2rem;
-        border-top: 1px solid rgba(var(--primary-rgb), 0.2);
+        border-top: 1px solid rgba(var(--primary-rgb), 0.25);
       }
       .coursework h4 {
-        /* ADDED: Unique font for coursework heading */
-        font-family: "Noto Sans", sans-serif; /* This will remain Noto Sans */
-        font-weight: 500; /* Noto Sans Medium */
-        font-size: 1.1rem; /* Adjusted size */
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 600; /* Bolder */
+        font-size: 1.15rem;
         color: var(--primary-light);
         margin-bottom: 1rem;
       }
       .coursework-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.6rem;
+        gap: 0.7rem; /* Slightly more gap */
       }
       .coursework-tags .tag {
-        /* ADDED: Unique font for tags */
-        font-family: "Noto Sans", sans-serif; /* This will remain Noto Sans */
-        font-weight: 400;
-        background-color: rgba(var(--primary-rgb), 0.15);
+        font-family: "Noto Sans", sans-serif;
+        font-weight: 500; /* Medium weight */
+        background-color: rgba(var(--primary-rgb), 0.2);
         color: var(--primary-light);
-        padding: 0.3rem 0.8rem;
-        border-radius: 12px;
-        font-size: 0.8rem;
-        border: 1px solid rgba(var(--primary-rgb), 0.3);
+        padding: 0.4rem 0.9rem;
+        border-radius: 16px; /* More rounded */
+        font-size: 0.85rem;
+        border: 1px solid transparent; /* Prepare for hover border */
         transition: transform 0.25s ease-out, background-color 0.3s ease,
-          box-shadow 0.3s ease;
+          box-shadow 0.3s ease, border-color 0.3s ease;
       }
       .coursework-tags .tag:hover {
-        transform: translateY(-2px) scale(1.06);
-        background-color: rgba(var(--primary-rgb), 0.3);
-        box-shadow: 0 1px 6px rgba(var(--primary-rgb), 0.2);
+        transform: translateY(-3px) scale(1.08);
+        background-color: var(--primary-color);
+        color: var(
+          --text-primary
+        ); /* Ensure contrast if primary-color is light */
+        box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
+        border-color: var(--primary-light);
       }
     </style>
   </head>
   <body>
+    <canvas id="matrix-bg"></canvas>
     <nav class="nav">
       <div class="nav-content">
         <a href="index.html" class="logo">
@@ -300,7 +315,7 @@
       </div>
     </nav>
 
-    <section class="section education-section" style="margin-top: 30px">
+    <section class="section education-section">
       <h2>
         <i class="fa fa-graduation-cap"></i>
         <span class="education-heading-text">Education</span>
@@ -398,89 +413,107 @@
           });
         }
 
-        // --- Interactive Orb Background (same as other pages) --- (REMOVED)
-        // const canvas = document.getElementById("interactive-bg");
-        // const ctx = canvas.getContext("2d");
+        // --- Matrix Rain Animation ---
+        const canvas = document.getElementById("matrix-bg");
+        const ctx = canvas.getContext("2d");
 
-        // let width = (canvas.width = window.innerWidth);
-        // let height = (canvas.height = window.innerHeight);
+        let animationFrameId;
+        let lastTimestamp = 0;
+        const targetFps = 20; // Lower for slower animation, e.g., 15 or 20. Higher for faster.
+        const fpsInterval = 1000 / targetFps;
 
-        // window.addEventListener("resize", () => {
-        // width = canvas.width = window.innerWidth;
-        // height = canvas.height = window.innerHeight;
-        // });
+        function setupMatrix() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
 
-        // const mouse = {
-        // x: width / 2,
-        // y: height / 2,
-        // };
+          const letters =
+            "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890@#$%^&*()*&^%+-/~{[|`]}";
+          const fontSize = 16;
+          const columns = Math.floor(canvas.width / fontSize);
+          const drops = [];
+          let matrixColor =
+            getComputedStyle(document.documentElement)
+              .getPropertyValue("--primary-color")
+              .trim() || "#2563eb";
+          let trailColorBase =
+            getComputedStyle(document.documentElement)
+              .getPropertyValue("--bg-primary-rgb")
+              .trim() || "0,0,0";
 
-        // window.addEventListener("mousemove", (event) => {
-        // mouse.x = event.clientX;
-        // mouse.y = event.clientY;
-        // });
+          for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+          }
 
-        // const orb = {
-        // x: mouse.x,
-        // y: mouse.y,
-        // radius: 15,
-        // color: "rgba(37, 99, 235, 0.7)", // Default color
-        // };
+          function drawMatrix() {
+            ctx.fillStyle = `rgba(${trailColorBase}, 0.05)`;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        // function updateOrbColor() {
-        // const style = getComputedStyle(document.documentElement);
-        // const primaryRgb = style.getPropertyValue("--primary-rgb").trim();
-        // if (primaryRgb) {
-        // orb.color = `rgba(${primaryRgb}, 0.7)`;
-        // } else {
-        // const primaryColor =
-        // style.getPropertyValue("--primary-color").trim() || "#2563eb";
-        // if (primaryColor.startsWith("#")) {
-        // const r = parseInt(primaryColor.slice(1, 3), 16) || 37;
-        // const g = parseInt(primaryColor.slice(3, 5), 16) || 99;
-        // const b = parseInt(primaryColor.slice(5, 7), 16) || 235;
-        // orb.color = `rgba(${r}, ${g}, ${b}, 0.7)`;
-        // }
-        // }
-        // }
+            ctx.fillStyle = matrixColor;
+            ctx.font = `${fontSize}px monospace`;
 
-        // updateOrbColor();
+            for (let i = 0; i < drops.length; i++) {
+              const text = letters.charAt(
+                Math.floor(Math.random() * letters.length)
+              );
+              ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
-        // new MutationObserver((mutations) => {
-        // mutations.forEach((mutation) => {
-        // if (mutation.attributeName === "data-theme") {
-        // updateOrbColor();
-        // }
-        // });
-        // }).observe(document.documentElement, { attributes: true });
+              if (
+                drops[i] * fontSize > canvas.height &&
+                Math.random() > 0.975
+              ) {
+                drops[i] = 0;
+              }
+              drops[i]++;
+            }
+          }
 
-        // function animate() {
-        // ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
-        // ctx.fillRect(0, 0, width, height);
+          function animateMatrix(timestamp) {
+            animationFrameId = requestAnimationFrame(animateMatrix);
 
-        // orb.x += (mouse.x - orb.x) * 0.08;
-        // orb.y += (mouse.y - orb.y) * 0.08;
+            const elapsed = timestamp - lastTimestamp;
 
-        // ctx.beginPath();
-        // ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+            if (elapsed > fpsInterval) {
+              lastTimestamp = timestamp - (elapsed % fpsInterval);
+              drawMatrix();
+            }
+          }
 
-        // const gradient = ctx.createRadialGradient(
-        // orb.x,
-        // orb.y,
-        // 0,
-        // orb.x,
-        // orb.y,
-        // orb.radius
-        // );
-        // gradient.addColorStop(0, orb.color);
-        // gradient.addColorStop(1, "transparent");
+          const themeObserver = new MutationObserver((mutationsList) => {
+            for (const mutation of mutationsList) {
+              if (
+                mutation.type === "attributes" &&
+                mutation.attributeName === "data-theme"
+              ) {
+                matrixColor =
+                  getComputedStyle(document.documentElement)
+                    .getPropertyValue("--primary-color")
+                    .trim() || "#2563eb";
+                trailColorBase =
+                  getComputedStyle(document.documentElement)
+                    .getPropertyValue("--bg-primary-rgb")
+                    .trim() || "0,0,0";
+              }
+            }
+          });
+          themeObserver.observe(document.documentElement, { attributes: true });
 
-        // ctx.fillStyle = gradient;
-        // ctx.fill();
+          if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+          }
+          lastTimestamp = performance.now();
+          animateMatrix(lastTimestamp);
+        }
 
-        // requestAnimationFrame(animate);
-        // }
-        // animate();
+        setupMatrix();
+        window.addEventListener("resize", () => {
+          clearTimeout(window.resizedFinished);
+          window.resizedFinished = setTimeout(function () {
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+            }
+            setupMatrix();
+          }, 250);
+        });
       });
     </script>
   </body>
