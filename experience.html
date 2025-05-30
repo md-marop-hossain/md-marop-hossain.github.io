@@ -62,27 +62,32 @@
         width: 100%;
         height: 100%;
         z-index: -1; /* Place it behind all content */
-        /* filter: blur(5px); */
+        /* filter: blur(5px); */ /* Blur is currently commented out as per user's last version */
       }
 
       .experience-section,
       footer,
       .nav {
         position: relative;
-        z-index: 1;
+        z-index: 1; /* Sections above canvas */
       }
 
-      /* --- Styles for Advanced Experience Timeline --- */
+      .nav {
+        z-index: 1000; /* Ensure nav is well above other page content, matching style.css */
+      }
+
       .experience-section {
         max-width: 900px;
         margin: 0 auto;
-        /* MODIFIED PADDING HERE: Reduced top and bottom padding */
-        padding: 1.5rem 1rem; /* Was 3rem 1rem; now 1.5rem top/bottom, 1rem left/right */
-        margin-top: -30px; /* This ensures space for the fixed navigation bar */
+        /* Adjust padding-top here to bring content higher */
+        padding: 0.5rem 1rem 1.5rem 1rem; /* e.g., 0.5rem top, 1.5rem bottom, 1rem sides */
+        /* Ensure this margin-top is correct for your navbar's height */
+        margin-top: 0px; /* Or your actual navbar height */
       }
       .experience-section h2 {
         text-align: center;
-        margin-bottom: 3rem;
+        /* You might also want to reduce margin-bottom on h2 if it's too large */
+        margin-bottom: 2rem; /* Was 3rem, try 2rem or 1.5rem */
         display: flex;
         justify-content: center;
         align-items: center;
