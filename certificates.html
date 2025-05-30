@@ -20,7 +20,21 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      /* Apply Share Tech to the whole page */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      /* Ensure footer also uses Share Tech */
+      footer p {
+        font-family: "Share Tech", sans-serif !important; /* Override inline style */
+      }
+
       /* --- CSS Variables for RGBA colors (for hover effects) --- */
       :root {
         --primary-rgb: 37, 99, 235;
@@ -183,7 +197,7 @@
         padding-left: 1.5rem;
         position: relative;
         line-height: 1.5;
-        font-family: "Share Tech", sans-serif;
+        font-family: "Share Tech", sans-serif; /* Already using Share Tech */
         font-size: 0.95rem;
       }
       .certificate-card ul li::before {
@@ -395,9 +409,7 @@
     </div>
 
     <footer>
-      <p style="font-family: 'Sofia', sans-serif">
-        © 2025 Md. Marop Hossain. All rights reserved.
-      </p>
+      <p>© 2025 Md. Marop Hossain. All rights reserved.</p>
     </footer>
     <script src="assets/js/main.js"></script>
     <script>
