@@ -20,6 +20,10 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
     <style>
       /* Basic style for the resume viewer container */
       .resume-viewer {
@@ -47,6 +51,25 @@
         display: block;
         width: fit-content;
         margin: 0 auto;
+      }
+
+      /* Apply Share Tech font to the body and navigation links */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+      .nav-links-container a {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* Ensure headings and other specific text elements also use Share Tech if needed */
+      h2,
+      .resume-section p,
+      .resume-button {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* Override for specific elements if they have their own font families from style.css that you wish to change */
+      .logo {
+        /* Example if logo text was not an image and needed font change */
+        font-family: "Share Tech", sans-serif;
       }
     </style>
   </head>

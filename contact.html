@@ -20,7 +20,33 @@
       href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
     <style>
+      /* Apply Share Tech font to relevant parts of the page */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      .nav-links-container a,
+      .contact-section-advanced h2,
+      .contact-intro,
+      .contact-details-group, /* Covers text within this group */
+      .contact-form-group,   /* Covers text within this group, including labels */
+      .form-field input,      /* For text typed into inputs */
+      .form-field textarea,   /* For text typed into textarea */
+      .submit-button {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* Ensure placeholders also use the font if desired, browser support varies */
+      .form-field input::placeholder,
+      .form-field textarea::placeholder {
+        font-family: "Share Tech", sans-serif;
+        /* color: var(--text-secondary); You might want to style placeholder color too */
+      }
+
       /* --- Interactive Background Canvas --- */
       #interactive-bg {
         position: fixed;
@@ -430,25 +456,21 @@
           mouse.y = event.clientY;
         });
 
-        // The orb that follows the cursor
         const orb = {
           x: mouse.x,
           y: mouse.y,
           radius: 15,
-          color: `rgba(var(--primary-rgb, 37, 99, 235), 0.7)`, // Default color
+          color: `rgba(var(--primary-rgb, 37, 99, 235), 0.7)`,
         };
 
-        // Function to get the current theme's primary color
         function updateOrbColor() {
           const style = getComputedStyle(document.documentElement);
           const primaryRgb = style.getPropertyValue("--primary-rgb").trim();
           orb.color = `rgba(${primaryRgb}, 0.7)`;
         }
 
-        // Initial color set
         updateOrbColor();
 
-        // Update color if theme changes
         new MutationObserver((mutations) => {
           mutations.forEach((mutation) => {
             if (mutation.attributeName === "data-theme") {
@@ -458,19 +480,15 @@
         }).observe(document.documentElement, { attributes: true });
 
         function animate() {
-          // Create a trailing effect by clearing the canvas with transparency
           ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
           ctx.fillRect(0, 0, width, height);
 
-          // Linear interpolation for smooth movement (easing)
           orb.x += (mouse.x - orb.x) * 0.08;
           orb.y += (mouse.y - orb.y) * 0.08;
 
-          // Draw the orb
           ctx.beginPath();
           ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
 
-          // Create a gradient for a softer look
           const gradient = ctx.createRadialGradient(
             orb.x,
             orb.y,

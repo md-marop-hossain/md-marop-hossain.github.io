@@ -9,6 +9,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
     <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
     <link
       href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
@@ -49,35 +53,35 @@
         --card-bg-rgb: 28, 32, 36;
       }
 
-      /* --- Styles for Sidebar and Certificate Layout (New Style) --- */
+      /* --- Styles for Sidebar and Certificate Layout --- */
       html {
         scroll-behavior: smooth;
       }
 
       .page-container {
         display: flex;
-        padding-top: 40px; /* Adjust if your nav height is different */
+        padding-top: 40px;
       }
 
       .sidebar {
-        width: 260px; /* Slightly narrower */
+        width: 260px;
         position: fixed;
-        top: 70px; /* Should match .page-container padding-top */
+        top: 70px;
         left: 0;
-        height: calc(100vh - 70px); /* Full height minus nav */
+        height: calc(100vh - 70px);
         background-color: var(--bg-secondary);
-        padding: 1.5rem 0.5rem 1.5rem 1rem; /* Adjusted padding */
+        padding: 1.5rem 0.5rem 1.5rem 1rem;
         overflow-y: auto;
-        border-right: 1px solid rgba(128, 128, 128, 0.2); /* Softer border */
+        border-right: 1px solid rgba(128, 128, 128, 0.2);
         transition: all 0.3s ease;
       }
 
       .sidebar h3 {
-        color: var(--primary-light); /* Lighter heading color */
+        color: var(--primary-light);
         margin-bottom: 1.2rem;
         font-size: 1.25rem;
         padding-bottom: 0.6rem;
-        border-bottom: 1px dashed var(--accent-color); /* Dashed accent border */
+        border-bottom: 1px dashed var(--accent-color);
       }
 
       .sidebar ul {
@@ -90,30 +94,28 @@
         display: block;
         color: var(--text-secondary);
         text-decoration: none;
-        padding: 0.7rem 1rem 0.7rem 1.2rem; /* Adjusted padding for left border */
+        padding: 0.7rem 1rem 0.7rem 1.2rem;
         margin-bottom: 0.3rem;
         transition: color 0.2s ease, border-left-color 0.2s ease;
-        font-size: 0.9rem; /* Slightly smaller font */
+        font-size: 0.9rem;
         line-height: 1.3;
-        border-left: 4px solid transparent; /* Placeholder for active state */
+        border-left: 4px solid transparent;
         position: relative;
       }
 
       .sidebar li a:hover {
         color: var(--primary-light);
-        border-left-color: var(
-          --primary-light
-        ); /* Subtle border highlight on hover */
+        border-left-color: var(--primary-light);
       }
 
       .sidebar li a.active {
         color: var(--primary-color);
-        font-weight: 600; /* Slightly bolder */
-        border-left: 4px solid var(--primary-color); /* Prominent left border for active */
+        font-weight: 600;
+        border-left: 4px solid var(--primary-color);
       }
 
       .certificates-main-content {
-        margin-left: 260px; /* Same as new sidebar width */
+        margin-left: 260px;
         flex-grow: 1;
         padding: 0;
       }
@@ -135,23 +137,46 @@
         box-shadow: var(--card-shadow);
         margin-bottom: 2rem;
         border: 1px solid var(--accent-color);
-        opacity: 0;
-        transform: translateY(40px);
         scroll-margin-top: 90px;
-        /* Updated transitions for entry animation and new hover effects */
-        transition: opacity 0.6s ease-out,
-          /* Entry opacity */ transform 0.35s ease,
-          /* Hover transform + Entry transform (now 0.35s) */ box-shadow 0.35s
-            ease,
-          /* Hover shadow */ border-color 0.35s ease; /* Hover border */
+
+        opacity: 0; /* For entry animation, similar to projects.html */
+        transform: scale(
+          0.8
+        ); /* For entry animation, similar to projects.html */
+
+        /* Transitions for hover AND the opacity/transform change when .animate__animated is added */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease, opacity 0.6s ease-out; /* Opacity transition for entry */
       }
 
-      .certificate-card.visible {
-        opacity: 1;
-        transform: translateY(0);
+      .certificate-card.animate__animated {
+        /* This class is added by JS */
+        opacity: 1; /* Made visible via transition */
+        transform: scale(1); /* Returns to normal size via transition */
+        /* Animate.css classes (e.g., animate__zoomIn) will run concurrently */
       }
 
-      /* Added hover effect for certificate cards */
+      /* Staggered animation-delay specifically for the Animate.css animations */
+      .certificates-section > .certificate-card.animate__animated:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      /* Hover effect for certificate cards */
       .certificate-card:hover {
         transform: translateY(-6px) scale(1.03);
         box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
@@ -197,7 +222,7 @@
         padding-left: 1.5rem;
         position: relative;
         line-height: 1.5;
-        font-family: "Share Tech", sans-serif; /* Already using Share Tech */
+        font-family: "Share Tech", sans-serif;
         font-size: 0.95rem;
       }
       .certificate-card ul li::before {
@@ -269,7 +294,10 @@
         <section class="section certificates-section">
           <h2><i class="fa fa-certificate"></i> My Certificates</h2>
 
-          <div id="cert-llm-finetuning" class="certificate-card">
+          <div
+            id="cert-llm-finetuning"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
             <h3>Fine-Tuning for LLMs: from Beginner to Advanced</h3>
             <p class="issuer">by LinkedIn</p>
             <p class="date">
@@ -293,7 +321,10 @@
             </ul>
           </div>
 
-          <div id="cert-gen-ai-essentials" class="certificate-card">
+          <div
+            id="cert-gen-ai-essentials"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
             <h3>Career Essentials in Generative AI</h3>
             <p class="issuer">by Microsoft and LinkedIn</p>
             <p class="date">
@@ -318,7 +349,10 @@
             </ul>
           </div>
 
-          <div id="cert-ai-engineering" class="certificate-card">
+          <div
+            id="cert-ai-engineering"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
             <h3>AI Engineering Essentials: Navigating the Tech Revolution</h3>
             <p class="issuer">by LinkedIn</p>
             <p class="date">
@@ -336,7 +370,10 @@
             </ul>
           </div>
 
-          <div id="cert-ml-simplilearn" class="certificate-card">
+          <div
+            id="cert-ml-simplilearn"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
             <h3>Machine Learning</h3>
             <p class="issuer">SkillUp by Simplilearn</p>
             <p class="date">
@@ -359,7 +396,10 @@
             </ul>
           </div>
 
-          <div id="cert-web-dev-p हीरो" class="certificate-card">
+          <div
+            id="cert-web-dev-p हीरो"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
             <h3>Complete Web Development Course</h3>
             <p class="issuer">by Programming Hero (Batch 4)</p>
             <p class="date">
@@ -382,7 +422,10 @@
             </ul>
           </div>
 
-          <div id="cert-python-datastruct" class="certificate-card">
+          <div
+            id="cert-python-datastruct"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
             <h3>Python Data Structures</h3>
             <p class="issuer">by Coursera (University of Michigan)</p>
             <p class="date">
@@ -414,7 +457,6 @@
     <script src="assets/js/main.js"></script>
     <script>
       document.addEventListener("DOMContentLoaded", () => {
-        // --- Animation for certificate cards (existing observer) ---
         const certificateCardsForAnimation =
           document.querySelectorAll(".certificate-card");
         if (certificateCardsForAnimation.length > 0) {
@@ -422,21 +464,24 @@
             (entries) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                  entry.target.classList.add("visible");
-                  cardAnimationObserver.unobserve(entry.target);
+                  // Add Animate.css base class to trigger the animation
+                  entry.target.classList.add("animate__animated");
+                  // The specific animation classes (e.g., animate__zoomIn, animate__flipInX)
+                  // are already on the element in the HTML.
+                  cardAnimationObserver.unobserve(entry.target); // Stop observing after animation
                 }
               });
             },
-            { threshold: 0.1 }
+            { threshold: 0.1 } // Trigger when 10% of the card is visible
           );
           certificateCardsForAnimation.forEach((card) => {
             cardAnimationObserver.observe(card);
           });
         }
 
-        // --- Sidebar active link highlighting using IntersectionObserver ---
+        // --- Sidebar active link highlighting ---
         const sectionsForHighlight =
-          document.querySelectorAll(".certificate-card"); // These are the target elements
+          document.querySelectorAll(".certificate-card");
         const navLinksForHighlight = document.querySelectorAll(
           "#certificate-links li a"
         );
@@ -450,7 +495,6 @@
             navLinksForHighlight.forEach((link) => {
               if (link.getAttribute("href") === `#${sectionId}`) {
                 if (link !== currentlyActiveLink) {
-                  // Only add if not already active
                   link.classList.add("active");
                   currentlyActiveLink = link;
                 }
@@ -461,24 +505,15 @@
           };
 
           const observerOptions = {
-            root: null, // Observing intersections relative to the viewport
+            root: null,
             rootMargin: "-90px 0px -55% 0px",
-            // Explanation of rootMargin: "top right bottom left"
-            // - "-90px" from top: The "viewport" for intersection effectively starts 90px below the actual viewport top.
-            //   This aligns with your `scroll-margin-top: 90px;` on the cards, meaning a section is considered
-            //   for activation when its top edge (where it visually lands after scroll) enters this adjusted viewport.
-            // - "-55%" from bottom: This significantly shrinks the height of the intersection viewport from the bottom.
-            //   It means we're primarily interested in sections that are in the top part (roughly top 45% - 90px) of the main content area.
-            //   This helps ensure that a section fully scrolled to the top becomes active, rather than one that's just partially visible at the bottom.
-            threshold: 0.01, // Trigger when even a tiny part (1%) of the section is visible within the defined rootMargin area
+            threshold: 0.01,
           };
 
           const highlightObserver = new IntersectionObserver(
             (entries, observer) => {
               entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                  // When a section intersects according to our options, make its link active.
-                  // As you scroll, new sections entering this "hot zone" will trigger this.
                   setActiveLink(entry.target.id);
                 }
               });
@@ -490,9 +525,6 @@
             highlightObserver.observe(section);
           });
 
-          // Initial check in case a section is already in view on load (e.g. from a hash in URL)
-          // For this, we can manually check once or let the observer fire.
-          // Let's do a quick initial check:
           let initialActiveId = null;
           const initialOffset = 90;
           for (let i = sectionsForHighlight.length - 1; i >= 0; i--) {
@@ -505,9 +537,6 @@
           }
           if (initialActiveId) {
             setActiveLink(initialActiveId);
-          } else if (sectionsForHighlight.length > 0) {
-            // Fallback to the first section if nothing else is active initially
-            // setActiveLink(sectionsForHighlight[0].id);
           }
         }
       });
