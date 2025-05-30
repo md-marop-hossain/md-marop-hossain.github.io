@@ -76,13 +76,13 @@
       .experience-section {
         max-width: 900px;
         margin: 0 auto;
-        padding: 3rem 1rem;
-        margin-top: -35px; /* Ensure space for fixed nav */
+        /* MODIFIED PADDING HERE: Reduced top and bottom padding */
+        padding: 1.5rem 1rem; /* Was 3rem 1rem; now 1.5rem top/bottom, 1rem left/right */
+        margin-top: -30px; /* This ensures space for the fixed navigation bar */
       }
       .experience-section h2 {
         text-align: center;
         margin-bottom: 3rem;
-        /* Prepare for animation */
         display: flex;
         justify-content: center;
         align-items: center;
@@ -92,7 +92,7 @@
       .experience-section h2 .fa-briefcase,
       .experience-section h2 .experience-heading-text {
         opacity: 0;
-        display: inline-block; /* For transforms */
+        display: inline-block;
       }
 
       .experience-section.section-visible h2 .fa-briefcase {
@@ -144,11 +144,11 @@
         width: 3px;
         background-color: var(--primary-color);
         transform: translateX(-50%);
-        height: 0; /* Initially no height */
-        transition: height 1.5s ease-out 0.5s; /* Animate height with a delay */
+        height: 0;
+        transition: height 1.5s ease-out 0.5s;
       }
       .experience-section.section-visible .experience-timeline::before {
-        height: 100%; /* Expand when section is visible */
+        height: 100%;
       }
 
       .timeline-item {
