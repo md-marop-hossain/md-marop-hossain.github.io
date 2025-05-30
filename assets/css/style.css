@@ -156,7 +156,11 @@ body {
 .logo:hover .logo-letter:nth-child(3) {
   transition-delay: 0.14s;
 }
-
+.logo img {
+  height: 100px; /* Or your desired height */
+  width: auto; /* To maintain aspect ratio */
+  display: block; /* Optional, to remove extra space under the image */
+}
 /* --- End of Animated Logo Styles --- */
 
 .hero {
