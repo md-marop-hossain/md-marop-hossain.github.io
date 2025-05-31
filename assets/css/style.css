@@ -18,7 +18,7 @@
   --text-primary: #f3f4f6;
   --text-secondary: #d1d5db;
   --bg-primary: #000000; /* Changed to solid black */
-  --bg-secondary: #000000; /* Changed to solid black */
+  --bg-secondary: #00000051; /* Changed to solid black */
   --accent-color: #151d27;
   --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.5); /* Stronger shadow for dark theme cards */
 }
