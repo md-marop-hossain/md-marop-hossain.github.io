@@ -111,12 +111,12 @@
         text-align: center;
         font-family: "Cormorant Garamond", serif;
         font-weight: 700;
-        font-size: 3rem;
+        font-size: 2.8rem; /* Slightly reduced heading */
       }
 
       .education-container {
         display: grid;
-        gap: 2rem;
+        gap: 1.5rem; /* MODIFIED: Was 2rem */
       }
 
       .education-section h2 .fa-graduation-cap,
@@ -178,16 +178,13 @@
 
       .education-card-advanced {
         position: relative;
-        background-color: rgba(
-          var(--card-bg-rgb),
-          0.9
-        ); /* More opaque for readability */
+        background-color: rgba(var(--card-bg-rgb), 0.9);
         backdrop-filter: blur(5px);
         -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(var(--primary-rgb), 0.4); /* Themed border */
+        border: 1px solid rgba(var(--primary-rgb), 0.4);
         border-radius: 0.75rem;
-        padding: 1.8rem;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3); /* Enhanced shadow */
+        padding: 1.2rem; /* MODIFIED: Was 1.5rem */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
         overflow: hidden;
         opacity: 0;
         transition: transform 0.35s ease, box-shadow 0.35s ease,
@@ -205,15 +202,15 @@
       .education-header {
         display: flex;
         align-items: flex-start;
-        gap: 1.5rem;
-        margin-bottom: 1.2rem;
+        gap: 1rem; /* MODIFIED: Was 1.5rem */
+        margin-bottom: 1rem; /* MODIFIED: Was 1.2rem */
       }
       .education-icon {
-        font-size: 2.2rem; /* Slightly larger icon */
+        font-size: 1.8rem; /* MODIFIED: Was 2.2rem */
         color: var(--primary-color);
         margin-top: 0px;
-        width: 40px;
-        height: 40px;
+        width: 36px; /* MODIFIED: Was 40px */
+        height: 36px; /* MODIFIED: Was 40px */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -222,8 +219,8 @@
       }
       .education-header-text h3 {
         font-family: "Cormorant Garamond", serif;
-        font-weight: 700; /* Bolder */
-        font-size: 1.85rem;
+        font-weight: 700;
+        font-size: 1.5rem; /* MODIFIED: Was 1.65rem */
         color: var(--primary-light);
         margin: 0;
       }
@@ -233,51 +230,49 @@
         font-weight: 400;
       }
       .education-header-text .degree {
-        font-size: 1.15rem;
+        font-size: 0.95rem; /* MODIFIED: Was 1.05rem */
         font-weight: 500;
         color: var(--text-primary);
         margin-top: 0.3rem;
       }
       .education-header-text .duration {
-        font-size: 0.95rem;
+        font-size: 0.8rem; /* MODIFIED: Was 0.85rem */
         color: var(--text-secondary);
         margin-top: 0.45rem;
       }
       .coursework {
-        margin-top: 1.5rem;
-        padding-top: 1.2rem;
+        margin-top: 1.2rem; /* MODIFIED: Was 1.5rem */
+        padding-top: 1rem; /* MODIFIED: Was 1.2rem */
         border-top: 1px solid rgba(var(--primary-rgb), 0.25);
       }
       .coursework h4 {
         font-family: "Noto Sans", sans-serif;
-        font-weight: 600; /* Bolder */
-        font-size: 1.15rem;
+        font-weight: 600;
+        font-size: 1rem; /* MODIFIED: Was 1.05rem */
         color: var(--primary-light);
-        margin-bottom: 1rem;
+        margin-bottom: 0.8rem; /* MODIFIED: Was 1rem */
       }
       .coursework-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.7rem; /* Slightly more gap */
+        gap: 0.5rem; /* MODIFIED: Was 0.7rem */
       }
       .coursework-tags .tag {
         font-family: "Noto Sans", sans-serif;
-        font-weight: 500; /* Medium weight */
+        font-weight: 500;
         background-color: rgba(var(--primary-rgb), 0.2);
         color: var(--primary-light);
-        padding: 0.4rem 0.9rem;
-        border-radius: 16px; /* More rounded */
-        font-size: 0.85rem;
-        border: 1px solid transparent; /* Prepare for hover border */
+        padding: 0.3rem 0.7rem; /* MODIFIED: Was 0.4rem 0.9rem */
+        border-radius: 16px;
+        font-size: 0.7rem; /* MODIFIED: Was 0.75rem */
+        border: 1px solid transparent;
         transition: transform 0.25s ease-out, background-color 0.3s ease,
           box-shadow 0.3s ease, border-color 0.3s ease;
       }
       .coursework-tags .tag:hover {
         transform: translateY(-3px) scale(1.08);
         background-color: var(--primary-color);
-        color: var(
-          --text-primary
-        ); /* Ensure contrast if primary-color is light */
+        color: var(--text-primary);
         box-shadow: 0 2px 8px rgba(var(--primary-rgb), 0.3);
         border-color: var(--primary-light);
       }
@@ -419,7 +414,7 @@
 
         let animationFrameId;
         let lastTimestamp = 0;
-        const targetFps = 20; // Lower for slower animation, e.g., 15 or 20. Higher for faster.
+        const targetFps = 20;
         const fpsInterval = 1000 / targetFps;
 
         function setupMatrix() {
