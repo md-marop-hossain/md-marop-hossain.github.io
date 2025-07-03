@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Explore innovative AI, ML, and software development projects by Md. Marop Hossain."
+    />
+    <meta name="author" content="Md. Marop Hossain" />
+    <title>Projects - Md. Marop Hossain</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      integrity="sha512-..."
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="icon" href="assets/favicon/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- CSS Variables for RGBA colors (for hover effects) --- */
+      :root {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250;
+      }
+      html[data-theme="light"] {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250;
+      }
+      html[data-theme="dark"] {
+        --primary-rgb: 112, 158, 192;
+        --card-bg-rgb: 28, 32, 36;
+      }
+
+      /* --- Styles for Sidebar and Project Layout --- */
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .page-container {
+        display: flex;
+        padding-top: 25px; /* Assuming nav height is 70px */
+      }
+
+      .sidebar {
+        width: 280px;
+        position: fixed;
+        top: 70px; /* Match page-container padding-top */
+        left: 0;
+        height: calc(100vh - 70px); /* Full height minus nav */
+        background: linear-gradient(
+          180deg,
+          #0b0e12 0%,
+          #050609 100%
+        ); /* Dark sophisticated gradient */
+        padding: 2rem 0rem 2rem 1rem; /* Adjusted padding */
+        overflow-y: auto;
+        border-right: 1px solid #374151; /* Slightly lighter border for definition */
+        transition: all 0.3s ease;
+      }
+
+      .sidebar h3 {
+        color: #5eead4; /* Bright, inviting teal for the heading */
+        margin-bottom: 1.5rem;
+        font-size: 1.1rem; /* Slightly smaller for a cleaner look */
+        font-weight: 600;
+        text-transform: uppercase; /* Adds a touch of class */
+        letter-spacing: 0.05em; /* Spacing out letters a bit */
+        padding-bottom: 0.75rem;
+        margin-left: 1rem; /* Align with items that will have left padding */
+        margin-right: 1rem;
+        border-bottom: 1px solid #374151; /* Subtle separator, updated from Fix 1 */
+        font-family: "Share Tech", sans-serif; /* Applied font */
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar li a {
+        display: block;
+        color: var(
+          --text-secondary,
+          #d1d5db
+        ); /* Fallback if CSS var not found */
+        text-decoration: none;
+        padding: 0.9rem 1rem 0.9rem 2rem; /* More padding for a spacious feel, esp. left */
+        margin-bottom: 0.25rem; /* Reduced margin */
+        transition: background-color 0.2s ease, color 0.2s ease,
+          border-left-color 0.2s ease;
+        font-size: 0.9rem; /* Cleaner, modern font size */
+        line-height: 1.4;
+        border-left: 4px solid transparent; /* Placeholder for active/hover indication */
+        position: relative;
+        font-family: "Share Tech", sans-serif; /* Applied font */
+      }
+
+      .sidebar li a:hover {
+        background-color: rgba(
+          45,
+          212,
+          191,
+          0.1
+        ); /* Very subtle teal background tint */
+        color: #5eead4; /* Teal text on hover */
+        border-left: 4px solid #2dd4bf; /* Teal accent line on hover */
+      }
+
+      .sidebar li a.active {
+        background-color: rgba(
+          45,
+          212,
+          191,
+          0.15
+        ); /* Slightly more pronounced teal background */
+        color: #2dd4bf; /* Stronger teal for active text */
+        font-weight: 600; /* Bolder active link */
+        border-left: 4px solid #2dd4bf; /* Persistent teal accent line */
+      }
+
+      /* --- Fix 2: "Project Link" text color changed (Kept your preferred style) --- */
+      .project-links a {
+        color: #2dd4bf !important;
+        font-weight: 600;
+      }
+      .project-links a:hover {
+        color: #5eead4 !important;
+      }
+
+      .projects-main-content {
+        margin-left: 280px;
+        flex-grow: 1;
+        padding: 0;
+      }
+
+      .projects-main-content .section h2 {
+        /* Targeting the main "Projects" heading */
+        font-family: "Share Tech", sans-serif; /* Applied font */
+      }
+
+      .project-card .project-content h3 {
+        /* Targeting project names/titles */
+        font-family: "Share Tech", sans-serif; /* Applied font */
+      }
+
+      .project-card {
+        scroll-margin-top: 90px;
+        opacity: 0; /* For entry animation */
+        transform: scale(0.8); /* For entry animation */
+        /* Added transitions for new hover effect properties */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease, opacity 0.6s ease-out; /* Retained opacity for entry animation */
+        /* Note: Base border is defined in style.css: border: 1px solid var(--accent-color); */
+        /* Base box-shadow is in style.css: box-shadow: var(--card-shadow); */
+      }
+
+      /* UPDATED HOVER ANIMATION FOR PROJECT CARD (from education.html) */
+      .project-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
+          0 0 0 2px rgba(var(--primary-rgb), 0.4);
+        border-color: rgba(var(--primary-rgb), 0.6);
+      }
+      /* END OF UPDATED HOVER ANIMATION */
+
+      .project-card.animate__animated {
+        opacity: 1; /* Made visible when animation starts */
+        transform: scale(1); /* Returns to normal size */
+      }
+
+      /* Staggered animation delays */
+      .project-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .project-card:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .project-card:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .project-card:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .project-card:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .project-card:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+      .project-card:nth-child(7) {
+        animation-delay: 0.7s;
+      }
+      .project-card:nth-child(8) {
+        animation-delay: 0.8s;
+      }
+      .project-card:nth-child(9) {
+        animation-delay: 0.9s;
+      }
+
+      .projects-main-content > .section {
+        padding-top: 2.5rem;
+      }
+
+      /* New style for tech-stack background color in projects.html */
+      .project-card .tech-stack span {
+        background-color: #091115; /* Darker blue-green for tech stack tags */
+        /* border: 1px solid #0f2024;  */
+        transition: background-color 0.3s ease, border-color 0.3s ease;
+      }
+
+      .project-card .tech-stack span:hover {
+        background-color: #325f59; /* Lighter teal on hover */
+        border-color: #075985;
+      }
+
+      @media (max-width: 992px) {
+        .sidebar {
+          display: none;
+        }
+
+        .projects-main-content {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="nav" role="navigation" aria-label="Main Navigation">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img
+            src="site_logo/MMH.gif"
+            alt="MMH Company Logo"
+            style="height: 40px; width: auto"
+          />
+        </a>
+        <button
+          id="mobile-menu-toggle"
+          class="mobile-menu-toggle"
+          aria-label="Toggle navigation menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links-container">
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html"
+            ><i class="fa fa-graduation-cap"></i> Education</a
+          >
+          <a href="experience.html"
+            ><i class="fa fa-briefcase"></i> Experience</a
+          >
+          <a href="projects.html" class="active"
+            ><i class="fa fa-code-branch"></i> Projects</a
+          >
+          <a href="certificates.html"
+            ><i class="fa fa-certificate"></i> Certificates</a
+          >
+          <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
+          <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-container">
+      <aside class="sidebar" role="complementary">
+        <h3>Project Navigation</h3>
+        <ul id="project-links">
+          <li><a href="#project-1">AI Agent Chatbot Platform</a></li>
+          <li><a href="#project-2">Hybrid Log Classification</a></li>
+          <li><a href="#project-3">GPT-Powered Email Assistant</a></li>
+          <li><a href="#project-4">EdTech LLM Q&A Suite</a></li>
+          <li><a href="#project-5">Ocular Disease Diagnosis</a></li>
+          <li><a href="#project-6">Diabetic Retinopathy Diagnosis</a></li>
+          <li><a href="#project-7">Salary Prediction Model</a></li>
+          <li><a href="#project-8">Virtual Learning Nexus</a></li>
+          <li><a href="#project-9">TechTrans E-commerce</a></li>
+        </ul>
+      </aside>
+
+      <main class="projects-main-content">
+        <section class="section" aria-labelledby="projects-heading">
+          <div class="section-content-container">
+            <h2 id="projects-heading">
+              <i class="fa fa-code-branch"></i> Projects
+            </h2>
+
+            <div
+              id="project-1"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>
+                  Next-Generation Multi-Model Personal AI Agent Chatbot Platform
+                  with Real-Time Web Search
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Combines advanced language models from OpenAI and Groq with
+                    real-time web search, enabling dynamic, up-to-date, and
+                    intelligent conversational experiences.
+                  </li>
+                  <li>
+                    Developed using FastAPI (backend), LangGraph and LangChain
+                    (agent logic and tool integration), Streamlit (frontend),
+                    and Uvicorn (hosting), making the platform robust,
+                    extensible, and production-ready.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>OpenAI</span><span>Groq</span><span>FastAPI</span
+                  ><span>LangGraph</span><span>LangChain</span
+                  ><span>Streamlit</span><span>Uvicorn</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/Next-Generation-Multi-Model-Personal-AI-Agent-Chatbot-Platform-with-Real-Time-Web-Search"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-2"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>
+                  Hybrid Log Classification System with Deepseek-R1 LLM, BERT,
+                  NLP and Regex
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed a hybrid AI system for automated log message
+                    classification using Regex pattern matching, BERT embeddings
+                    with logistic regression, and Deepseek R1 Large Language
+                    Models (LLM), with DBSCAN clustering for regex discovery to
+                    automatically categorize log messages from enterprise
+                    systems, ensuring high accuracy and adaptability for both
+                    common and rare log types.
+                  </li>
+                  <li>
+                    Designed a scalable pipeline that combines rule-based,
+                    machine learning, and GenAI methods-helping organizations
+                    detect errors, security threats, and system events faster,
+                    reduce manual log review, and improve IT operations in
+                    real-world industry environments.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>Natural Language Processing (NLP)</span
+                  ><span>Regex Pattern Matching</span
+                  ><span>BERT (Sentence Transformers)</span
+                  ><span>Large Language Models (LLM) – Deepseek R1</span
+                  ><span>Machine Learning Pipeline Development</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/Hybrid-Log-Classification-System-with-Deepseek-R1-LLM-BERT-NLP-and-Regex"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-3"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>GPT-Powered Email Assistant</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Built an AI-driven email assistant using Python and OpenAI
+                    GPT model (GPT-4.1 and 3.5) to automate email scanning,
+                    smart prioritization, and automatic categorization of
+                    business and sponsorship messages, compatible with any email
+                    provider.
+                  </li>
+                  <li>
+                    Enabled AI-generated professional reply suggestions and user
+                    review workflows, supporting both OpenAI and local LLMs for
+                    privacy, resulting in significant time savings and improved
+                    inbox organization.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>OpenAI(GPT-4.1 and 3.5)</span><span>Python</span
+                  ><span>local LLMs</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/GPT-Powered-Email-Assistant"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-4"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>EdTech LLM Q&A Suite: LangChain + Gemini + Streamlit</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed an AI-powered Q&A platform using LangChain, Google
+                    Gemini (PaLM), and Streamlit, delivering instant,
+                    context-aware answers for educational and online platforms
+                    through a user-friendly interface.
+                  </li>
+                  <li>
+                    Integrated a centralized CSV knowledge base for efficient
+                    information retrieval, streamlining support and knowledge
+                    management to reduce repetitive queries and enhance
+                    scalability.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>Google Gemini (PaLM)</span
+                  ><span>Large Language Models (LLMs)</span
+                  ><span>Vector Databases (FAISS)</span><span>LangChain</span
+                  ><span>Streamlit</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/EdTech-LLM-Q-A-Suite-LangChain-Gemini-Streamlit"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-5"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>
+                  Enhancing Ocular Disease Diagnosis, Blood Vessel Segmentation,
+                  and Vessel Diameter Estimation Using an Advanced Deep Learning
+                  Approach
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed retinal vessel segmentation and diameter
+                    estimation algorithms for diagnosing ischemia, macular
+                    degeneration, and cardiovascular diseases, enabling early,
+                    cost-effective detection with potential for mobile or web
+                    integration.
+                  </li>
+                  <li>
+                    Designed an advanced system using pre-trained models
+                    (EfficientNetV2S, ResNet50, DenseNet121) to classify ocular
+                    diseases (cataracts, glaucoma, diabetic retinopathy) with
+                    high accuracy, improving diagnostic efficiency.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>Machine Learning</span><span>Computer Vision</span
+                  ><span>Deep Learning</span
+                  ><span>Medical Image Processing</span
+                  ><span>Healthcare AI</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/Enhancing-Ocular-Disease-Diagnosis-Blood-Vessel-Segmentation-and-Vessel-Diameter-Estimation-CSE499B"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-6"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>
+                  Segmentation of Blood Vessels, Optic Disc Localization,
+                  Exudates Detection for Diabetic Retinopathy, and Glaucoma
+                  Diagnosis From Fundus Images
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed an automated diagnostic system using image
+                    processing and machine learning to detect diabetic
+                    retinopathy and glau coma, achieving 98.77% accuracy in
+                    optic disc localization and 75.73% accuracy in retinal
+                    feature classification.
+                  </li>
+                  <li>
+                    Engineered blood vessel segmentation algorithms with
+                    improved accuracy and noise reduction using morphological
+                    operations, Otsu thresholding, and deep learning techniques.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>Python & AI Frameworks</span><span>Computer Vision</span
+                  ><span>Image Processing</span><span>Deep Learning</span
+                  ><span>Medical Image Analysis</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/Segmentation-of-Blood-Vessels-Optic-Disc-Localization-Exudates-Detection-"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-7"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>
+                  Predictive Modeling and Analysis of Software Engineers Salary
+                  Using Machine Learning
+                </h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Built a ML framework using regression models (Decision
+                    Trees, Random Forest, Linear Regression, XGBoost) to predict
+                    software engineer salaries with 76% accuracy, leveraging
+                    60,000+ entries from the 2023 Stack Overflow Developer
+                    Survey.
+                  </li>
+                  <li>
+                    Deployed a user-friendly web application for real-time
+                    salary predictions, supporting job seekers and recruiters in
+                    salary negotiations and career planning.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>Machine Learning Algorithms</span
+                  ><span>Data Analysis</span><span>Predictive Modeling</span
+                  ><span>Web Application Development</span
+                  ><span>Python & Data Science Tools</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/Predictive-Modeling-And-Analysis-Of-Software-Engineers-Salary-Using-Machine-Learning"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-8"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>Virtual Learning Nexus</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Developed a responsive web-based educational platform using
+                    HTML, CSS, JS, PHP, and MySQL with role-based student and
+                    admin panels.
+                  </li>
+                  <li>
+                    Implemented course management, feedback collection, and
+                    secure authentication.
+                  </li>
+                  <li>
+                    Integrated Stripe payments and designed system workflows
+                    with StarUML for scalable planning.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>PHP</span><span>MySQL</span><span>JavaScript</span
+                  ><span>StarUML</span><span>Bootstrap (Framework)</span
+                  ><span>Stripe Payment Gateway</span><span>PHP Mailer</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/Virtual-Learning-Nexus-project-CSE482L/tree/master"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="project-9"
+              class="project-card animate__animated animate__zoomIn animate__flipInX"
+            >
+              <div class="project-content">
+                <h3>TechTrans E-commerce Website</h3>
+                <ul
+                  style="
+                    margin-left: 20px;
+                    font-size: 15px;
+                    font-family: 'Outfit', sans-serif;
+                  "
+                >
+                  <li>
+                    Built a full-stack electronics marketplace using React.js,
+                    Node.js, Express, MongoDB, Firebase, and Material UI.
+                  </li>
+                  <li>
+                    Enabled product Browse, real-time search, secure
+                    authentication, cart/order management, and Stripe payment
+                    gateway.
+                  </li>
+                  <li>
+                    Delivered user-friendly UX and tools for small businesses to
+                    manage inventory and orders efficiently.
+                  </li>
+                </ul>
+                <div class="tech-stack" style="margin-top: 10px">
+                  <span>React.js</span><span>Node.js</span><span>MongoDB</span
+                  ><span>Express</span><span>Firebase</span
+                  ><span>Material UI</span><span>Tailwind CSS</span>
+                </div>
+                <div class="project-links">
+                  <a
+                    href="https://github.com/md-marop-hossain/TechTrans_Ecommerce_Website/tree/main"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    >Project Link</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <footer>
+      <p style="font-family: 'Sofia', sans-serif">
+        © 2025 Md. Marop Hossain. All rights reserved.
+      </p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      // --- New JavaScript for Active Link Highlighting ---
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".project-card");
+        const navLinks = document.querySelectorAll("#project-links li a");
+
+        if (sections.length === 0 || navLinks.length === 0) {
+          return;
+        }
+
+        const highlightNavLink = () => {
+          let current = "";
+
+          sections.forEach((section) => {
+            const sectionTop = section.offsetTop;
+            // Adjust this value to control when the link becomes active
+            // 95px is roughly the height of the fixed navigation bar + a small offset
+            if (pageYOffset >= sectionTop - 95) {
+              current = section.getAttribute("id");
+            }
+          });
+
+          navLinks.forEach((a) => {
+            a.classList.remove("active");
+            if (a.getAttribute("href") === `#${current}`) {
+              a.classList.add("active");
+            }
+          });
+        };
+
+        window.addEventListener("scroll", highlightNavLink);
+
+        highlightNavLink(); // Call on load to set initial active link
+
+        // --- Intersection Observer for Animations (New) ---
+        const projectCardsForAnimation =
+          document.querySelectorAll(".project-card");
+
+        if (projectCardsForAnimation.length > 0) {
+          const cardAnimationObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  // Add animate__animated class to trigger Animate.css
+                  entry.target.classList.add("animate__animated");
+                  // The specific animation classes (animate__zoomIn, animate__flipInX) are already in HTML
+                  // No need to add them here, just trigger the overall animation by adding animate__animated
+                  cardAnimationObserver.unobserve(entry.target); // Stop observing after animation
+                }
+              });
+            },
+            {
+              threshold: 0.1, // Trigger when 10% of the item is visible
+            }
+          );
+
+          projectCardsForAnimation.forEach((card) => {
+            cardAnimationObserver.observe(card);
+          });
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Resume - Md. Marop Hossain</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Basic style for the resume viewer container */
+      .resume-viewer {
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+        width: 100%;
+        max-width: 1000px; /* Max-width for larger screens */
+        height: 80vh; /* Adjusted for better mobile viewing, e.g., 80% of viewport height */
+        margin-left: auto;
+        margin-right: auto;
+        border: 1px solid rgba(128, 128, 128, 0.3); /* Subtle border */
+        box-shadow: var(--card-shadow);
+      }
+      .resume-viewer iframe {
+        /* Changed from 'object' to 'iframe' */
+        width: 100%;
+        height: 100%;
+      }
+      .resume-section p {
+        text-align: center;
+        font-size: 1.1rem;
+        color: var(--text-secondary);
+      }
+      .resume-section .resume-button {
+        display: block;
+        width: fit-content;
+        margin: 0 auto;
+      }
+
+      /* Apply Share Tech font to the body and navigation links */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+      .nav-links-container a {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* Ensure headings and other specific text elements also use Share Tech if needed */
+      h2,
+      .resume-section p,
+      .resume-button {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* Override for specific elements if they have their own font families from style.css that you wish to change */
+      .logo {
+        /* Example if logo text was not an image and needed font change */
+        font-family: "Share Tech", sans-serif;
+      }
+      .section {
+        margin-top: -30px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img
+            src="site_logo/MMH.gif"
+            alt="MMH Company Logo"
+            style="height: 40px; width: auto"
+          />
+        </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links-container">
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html"
+            ><i class="fa fa-graduation-cap"></i> Education</a
+          >
+          <a href="experience.html"
+            ><i class="fa fa-briefcase"></i> Experience</a
+          >
+          <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
+          <a href="certificates.html"
+            ><i class="fa fa-certificate"></i> Certificates</a
+          >
+          <a href="resume.html" class="active"
+            ><i class="fa fa-file-alt"></i> Resume</a
+          >
+          <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section resume-section">
+      <h2><i class="fa fa-file-alt"></i> Resume</h2>
+      <p>View my resume below or download a copy.</p>
+
+      <div class="resume-viewer">
+        <iframe src="assets/md_marop_hossain_resumee.pdf" frameborder="0">
+          <p>
+            Your browser does not support embedded PDFs. You can
+            <a href="assets/md_marop_hossain_resumee.pdf" target="_blank"
+              >download the resume here</a
+            >
+            instead.
+          </p>
+        </iframe>
+      </div>
+
+      <a
+        class="resume-button"
+        href="assets/md_marop_hossain_resumee.pdf"
+        target="_blank"
+        >Download Resume (PDF)</a
+      >
+    </section>
+
+    <footer>
+      <p style="font-family: 'Sofia', sans-serif">
+        © 2025 Md. Marop Hossain. All rights reserved.
+      </p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

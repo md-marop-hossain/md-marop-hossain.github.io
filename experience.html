@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Experience - Md. Marop Hossain</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* Apply Share Tech to the body of this page */
+      body {
+        font-family: "Share Tech", sans-serif;
+        background-color: var(
+          --bg-primary
+        ); /* Ensure body has its theme background */
+        position: relative; /* For z-index stacking context if needed */
+        z-index: 0;
+      }
+
+      /* Ensure navbar links on this page also use Share Tech */
+      .nav-links-container a {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      /* --- CSS Variables for RGBA colors (for orb, nav/footer, card transparency) --- */
+      :root {
+        --primary-rgb: 37, 99, 235; /* Default, will be updated by theme */
+        --card-bg-rgb: 28, 32, 36; /* Default for dark cards, overridden by light theme */
+        --nav-footer-bg-rgb: 10, 10, 15; /* Default for dark nav/footer */
+      }
+      html[data-theme="light"] {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250; /* Light card (e.g., white/light gray) */
+        --nav-footer-bg-rgb: 230, 230, 230;
+      }
+      html[data-theme="dark"] {
+        --primary-rgb: 112, 158, 192; /* Adjusted for dark theme */
+        --card-bg-rgb: 28, 32, 36; /* Dark card (e.g., dark gray/charcoal) */
+        --nav-footer-bg-rgb: 10, 10, 15;
+      }
+
+      /* --- Interactive Background Canvas --- */
+      #space-elevator-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place it behind all content */
+        /* filter: blur(5px); */ /* Blur is currently commented out */
+      }
+
+      /* CORRECTED: .nav removed from this rule to allow position:fixed from style.css */
+      .experience-section,
+      footer {
+        position: relative;
+        z-index: 1; /* Sections above canvas */
+      }
+
+      .nav {
+        /* This rule ensures .nav's z-index is high, position:fixed is inherited from style.css */
+        z-index: 1000;
+      }
+
+      .experience-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 0.5rem 1rem 1.5rem 1rem;
+        /* CORRECTED: margin-top to clear fixed navbar. Adjust '70px' to your navbar's actual height. */
+        margin-top: 70px;
+      }
+      .experience-section h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      /* Heading animation styles */
+      .experience-section h2 .fa-briefcase,
+      .experience-section h2 .experience-heading-text {
+        opacity: 0;
+        display: inline-block;
+      }
+
+      .experience-section.section-visible h2 .fa-briefcase {
+        animation: icon-pop-in-experience 0.6s
+          cubic-bezier(0.68, -0.55, 0.27, 1.55) 0.1s forwards;
+      }
+
+      .experience-section.section-visible h2 .experience-heading-text {
+        animation: text-slide-from-right-experience 0.7s ease-out 0.3s forwards;
+      }
+
+      @keyframes icon-pop-in-experience {
+        0% {
+          transform: scale(0.5) rotate(-45deg);
+          opacity: 0;
+        }
+        70% {
+          transform: scale(1.2) rotate(10deg);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      @keyframes text-slide-from-right-experience {
+        0% {
+          transform: translateX(30px);
+          opacity: 0;
+        }
+        100% {
+          transform: translateX(0);
+          opacity: 1;
+        }
+      }
+
+      .experience-timeline {
+        position: relative;
+        width: 100%;
+      }
+
+      /* Timeline line animation */
+      .experience-timeline::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 50%;
+        width: 3px;
+        background-color: var(--primary-color);
+        transform: translateX(-50%);
+        height: 0;
+        transition: height 1.5s ease-out 0.5s;
+      }
+      .experience-section.section-visible .experience-timeline::before {
+        height: 100%;
+      }
+
+      .timeline-item {
+        position: relative;
+        width: 100%;
+        padding: 1rem 0;
+        margin-bottom: 2rem;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .timeline-item.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .timeline-content {
+        position: relative;
+        width: 45%;
+        background: rgba(var(--card-bg-rgb), 0.75);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(var(--primary-rgb), 0.2);
+      }
+
+      .timeline-item:nth-child(odd) .timeline-content {
+        left: 0;
+      }
+      .timeline-item:nth-child(even) .timeline-content {
+        left: 55%;
+      }
+
+      .timeline-icon {
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 10;
+        font-size: 1.2rem;
+      }
+      html[data-theme="light"] .timeline-icon {
+        border: 3px solid #ffffff;
+      }
+      html[data-theme="dark"] .timeline-icon {
+        border: 3px solid #000000;
+      }
+
+      .timeline-content::after {
+        content: "";
+        position: absolute;
+        top: 22px;
+        width: 0;
+        height: 0;
+        border: 10px solid transparent;
+      }
+      .timeline-item:nth-child(odd) .timeline-content::after {
+        right: -20px;
+        border-left-color: rgba(var(--card-bg-rgb), 0.75);
+      }
+      .timeline-item:nth-child(even) .timeline-content::after {
+        left: -20px;
+        border-right-color: rgba(var(--card-bg-rgb), 0.75);
+      }
+
+      .timeline-content h3 {
+        font-size: 1.4rem;
+        color: var(--primary-color);
+        margin-bottom: 0.5rem;
+      }
+
+      .timeline-content h3 span {
+        display: block;
+        font-size: 1rem;
+        font-weight: 400;
+        color: var(--text-secondary);
+        margin-top: 0.5rem;
+      }
+
+      .timeline-content ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+      }
+
+      .timeline-content ul li {
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.5;
+        font-size: small;
+      }
+
+      .timeline-content ul li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 768px) {
+        .experience-timeline::before {
+          left: 20px;
+        }
+        .timeline-item:nth-child(odd) .timeline-content,
+        .timeline-item:nth-child(even) .timeline-content {
+          width: calc(100% - 60px);
+          left: 60px;
+        }
+        .timeline-icon {
+          left: 20px;
+        }
+        .timeline-item:nth-child(odd) .timeline-content::after,
+        .timeline-item:nth-child(even) .timeline-content::after {
+          left: -20px;
+          border-right-color: rgba(var(--card-bg-rgb), 0.75);
+          border-left-color: transparent;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="space-elevator-bg"></canvas>
+    <nav class="nav">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img
+            src="site_logo/MMH.gif"
+            alt="MMH Company Logo"
+            style="height: 40px; width: auto"
+          />
+        </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links-container">
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html"
+            ><i class="fa fa-graduation-cap"></i> Education</a
+          >
+          <a href="experience.html" class="active"
+            ><i class="fa fa-briefcase"></i> Experience</a
+          >
+          <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
+          <a href="certificates.html"
+            ><i class="fa fa-certificate"></i> Certificates</a
+          >
+          <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
+          <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <section class="section experience-section">
+      <h2>
+        <i class="fa fa-briefcase"></i>
+        <span class="experience-heading-text">My Experience</span>
+      </h2>
+      <div class="experience-timeline">
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa fa-code"></i></div>
+          <div class="timeline-content">
+            <h3>
+              Web Development Team | <small><i>Moderator</i></small>
+              <span>NSU ACM Student Chapter (October 2021 – January 2024)</span>
+            </h3>
+            <ul>
+              <li>
+                Served as a moderator for the NSU ACM SC web development team,
+                overseeing website maintenance and development, including the
+                implementation of a feature enabling participants to verify
+                their ACM certificates.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-icon"><i class="fa fa-camera-retro"></i></div>
+          <div class="timeline-content">
+            <h3>
+              Core volunteer | <small><i>Media Team</i></small>
+              <span>IEEE NSU Student Branch (Jun 2021 - Jul 2024)</span>
+            </h3>
+            <ul>
+              <li>
+                Created and managed engaging multimedia content for social media
+                platforms, significantly increasing chapter visibility and
+                online engagement.
+              </li>
+              <li>
+                Collaborated with cross-functional teams to design promotional
+                materials and provide comprehensive event coverage through
+                photography, videography, and live updates.
+              </li>
+              <li>
+                Developed skills in digital marketing, content creation, and
+                graphic design while mentoring new team members.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p style="font-family: 'Sofia', sans-serif">
+        © 2025 Md. Marop Hossain. All rights reserved.
+      </p>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        // Observer for individual timeline items
+        const timelineItems = document.querySelectorAll(".timeline-item");
+        const itemObserver = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("visible");
+                itemObserver.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+        timelineItems.forEach((item) => {
+          itemObserver.observe(item);
+        });
+
+        // Observer for the whole experience section (for heading and timeline line animation)
+        const experienceSection = document.querySelector(".experience-section");
+        if (experienceSection) {
+          const sectionVisibilityObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add("section-visible");
+                  sectionVisibilityObserver.unobserve(entry.target); // Animate once
+                }
+              });
+            },
+            {
+              threshold: 0.1, // Adjust as needed
+            }
+          );
+          sectionVisibilityObserver.observe(experienceSection);
+        }
+      });
+    </script>
+    <script>
+      // JavaScript for Space Elevator Background Animation
+      document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("space-elevator-bg");
+        const ctx = canvas.getContext("2d");
+        let stars = [];
+        const numStars = 250;
+        let animationFrameId;
+
+        let lastTimestamp = 0;
+        const targetFps = 30;
+        const fpsInterval = 1000 / targetFps;
+
+        function setupCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+
+        class Star {
+          constructor() {
+            this.reset();
+            this.y = Math.random() * canvas.height;
+          }
+
+          reset() {
+            this.x = Math.random() * canvas.width;
+            this.y = 0;
+            this.size = Math.random() * 1.5 + 0.3;
+            this.speed = (Math.random() * 1 + 0.2) * (this.size / 1.8);
+            if (this.speed < 0.1) this.speed = 0.1;
+          }
+
+          draw() {
+            const opacity = Math.max(0.3, Math.min(0.9, this.size / 1.5));
+            ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+          }
+
+          update() {
+            this.y += this.speed;
+            if (this.y > canvas.height) {
+              this.reset();
+            }
+          }
+        }
+
+        function initStars() {
+          stars = [];
+          for (let i = 0; i < numStars; i++) {
+            stars.push(new Star());
+          }
+        }
+
+        function drawSpace() {
+          const bodyBg =
+            getComputedStyle(document.documentElement)
+              .getPropertyValue("--bg-primary")
+              .trim() || "#000000";
+          ctx.fillStyle = bodyBg;
+          ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+          stars.forEach((star) => {
+            star.draw();
+            star.update();
+          });
+        }
+
+        function animateSpace(timestamp) {
+          animationFrameId = requestAnimationFrame(animateSpace);
+          const elapsed = timestamp - lastTimestamp;
+
+          if (elapsed > fpsInterval) {
+            lastTimestamp = timestamp - (elapsed % fpsInterval);
+            drawSpace();
+          }
+        }
+
+        // Initial setup
+        setupCanvas();
+        initStars();
+        lastTimestamp = performance.now();
+        animateSpace(lastTimestamp);
+
+        let resizeTimer;
+        window.addEventListener("resize", () => {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(() => {
+            if (animationFrameId) {
+              cancelAnimationFrame(animationFrameId);
+            }
+            setupCanvas();
+            initStars();
+            lastTimestamp = performance.now();
+            animateSpace(lastTimestamp);
+          }, 250);
+        });
+      });
+    </script>
+  </body>
+</html>

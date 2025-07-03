@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Certificates - Md. Marop Hossain</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Sofia"
+    />
+
+    <style>
+      /* Apply Share Tech to the whole page */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      /* Ensure footer also uses Share Tech */
+      /* footer p {
+        font-family: "Share Tech", sans-serif !important; /* Override inline style */
+      /* } */ /* This was removed to apply Sofia font as requested */
+
+      /* --- CSS Variables for RGBA colors (for hover effects) --- */
+      :root {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250;
+      }
+      html[data-theme="light"] {
+        --primary-rgb: 37, 99, 235;
+        --card-bg-rgb: 250, 250, 250;
+      }
+      html[data-theme="dark"] {
+        --primary-rgb: 112, 158, 192;
+        --card-bg-rgb: 28, 32, 36;
+      }
+
+      /* --- Styles for Sidebar and Certificate Layout --- */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      .page-container {
+        display: flex;
+        padding-top: 40px;
+      }
+
+      .sidebar {
+        width: 260px;
+        position: fixed;
+        top: 70px;
+        left: 0;
+        height: calc(100vh - 70px);
+        background-color: var(--bg-secondary);
+        padding: 1.5rem 0.5rem 1.5rem 1rem;
+        overflow-y: auto;
+        border-right: 1px solid rgba(128, 128, 128, 0.2);
+        transition: all 0.3s ease;
+      }
+
+      .sidebar h3 {
+        color: var(--primary-light);
+        margin-bottom: 1.2rem;
+        font-size: 1.25rem;
+        padding-bottom: 0.6rem;
+        border-bottom: 1px dashed var(--accent-color);
+      }
+
+      .sidebar ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+
+      .sidebar li a {
+        display: block;
+        color: var(--text-secondary);
+        text-decoration: none;
+        padding: 0.7rem 1rem 0.7rem 1.2rem;
+        margin-bottom: 0.3rem;
+        transition: color 0.2s ease, border-left-color 0.2s ease;
+        font-size: 0.9rem;
+        line-height: 1.3;
+        border-left: 4px solid transparent;
+        position: relative;
+      }
+
+      .sidebar li a:hover {
+        color: var(--primary-light);
+        border-left-color: var(--primary-light);
+      }
+
+      .sidebar li a.active {
+        color: var(--primary-color);
+        font-weight: 600;
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .certificates-main-content {
+        margin-left: 260px;
+        flex-grow: 1;
+        padding: 0;
+      }
+
+      .certificates-section {
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 3rem 1rem;
+      }
+      .certificates-section h2 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .certificate-card {
+        background: var(--bg-secondary);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: var(--card-shadow);
+        margin-bottom: 2rem;
+        border: 1px solid var(--accent-color);
+        scroll-margin-top: 90px;
+
+        opacity: 0; /* For entry animation, similar to projects.html */
+        transform: scale(
+          0.8
+        ); /* For entry animation, similar to projects.html */
+
+        /* Transitions for hover AND the opacity/transform change when .animate__animated is added */
+        transition: transform 0.35s ease, box-shadow 0.35s ease,
+          border-color 0.35s ease, opacity 0.6s ease-out; /* Opacity transition for entry */
+      }
+
+      .certificate-card.animate__animated {
+        /* This class is added by JS */
+        opacity: 1; /* Made visible via transition */
+        transform: scale(1); /* Returns to normal size via transition */
+        /* Animate.css classes (e.g., animate__zoomIn) will run concurrently */
+      }
+
+      /* Staggered animation-delay specifically for the Animate.css animations */
+      .certificates-section > .certificate-card.animate__animated:nth-child(1) {
+        animation-delay: 0.1s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(2) {
+        animation-delay: 0.2s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(3) {
+        animation-delay: 0.3s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(4) {
+        animation-delay: 0.4s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(5) {
+        animation-delay: 0.5s;
+      }
+      .certificates-section > .certificate-card.animate__animated:nth-child(6) {
+        animation-delay: 0.6s;
+      }
+
+      /* Hover effect for certificate cards */
+      .certificate-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 12px 30px rgba(var(--primary-rgb), 0.2),
+          0 0 0 2px rgba(var(--primary-rgb), 0.4);
+        border-color: rgba(var(--primary-rgb), 0.6);
+      }
+
+      .certificate-card h3 {
+        color: var(--primary-color);
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+      }
+      .certificate-card .issuer {
+        font-size: 0.95rem;
+        font-style: italic;
+        color: var(--text-secondary);
+        margin-bottom: 0.25rem;
+      }
+      .certificate-card .date {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: 1rem;
+      }
+      .certificate-card .certificate-link {
+        display: inline-block;
+        color: var(--primary-light);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: 0.5rem;
+        font-size: 0.9rem;
+      }
+      .certificate-card .certificate-link:hover {
+        text-decoration: underline;
+      }
+      .certificate-card ul {
+        list-style: none;
+        padding-left: 0;
+        margin-top: 1rem;
+      }
+      .certificate-card ul li {
+        color: var(--text-secondary);
+        margin-bottom: 0.75rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.5;
+        font-family: "Share Tech", sans-serif;
+        font-size: 0.95rem;
+      }
+      .certificate-card ul li::before {
+        content: "▹";
+        position: absolute;
+        left: 0;
+        color: var(--primary-color);
+      }
+
+      @media (max-width: 992px) {
+        .sidebar {
+          display: none;
+        }
+        .certificates-main-content {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img
+            src="site_logo/MMH.gif"
+            alt="MMH Company Logo"
+            style="height: 40px; width: auto"
+          />
+        </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links-container">
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html"
+            ><i class="fa fa-graduation-cap"></i> Education</a
+          >
+          <a href="experience.html"
+            ><i class="fa fa-briefcase"></i> Experience</a
+          >
+          <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
+          <a href="certificates.html" class="active"
+            ><i class="fa fa-certificate"></i> Certificates</a
+          >
+          <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
+          <a href="contact.html"><i class="fa fa-envelope"></i> Contact</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="page-container">
+      <aside class="sidebar" role="complementary">
+        <h3>Certificate Navigation</h3>
+        <ul id="certificate-links">
+          <li><a href="#cert-llm-finetuning">LLM Fine-Tuning</a></li>
+          <li>
+            <a href="#cert-gen-ai-essentials">Generative AI Essentials</a>
+          </li>
+          <li><a href="#cert-ai-engineering">AI Engineering Essentials</a></li>
+          <li>
+            <a href="#cert-ml-simplilearn">Machine Learning (Simplilearn)</a>
+          </li>
+          <li><a href="#cert-web-dev-p हीरो">Web Development (P. Hero)</a></li>
+          <li><a href="#cert-python-datastruct">Python Data Structures</a></li>
+        </ul>
+      </aside>
+
+      <main class="certificates-main-content">
+        <section class="section certificates-section">
+          <h2><i class="fa fa-certificate"></i> My Certificates</h2>
+
+          <div
+            id="cert-llm-finetuning"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
+            <h3>Fine-Tuning for LLMs: from Beginner to Advanced</h3>
+            <p class="issuer">by LinkedIn</p>
+            <p class="date">
+              May 2025
+              <a
+                href="https://www.linkedin.com/learning/certificates/8f017415d7a3f0e183719dd12b3a42b79d2b047fab91bd83704745cfaf04860b?trk=share_certificate"
+                class="certificate-link"
+                target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Gained practical expertise in large language models (LLMs) such
+                as FLAN-T5, including their architecture, evolution, and
+                significance in modern AI, with hands-on training in prompt
+                engineering, transfer learning, and PEFT fine-tuning using LoRA.
+              </li>
+              <li>
+                Applied advanced LLM techniques to build a project for sentiment
+                analysis, summarization, and question answering, leveraging live
+                demos and real-world challenges to solidify skills.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            id="cert-gen-ai-essentials"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
+            <h3>Career Essentials in Generative AI</h3>
+            <p class="issuer">by Microsoft and LinkedIn</p>
+            <p class="date">
+              April 2025
+              <a
+                href="https://www.linkedin.com/learning/certificates/1294db0b09b2ea4638f70c1faca72b3c1870ef980fc14bae1fe3fd3bdbc37094"
+                class="certificate-link"
+                target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Developed foundational skills in Generative AI, Responsible AI,
+                Artificial Intelligence for Business, Microsoft Copilot, and
+                Prompt Engineering through a comprehensive learning path created
+                by Microsoft and LinkedIn.
+              </li>
+              <li>
+                Gained practical experience in applying AI tools such as Copilot
+                for workflow automation, explored ethical considerations in AI,
+                and learned strategies for integrating generative AI into
+                business and productivity contexts.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            id="cert-ai-engineering"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
+            <h3>AI Engineering Essentials: Navigating the Tech Revolution</h3>
+            <p class="issuer">by LinkedIn</p>
+            <p class="date">
+              March 2025
+              <a
+                href="https://www.linkedin.com/learning/certificates/3e4ddf03dd3c40c3cc089a0a2aa1d9329020f81ce68035ff51242f0e4bddc6b7?trk=share_certificate"
+                class="certificate-link"
+                target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Developed foundational skills in Generative AI, Responsible AI,
+                Artificial Intelligence for Business, Microsoft Copilot, and
+                Prompt Engineering through a comprehensive learning path created
+                by Microsoft and LinkedIn.
+              </li>
+              <li>
+                Acquired foundational knowledge and practical understanding of
+                how software development integrates with AI technologies to
+                drive innovation in the tech industry.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            id="cert-ml-simplilearn"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
+            <h3>Machine Learning</h3>
+            <p class="issuer">SkillUp by Simplilearn</p>
+            <p class="date">
+              August 6, 2023
+              <a
+                href="https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiI2ODciLCJjZXJ0aWZpY2F0ZV91cmwiOiJodHRwczpcL1wvY2VydGlmaWNhdGVzLnNpbXBsaWNkbi5uZXRcL3NoYXJlXC90aHVtYl8zNjcyMzAzXzE2NTk3NDI2MzYucG5nIiwidXNlcm5hbWUiOiJtZC4gbWFyb3AgaG9zc2FpbiJ9&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F2789%2FMachine-Learning%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1353579788389107371&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FVT3crDSkOcTNMK06yrytKTUstKsrMS49PKsovL04tsnXOKMrPTQUAUWfRHT8AAAA%3D"
+                class="certificate-link"
+                target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Completed a comprehensive course covering core machine learning
+                concepts, including supervised, unsupervised, and reinforcement
+                learning algorithms such as linear regression, decision trees,
+                random forests, and K-means clustering.
+              </li>
+              <li>
+                Gained practical knowledge of machine learning applications and
+                techniques through self-paced video lessons.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            id="cert-web-dev-p हीरो"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
+            <h3>Complete Web Development Course</h3>
+            <p class="issuer">by Programming Hero (Batch 4)</p>
+            <p class="date">
+              January 2021 – August 2021
+              <a
+                href="https://web.programming-hero.com/congrats/complete/61bdfafcf5118b71ade5a9a2"
+                class="certificate-link"
+                target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Successfully completed with 96% marks in assessments and
+                projects. Gained expertise in modern web development
+                technologies, including React.js, Node.js, Express.js, and
+                MongoDB, through practical projects and evaluations.
+              </li>
+              <li>
+                Gained proficiency in CSS3, HTML5, TypeScript, Tailwind,
+                Firebase, Bootstrap, Git, and integrating Stripe gateways.
+              </li>
+            </ul>
+          </div>
+
+          <div
+            id="cert-python-datastruct"
+            class="certificate-card animate__zoomIn animate__flipInX"
+          >
+            <h3>Python Data Structures</h3>
+            <p class="issuer">by Coursera (University of Michigan)</p>
+            <p class="date">
+              August 12, 2020
+              <a
+                href="https://www.coursera.org/account/accomplishments/verify/FRGE5VNH93RR?utm_campaign=sharing_cta&utm_content=cert_image&utm_medium=certificate&utm_product=course&utm_source=link"
+                class="certificate-link"
+                target="_blank"
+                >(View Certificate)</a
+              >
+            </p>
+            <ul>
+              <li>
+                Gained hands-on experience in data modeling, file operations,
+                and algorithmic problem-solving using Python, with a focus on
+                efficient implementation and data manipulation techniques.
+              </li>
+              <li>
+                Applied key/value storage strategies and built multi-step
+                programming solutions for real-world scenarios through
+                interactive, project-based learning.
+              </li>
+            </ul>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>
+      <p style="font-family: 'Sofia', sans-serif">
+        © 2025 Md. Marop Hossain. All rights reserved.
+      </p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const certificateCardsForAnimation =
+          document.querySelectorAll(".certificate-card");
+        if (certificateCardsForAnimation.length > 0) {
+          const cardAnimationObserver = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  // Add Animate.css base class to trigger the animation
+                  entry.target.classList.add("animate__animated");
+                  // The specific animation classes (e.g., animate__zoomIn, animate__flipInX)
+                  // are already on the element in the HTML.
+                  cardAnimationObserver.unobserve(entry.target); // Stop observing after animation
+                }
+              });
+            },
+            { threshold: 0.1 } // Trigger when 10% of the card is visible
+          );
+          certificateCardsForAnimation.forEach((card) => {
+            cardAnimationObserver.observe(card);
+          });
+        }
+
+        // --- Sidebar active link highlighting ---
+        const sectionsForHighlight =
+          document.querySelectorAll(".certificate-card");
+        const navLinksForHighlight = document.querySelectorAll(
+          "#certificate-links li a"
+        );
+        let currentlyActiveLink = null;
+
+        if (
+          sectionsForHighlight.length > 0 &&
+          navLinksForHighlight.length > 0
+        ) {
+          const setActiveLink = (sectionId) => {
+            navLinksForHighlight.forEach((link) => {
+              if (link.getAttribute("href") === `#${sectionId}`) {
+                if (link !== currentlyActiveLink) {
+                  link.classList.add("active");
+                  currentlyActiveLink = link;
+                }
+              } else {
+                link.classList.remove("active");
+              }
+            });
+          };
+
+          const observerOptions = {
+            root: null,
+            rootMargin: "-90px 0px -55% 0px",
+            threshold: 0.01,
+          };
+
+          const highlightObserver = new IntersectionObserver(
+            (entries, observer) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  setActiveLink(entry.target.id);
+                }
+              });
+            },
+            observerOptions
+          );
+
+          sectionsForHighlight.forEach((section) => {
+            highlightObserver.observe(section);
+          });
+
+          let initialActiveId = null;
+          const initialOffset = 90;
+          for (let i = sectionsForHighlight.length - 1; i >= 0; i--) {
+            const section = sectionsForHighlight[i];
+            const sectionTop = section.offsetTop;
+            if (window.pageYOffset >= sectionTop - initialOffset) {
+              initialActiveId = section.getAttribute("id");
+              break;
+            }
+          }
+          if (initialActiveId) {
+            setActiveLink(initialActiveId);
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
