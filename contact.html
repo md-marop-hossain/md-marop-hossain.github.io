@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-ar" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Md. Marop Hossain</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sofia&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <link rel="icon" type="image/x-icon" href="assets/favicon/favicon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Apply Share Tech font to relevant parts of the page */
+      body {
+        font-family: "Share Tech", sans-serif;
+      }
+
+      .nav-links-container a,
+      .contact-section-advanced h2,
+      .contact-intro,
+      .contact-details-group, /* Covers text within this group */
+      .contact-form-group,   /* Covers text within this group, including labels */
+      .form-field input,      /* For text typed into inputs */
+      .form-field textarea,   /* For text typed into textarea */
+      .submit-button {
+        font-family: "Share Tech", sans-serif;
+      }
+      /* Ensure placeholders also use the font if desired, browser support varies */
+      .form-field input::placeholder,
+      .form-field textarea::placeholder {
+        font-family: "Share Tech", sans-serif;
+        /* color: var(--text-secondary); You might want to style placeholder color too */
+      }
+
+      /* --- Interactive Background Canvas --- */
+      #interactive-bg {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Place it behind all content */
+      }
+
+      /* --- Styles for Advanced Contact Page --- */
+      .contact-section-advanced {
+        padding: 4rem 2rem;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative; /* Ensure content is above the canvas */
+        z-index: 1;
+      }
+
+      .contact-section-advanced h2 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        text-align: center;
+      }
+
+      .contact-intro {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 1.1rem;
+        margin-bottom: 3rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .contact-content-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2.5rem;
+        align-items: flex-start;
+      }
+
+      .contact-details-group,
+      .contact-form-group {
+        background-color: rgba(var(--bg-secondary-rgb, 0, 0, 0), 0.7);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: 2rem;
+        border-radius: 0.75rem;
+        box-shadow: var(--card-shadow);
+        border: 1px solid rgba(128, 128, 128, 0.2);
+      }
+
+      .contact-details-group h3,
+      .contact-form-group h3 {
+        font-size: 1.75rem;
+        color: var(--primary-color);
+        margin-bottom: 1.5rem;
+        padding-bottom: 0.75rem;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+      }
+
+      .contact-list-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+        color: var(--text-secondary);
+        font-size: 1.05rem;
+        padding: 0.5rem;
+        border-radius: 0.5rem;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+      }
+      .contact-list-item:hover {
+        background-color: rgba(var(--primary-rgb, 37, 99, 235), 0.1);
+        transform: scale(1.03);
+      }
+
+      .contact-list-item i {
+        color: var(--primary-color);
+        font-size: 1.5rem;
+        width: 25px;
+        text-align: center;
+      }
+
+      .contact-list-item a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .contact-list-item a:hover {
+        color: var(--primary-color);
+      }
+
+      .contact-social-links {
+        margin-top: 2rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid rgba(128, 128, 128, 0.3);
+      }
+
+      .contact-social-links h4 {
+        font-size: 1.25rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .social-icons-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem; /* Increased gap */
+      }
+
+      .social-icons-list a {
+        color: var(--text-primary);
+        font-size: 1.75rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        animation: pulse-glow-off 1.5s infinite;
+      }
+
+      .social-icons-list a:hover {
+        color: var(--primary-color);
+        transform: scale(1.1);
+        animation: pulse-glow-on 1.5s infinite;
+      }
+
+      @keyframes pulse-glow-on {
+        0%,
+        100% {
+          text-shadow: 0 0 5px rgba(var(--primary-rgb, 37, 99, 235), 0.5);
+        }
+        50% {
+          text-shadow: 0 0 15px rgba(var(--primary-rgb, 37, 99, 235), 1);
+        }
+      }
+      @keyframes pulse-glow-off {
+        0%,
+        100% {
+          text-shadow: none;
+        }
+      }
+
+      .contact-form-group {
+        flex: 1.5;
+        min-width: 320px;
+      }
+
+      .form-field {
+        margin-bottom: 1.5rem;
+        position: relative;
+      }
+
+      /* Animated line under form fields */
+      .form-field::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--primary-color);
+        transition: width 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      }
+      .form-field input:focus ~ ::after,
+      .form-field textarea:focus ~ ::after {
+        width: 100%;
+      }
+
+      .form-field input[type="text"],
+      .form-field input[type="email"],
+      .form-field textarea {
+        width: 100%;
+        padding: 0.8rem 1rem;
+        border: none;
+        border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+        border-radius: 0;
+        background-color: transparent;
+        color: var(--text-primary);
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+      }
+
+      .form-field input[type="text"]:focus,
+      .form-field input[type="email"]:focus,
+      .form-field textarea:focus {
+        outline: none;
+        border-bottom-color: transparent;
+      }
+
+      .form-field label {
+        display: block;
+        color: var(--text-secondary);
+        font-weight: 500;
+        position: absolute;
+        top: 0.8rem;
+        left: 1rem;
+        transition: all 0.3s ease;
+        pointer-events: none;
+      }
+
+      .form-field input:focus + label,
+      .form-field textarea:focus + label,
+      .form-field input:not(:placeholder-shown) + label,
+      .form-field textarea:not(:placeholder-shown) + label {
+        top: -1.2rem;
+        left: 0;
+        font-size: 0.9rem;
+        color: var(--primary-color);
+      }
+
+      .form-field textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .submit-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: #fff;
+        padding: 0.9rem 2rem;
+        border: none;
+        border-radius: 0.3rem;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.05rem;
+        cursor: pointer;
+        transition: background-color 0.3s ease, transform 0.2s ease;
+      }
+
+      .submit-button:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+      .submit-button:active {
+        transform: translateY(0);
+      }
+
+      :root {
+        --primary-rgb: 37, 99, 235;
+        --bg-secondary-rgb: 0, 0, 0;
+      }
+      [data-theme="dark"] {
+        --primary-rgb: 112, 158, 192;
+        --bg-secondary-rgb: 0, 0, 0;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="interactive-bg"></canvas>
+    <nav class="nav">
+      <div class="nav-content">
+        <a href="index.html" class="logo">
+          <img
+            src="site_logo/MMH.gif"
+            alt="MMH Company Logo"
+            style="height: 40px; width: auto"
+          />
+        </a>
+        <button id="mobile-menu-toggle" class="mobile-menu-toggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="nav-links-container">
+          <a href="index.html"><i class="fa fa-home"></i> Home</a>
+          <a href="education.html"
+            ><i class="fa fa-graduation-cap"></i> Education</a
+          >
+          <a href="experience.html"
+            ><i class="fa fa-briefcase"></i> Experience</a
+          >
+          <a href="projects.html"><i class="fa fa-code-branch"></i> Projects</a>
+          <a href="certificates.html"
+            ><i class="fa fa-certificate"></i> Certificates</a
+          >
+          <a href="resume.html"><i class="fa fa-file-alt"></i> Resume</a>
+          <a href="contact.html" class="active"
+            ><i class="fa fa-envelope"></i> Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <section class="contact-section-advanced">
+      <h2><i class="fa fa-envelope"></i> Get in Touch</h2>
+      <p class="contact-intro">
+        I'm always open to discussing new projects, creative ideas, or
+        opportunities to be part of your visions. Feel free to reach out through
+        any of the methods below.
+      </p>
+
+      <div class="contact-content-wrapper">
+        <div class="contact-details-group">
+          <h3>Contact Information</h3>
+          <div class="contact-list-item">
+            <i class="fas fa-envelope"></i>
+            <span
+              ><a href="mailto:marop.hossain21@gmail.com"
+                >marop.hossain21@gmail.com</a
+              ></span
+            >
+          </div>
+          <div class="contact-list-item">
+            <i class="fab fa-whatsapp"></i>
+            <span
+              ><a href="https://wa.me/8801630751852" target="_blank"
+                >Chat on WhatsApp</a
+              ></span
+            >
+          </div>
+          <div class="contact-list-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>Dhaka, Bangladesh</span>
+          </div>
+
+          <div class="contact-social-links">
+            <h4>Connect with Me</h4>
+            <div class="social-icons-list">
+              <a
+                href="https://www.linkedin.com/in/marop-hossain/"
+                target="_blank"
+                aria-label="LinkedIn"
+                title="LinkedIn"
+              >
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a
+                href="https://github.com/md-marop-hossain"
+                target="_blank"
+                aria-label="GitHub"
+                title="GitHub"
+              >
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="contact-form-group">
+          <h3>Send a Message</h3>
+          <form action="https://formspree.io/f/mrbqnjkq" method="POST">
+            <div class="form-field">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                required
+                placeholder=" "
+              />
+              <label for="name">Full Name</label>
+            </div>
+            <div class="form-field">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder=" "
+              />
+              <label for="email">Email Address</label>
+            </div>
+            <div class="form-field">
+              <input type="text" id="subject" name="subject" placeholder=" " />
+              <label for="subject">Subject</label>
+            </div>
+            <div class="form-field">
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                required
+                placeholder=" "
+              ></textarea>
+              <label for="message">Your Message</label>
+            </div>
+            <button type="submit" class="submit-button">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p style="font-family: 'Sofia', sans-serif">
+        © 2025 Md. Marop Hossain. All rights reserved.
+      </p>
+    </footer>
+    <script src="assets/js/main.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const canvas = document.getElementById("interactive-bg");
+        const ctx = canvas.getContext("2d");
+
+        let width = (canvas.width = window.innerWidth);
+        let height = (canvas.height = window.innerHeight);
+
+        window.addEventListener("resize", () => {
+          width = canvas.width = window.innerWidth;
+          height = canvas.height = window.innerHeight;
+        });
+
+        const mouse = {
+          x: width / 2,
+          y: height / 2,
+        };
+
+        window.addEventListener("mousemove", (event) => {
+          mouse.x = event.clientX;
+          mouse.y = event.clientY;
+        });
+
+        const orb = {
+          x: mouse.x,
+          y: mouse.y,
+          radius: 15,
+          color: `rgba(var(--primary-rgb, 37, 99, 235), 0.7)`,
+        };
+
+        function updateOrbColor() {
+          const style = getComputedStyle(document.documentElement);
+          const primaryRgb = style.getPropertyValue("--primary-rgb").trim();
+          orb.color = `rgba(${primaryRgb}, 0.7)`;
+        }
+
+        updateOrbColor();
+
+        new MutationObserver((mutations) => {
+          mutations.forEach((mutation) => {
+            if (mutation.attributeName === "data-theme") {
+              updateOrbColor();
+            }
+          });
+        }).observe(document.documentElement, { attributes: true });
+
+        function animate() {
+          ctx.fillStyle = "rgba(0, 0, 0, 0.05)";
+          ctx.fillRect(0, 0, width, height);
+
+          orb.x += (mouse.x - orb.x) * 0.08;
+          orb.y += (mouse.y - orb.y) * 0.08;
+
+          ctx.beginPath();
+          ctx.arc(orb.x, orb.y, orb.radius, 0, Math.PI * 2);
+
+          const gradient = ctx.createRadialGradient(
+            orb.x,
+            orb.y,
+            0,
+            orb.x,
+            orb.y,
+            orb.radius
+          );
+          gradient.addColorStop(0, orb.color);
+          gradient.addColorStop(1, "transparent");
+
+          ctx.fillStyle = gradient;
+          ctx.fill();
+
+          requestAnimationFrame(animate);
+        }
+
+        animate();
+      });
+    </script>
+  </body>
+</html>
