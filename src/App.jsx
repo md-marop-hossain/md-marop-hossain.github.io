@@ -60,6 +60,7 @@ function App() {
         "experience",
         "projects",
         "skills",
+        "certifications",
         "contact",
       ];
       const current = sections.find((section) => {
@@ -354,6 +355,68 @@ function App() {
     },
   ];
 
+  const certifications = [
+    {
+      title: "Fine-Tuning for LLMs: from Beginner to Advanced",
+      issuer: "LinkedIn",
+      date: "May 2025",
+      certificateLink: "#",
+      description: [
+        "Gained practical expertise in large language models (LLMs) such as FLAN-T5, including their architecture, evolution, and significance in modern AI, with hands-on training in prompt engineering, transfer learning, and PEFT fine-tuning using LoRA.",
+        "Applied advanced LLM techniques to build a project for sentiment analysis, summarization, and question answering, leveraging live demos and real-world challenges to solidify skills.",
+      ],
+    },
+    {
+      title: "Career Essentials in Generative AI",
+      issuer: "Microsoft and LinkedIn",
+      date: "April 2025",
+      certificateLink: "#",
+      description: [
+        "Developed foundational skills in Generative AI, Responsible AI, Artificial Intelligence for Business, Microsoft Copilot, and Prompt Engineering through a comprehensive learning path created by Microsoft and LinkedIn.",
+        "Gained practical experience in applying AI tools such as Copilot for workflow automation, explored ethical considerations in AI, and learned strategies for integrating generative AI into business and productivity contexts.",
+      ],
+    },
+    {
+      title: "AI Engineering Essentials: Navigating the Tech Revolution",
+      issuer: "LinkedIn",
+      date: "March 2025",
+      certificateLink: "#",
+      description: [
+        "Acquired foundational knowledge and practical understanding of how software development integrates with AI technologies to drive innovation in the tech industry.",
+      ],
+    },
+    {
+      title: "Machine Learning",
+      issuer: "SkillUp by Simplilearn",
+      date: "August 6, 2023",
+      certificateLink: "#",
+      description: [
+        "Completed a comprehensive course covering core machine learning concepts, including supervised, unsupervised, and reinforcement learning algorithms such as linear regression, decision trees, random forests, and K-means clustering.",
+        "Gained practical knowledge of machine learning applications and techniques through self-paced video lessons.",
+      ],
+    },
+    {
+      title: "Complete Web Development Course",
+      issuer: "Programming Hero (Batch 4)",
+      date: "January 2021 – August 2021",
+      certificateLink: "#",
+      description: [
+        "Successfully completed with 96% marks in assessments and projects. Gained expertise in modern web development technologies, including React.js, Node.js, Express.js, and MongoDB, through practical projects and evaluations.",
+        "Gained proficiency in CSS3, HTML5, TypeScript, Tailwind, Firebase, Bootstrap, Git, and integrating Stripe gateways.",
+      ],
+    },
+    {
+      title: "Python Data Structures",
+      issuer: "Coursera (University of Michigan)",
+      date: "August 12, 2020",
+      certificateLink: "#",
+      description: [
+        "Gained hands-on experience in data modeling, file operations, and algorithmic problem-solving using Python, with a focus on efficient implementation and data manipulation techniques.",
+        "Applied key/value storage strategies and built multi-step programming solutions for real-world scenarios through interactive, project-based learning.",
+      ],
+    },
+  ];
+
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -370,6 +433,7 @@ function App() {
     { id: "experience", label: "Experience", color: "primary" },
     { id: "projects", label: "Projects", color: "primary" },
     { id: "skills", label: "Skills", color: "primary" },
+    { id: "certifications", label: "Certifications", color: "primary" },
     { id: "contact", label: "Contact", color: "primary" },
   ];
 
@@ -555,7 +619,7 @@ function App() {
                   <img
                     src="/profile.jpg"
                     alt="Profile"
-                    className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-transparent bg-gradient-to-r from-primary via-cyan-400 to-blue-500 p-[2px] relative z-10"
+                    className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full object-cover border-4 border-transparent bg-gradient-to-r from-primary via-cyan-400 to-blue-500 p-[2px] relative z-10"
                     style={{
                       borderImage:
                         "linear-gradient(135deg, #00D9FF, #22D3EE, #0EA5E9) 1",
@@ -1199,6 +1263,110 @@ function App() {
           </div>
         </section>
 
+        {/* Certifications & Achievements Section */}
+        <section
+          id="certifications"
+          className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
+        >
+          <div className="max-w-5xl mx-auto">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2">
+              <span className="gradient-text">
+                Certifications & Achievements
+              </span>
+            </h2>
+            <p className="text-center text-gray-400 mb-6 sm:mb-8 text-xs sm:text-sm px-4">
+              Continuous learning and professional development
+            </p>
+
+            <div className="space-y-4">
+              {certifications.map((cert, index) => (
+                <div
+                  key={index}
+                  className="glass-morphism p-4 sm:p-5 rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-300"
+                >
+                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
+                    <div className="flex-1">
+                      <h3 className="text-base sm:text-lg font-bold mb-1.5">
+                        <span className="bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                          {cert.title}
+                        </span>
+                      </h3>
+                      <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400">
+                        <span className="flex items-center gap-1">
+                          <svg
+                            className="w-3.5 h-3.5 text-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                            />
+                          </svg>
+                          {cert.issuer}
+                        </span>
+                        <span className="text-gray-600">•</span>
+                        <span className="flex items-center gap-1">
+                          <svg
+                            className="w-3.5 h-3.5 text-primary"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                            />
+                          </svg>
+                          {cert.date}
+                        </span>
+                      </div>
+                    </div>
+                    <a
+                      href={cert.certificateLink}
+                      className="group relative flex items-center gap-1.5 px-4 py-2 bg-transparent border border-primary rounded-lg font-semibold text-xs overflow-hidden transition-all duration-300 hover:text-black hover:shadow-lg hover:shadow-primary/30 shrink-0"
+                    >
+                      <svg
+                        className="w-3.5 h-3.5 relative z-10"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+                        />
+                      </svg>
+                      <span className="relative z-10">View</span>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                    </a>
+                  </div>
+
+                  <div className="space-y-2">
+                    {cert.description.map((point, idx) => (
+                      <div key={idx} className="flex gap-2">
+                        <div className="shrink-0 mt-1.5">
+                          <div className="w-1 h-1 rounded-full bg-gradient-to-r from-primary to-cyan-400"></div>
+                        </div>
+                        <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
+                          {point}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Contact Section */}
         <section
           id="contact"
@@ -1324,6 +1492,12 @@ function App() {
                     className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm hover:translate-x-1 inline-block"
                   >
                     Skills
+                  </a>
+                  <a
+                    href="#certifications"
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm hover:translate-x-1 inline-block"
+                  >
+                    Certifications
                   </a>
                   <a
                     href="#contact"
