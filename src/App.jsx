@@ -490,7 +490,7 @@ function App() {
                 <div className="relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent-purple rounded-full blur-xl opacity-50 animate-pulse-slow"></div>
                   <img
-                    src="/Marop Hossain.jpg"
+                    src="/profile.jpg"
                     alt="Profile"
                     className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-primary/50 relative z-10"
                   />
