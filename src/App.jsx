@@ -119,44 +119,44 @@ function App() {
       },
       {
         name: "LangChain",
-        color: "bg-secondary/20 border-secondary/50 text-secondary",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Llama 2/3",
-        color: "bg-accent-purple/20 border-accent-purple/50 text-accent-purple",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Fine-tuning (LoRA)",
-        color: "bg-accent-pink/20 border-accent-pink/50 text-accent-pink",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Prompt Engineering",
-        color: "bg-accent-blue/20 border-accent-blue/50 text-accent-blue",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
     "Computer Vision": [
       {
         name: "YOLO",
-        color: "bg-accent-pink/20 border-accent-pink/50 text-accent-pink",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       { name: "OpenCV", color: "bg-primary/20 border-primary/50 text-primary" },
       {
         name: "SAM",
-        color: "bg-secondary/20 border-secondary/50 text-secondary",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Vision Transformers",
-        color: "bg-accent-purple/20 border-accent-purple/50 text-accent-purple",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Object Detection",
-        color: "bg-accent-blue/20 border-accent-blue/50 text-accent-blue",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
     "ML Frameworks": [
       {
         name: "PyTorch",
-        color: "bg-accent-pink/20 border-accent-pink/50 text-accent-pink",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "TensorFlow",
@@ -164,40 +164,40 @@ function App() {
       },
       {
         name: "Hugging Face",
-        color: "bg-secondary/20 border-secondary/50 text-secondary",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "scikit-learn",
-        color: "bg-accent-blue/20 border-accent-blue/50 text-accent-blue",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "JAX",
-        color: "bg-accent-purple/20 border-accent-purple/50 text-accent-purple",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
     "DevOps & MLOps": [
       { name: "Docker", color: "bg-primary/20 border-primary/50 text-primary" },
       {
         name: "Kubernetes",
-        color: "bg-secondary/20 border-secondary/50 text-secondary",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "MLflow",
-        color: "bg-accent-blue/20 border-accent-blue/50 text-accent-blue",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Weights & Biases",
-        color: "bg-accent-purple/20 border-accent-purple/50 text-accent-purple",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "GitHub Actions",
-        color: "bg-accent-pink/20 border-accent-pink/50 text-accent-pink",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
     "Databases & Vector Stores": [
       {
         name: "Pinecone",
-        color: "bg-secondary/20 border-secondary/50 text-secondary",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Weaviate",
@@ -205,34 +205,34 @@ function App() {
       },
       {
         name: "PostgreSQL",
-        color: "bg-accent-blue/20 border-accent-blue/50 text-accent-blue",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "MongoDB",
-        color: "bg-accent-purple/20 border-accent-purple/50 text-accent-purple",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Redis",
-        color: "bg-accent-pink/20 border-accent-pink/50 text-accent-pink",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
     Programming: [
       { name: "Python", color: "bg-primary/20 border-primary/50 text-primary" },
       {
         name: "C++",
-        color: "bg-secondary/20 border-secondary/50 text-secondary",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "JavaScript",
-        color: "bg-accent-purple/20 border-accent-purple/50 text-accent-purple",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "Rust",
-        color: "bg-accent-pink/20 border-accent-pink/50 text-accent-pink",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
         name: "CUDA",
-        color: "bg-accent-blue/20 border-accent-blue/50 text-accent-blue",
+        color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
   };
@@ -301,11 +301,11 @@ function App() {
 
   const navItems = [
     { id: "home", label: "Home", color: "primary" },
-    { id: "about", label: "About", color: "accent-blue" },
-    { id: "education", label: "Education", color: "secondary" },
-    { id: "experience", label: "Experience", color: "accent-purple" },
-    { id: "projects", label: "Projects", color: "accent-pink" },
-    { id: "skills", label: "Skills", color: "accent-blue" },
+    { id: "about", label: "About", color: "primary" },
+    { id: "education", label: "Education", color: "primary" },
+    { id: "experience", label: "Experience", color: "primary" },
+    { id: "projects", label: "Projects", color: "primary" },
+    { id: "skills", label: "Skills", color: "primary" },
     { id: "contact", label: "Contact", color: "primary" },
   ];
 
@@ -345,29 +345,29 @@ function App() {
                       indicator: "via-primary",
                     },
                     secondary: {
-                      active: "text-secondary bg-secondary/10",
-                      hover: "hover:text-secondary hover:bg-secondary/5",
-                      glow: "from-secondary/0 via-secondary/10 to-secondary/0",
-                      indicator: "via-secondary",
+                      active: "text-primary bg-primary/10",
+                      hover: "hover:text-primary hover:bg-primary/5",
+                      glow: "from-primary/0 via-primary/10 to-primary/0",
+                      indicator: "via-primary",
                     },
                     "accent-purple": {
-                      active: "text-accent-purple bg-accent-purple/10",
+                      active: "text-primary bg-primary/10",
                       hover:
-                        "hover:text-accent-purple hover:bg-accent-purple/5",
-                      glow: "from-accent-purple/0 via-accent-purple/10 to-accent-purple/0",
-                      indicator: "via-accent-purple",
+                        "hover:text-primary hover:bg-primary/5",
+                      glow: "from-primary/0 via-primary/10 to-primary/0",
+                      indicator: "via-primary",
                     },
                     "accent-pink": {
-                      active: "text-accent-pink bg-accent-pink/10",
-                      hover: "hover:text-accent-pink hover:bg-accent-pink/5",
-                      glow: "from-accent-pink/0 via-accent-pink/10 to-accent-pink/0",
-                      indicator: "via-accent-pink",
+                      active: "text-primary bg-primary/10",
+                      hover: "hover:text-primary hover:bg-primary/5",
+                      glow: "from-primary/0 via-primary/10 to-primary/0",
+                      indicator: "via-primary",
                     },
                     "accent-blue": {
-                      active: "text-accent-blue bg-accent-blue/10",
-                      hover: "hover:text-accent-blue hover:bg-accent-blue/5",
-                      glow: "from-accent-blue/0 via-accent-blue/10 to-accent-blue/0",
-                      indicator: "via-accent-blue",
+                      active: "text-primary bg-primary/10",
+                      hover: "hover:text-primary hover:bg-primary/5",
+                      glow: "from-primary/0 via-primary/10 to-primary/0",
+                      indicator: "via-primary",
                     },
                   };
 
@@ -488,7 +488,7 @@ function App() {
             <div className="flex justify-center mb-6 sm:mb-8">
               <div className="glass-morphism-strong p-2 rounded-full animate-glow">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-accent-purple rounded-full blur-xl opacity-50 animate-pulse-slow"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary rounded-full blur-xl opacity-50 animate-pulse-slow"></div>
                   <img
                     src="/profile.jpg"
                     alt="Profile"
@@ -503,7 +503,7 @@ function App() {
             </h1>
 
             <div className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 h-14 sm:h-16 flex items-center justify-center px-4">
-              <span className="typing-cursor font-mono bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent font-bold">
+              <span className="typing-cursor font-mono bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent font-bold">
                 {typedText}
               </span>
             </div>
@@ -520,7 +520,7 @@ function App() {
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4">
               <button
                 onClick={() => scrollToSection("projects")}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
               >
                 View Projects
               </button>
@@ -537,7 +537,7 @@ function App() {
         {/* About Section */}
         <section
           id="about"
-          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-accent-blue/5 to-transparent"
+          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 sm:mb-3">
@@ -547,12 +547,12 @@ function App() {
               Building the future with AI, one solution at a time
             </p>
 
-            <div className="glass-morphism rounded-lg border border-white/10 hover:border-accent-blue/30 transition-all duration-300">
+            <div className="glass-morphism rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-300">
               <div className="p-4 sm:p-6">
                 <div className="flex items-start gap-2 sm:gap-3 mb-3 sm:mb-4">
-                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-accent-blue/20 to-primary/20 rounded-lg border border-accent-blue/30 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary/20 to-primary/20 rounded-lg border border-primary/30 flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 text-accent-blue"
+                      className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -564,16 +564,16 @@ function App() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base sm:text-lg font-bold mb-1 bg-gradient-to-r from-accent-blue to-primary bg-clip-text text-transparent">
+                    <h3 className="text-base sm:text-lg font-bold mb-1 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                       AI Engineer | Problem Solver | Innovator
                     </h3>
-                    <div className="h-0.5 w-16 sm:w-20 bg-gradient-to-r from-accent-blue to-primary rounded-full"></div>
+                    <div className="h-0.5 w-16 sm:w-20 bg-gradient-to-r from-primary to-primary rounded-full"></div>
                   </div>
                 </div>
 
                 <p className="text-gray-300 leading-relaxed text-xs sm:text-sm mb-3 sm:mb-4">
                   With a{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     B.Sc. in Computer Science and Engineering
                   </span>{" "}
                   from{" "}
@@ -581,15 +581,15 @@ function App() {
                     North South University
                   </span>
                   , I bring a solid academic foundation and expertise in{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     deep learning
                   </span>
                   ,{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     project management
                   </span>
                   , and{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     computer vision
                   </span>
                   .
@@ -601,20 +601,20 @@ function App() {
                     AI Engineer (Intern)
                   </span>{" "}
                   at{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     NidusLab-USA
                   </span>
                   , I contribute to developing advanced AI systems, focusing on
                   building scalable{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     microservices
                   </span>
                   , AI-powered{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     recommendation engines
                   </span>
                   , and{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     NLP-driven tools
                   </span>{" "}
                   for job portals.
@@ -623,15 +623,15 @@ function App() {
                 <p className="text-gray-300 leading-relaxed text-sm mb-4">
                   Collaborating with the team, we enhance job-seeking processes
                   through{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     personalized job matching
                   </span>
                   ,{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     automated document generation
                   </span>
                   , and{" "}
-                  <span className="text-accent-blue font-semibold">
+                  <span className="text-primary font-semibold">
                     voice-enabled AI chatbots
                   </span>
                   . I aim to support innovative projects that optimize user
@@ -641,9 +641,9 @@ function App() {
                 {/* Key focus areas */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 mt-3 sm:mt-4 pt-3 sm:pt-4 border-t border-white/5">
                   <div className="text-center group/item">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-accent-blue/20 to-primary/20 flex items-center justify-center border border-accent-blue/30 group-hover/item:scale-110 transition-transform">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-primary/20 to-primary/20 flex items-center justify-center border border-primary/30 group-hover/item:scale-110 transition-transform">
                       <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 text-accent-blue"
+                        className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -660,7 +660,7 @@ function App() {
                     </p>
                   </div>
                   <div className="text-center group/item">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center border border-primary/30 group-hover/item:scale-110 transition-transform">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-primary/20 to-primary/20 flex items-center justify-center border border-primary/30 group-hover/item:scale-110 transition-transform">
                       <svg
                         className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
                         fill="currentColor"
@@ -679,9 +679,9 @@ function App() {
                     </p>
                   </div>
                   <div className="text-center group/item">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-secondary/20 to-accent-purple/20 flex items-center justify-center border border-secondary/30 group-hover/item:scale-110 transition-transform">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-primary/20 to-primary/20 flex items-center justify-center border border-primary/30 group-hover/item:scale-110 transition-transform">
                       <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 text-secondary"
+                        className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -693,9 +693,9 @@ function App() {
                     </p>
                   </div>
                   <div className="text-center group/item">
-                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-accent-purple/20 to-accent-pink/20 flex items-center justify-center border border-accent-purple/30 group-hover/item:scale-110 transition-transform">
+                    <div className="w-10 h-10 sm:w-12 sm:h-12 mx-auto mb-1.5 sm:mb-2 rounded-lg bg-gradient-to-br from-primary/20 to-primary/20 flex items-center justify-center border border-primary/30 group-hover/item:scale-110 transition-transform">
                       <svg
-                        className="w-5 h-5 sm:w-6 sm:h-6 text-accent-purple"
+                        className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
                         fill="currentColor"
                         viewBox="0 0 20 20"
                       >
@@ -720,7 +720,7 @@ function App() {
         {/* Education Section */}
         <section
           id="education"
-          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-secondary/5 to-transparent"
+          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 sm:mb-3">
@@ -734,7 +734,7 @@ function App() {
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className="glass-morphism rounded-lg border border-white/10 hover:border-secondary/30 transition-all duration-300"
+                  className="glass-morphism rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-300"
                 >
                   <div className="p-6">
                     {/* Header Section */}
@@ -742,9 +742,9 @@ function App() {
                       <div className="flex gap-4">
                         {/* University Icon */}
                         <div className="flex-shrink-0">
-                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-secondary/20 to-accent-blue/20 border border-secondary/30 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 flex items-center justify-center">
                             <svg
-                              className="w-8 h-8 text-secondary"
+                              className="w-8 h-8 text-primary"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
@@ -758,7 +758,7 @@ function App() {
                           <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-1">
                             {edu.degree}
                           </h3>
-                          <p className="text-sm sm:text-base text-secondary font-semibold mb-1">
+                          <p className="text-sm sm:text-base text-primary font-semibold mb-1">
                             {edu.institution}
                           </p>
                           <p className="text-xs sm:text-sm text-gray-400">
@@ -778,9 +778,9 @@ function App() {
                     {/* Academic Details */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4 pt-4 border-t border-white/5">
                       <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-secondary/10 border border-secondary/20 flex items-center justify-center mt-0.5">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mt-0.5">
                           <svg
-                            className="w-4 h-4 text-secondary"
+                            className="w-4 h-4 text-primary"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -802,9 +802,9 @@ function App() {
                       </div>
 
                       <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-accent-blue/10 border border-accent-blue/20 flex items-center justify-center mt-0.5">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mt-0.5">
                           <svg
-                            className="w-4 h-4 text-accent-blue"
+                            className="w-4 h-4 text-primary"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -823,9 +823,9 @@ function App() {
                     {/* Focus/Expertise */}
                     <div className="pt-4 border-t border-white/5">
                       <div className="flex items-start gap-3">
-                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-accent-purple/10 border border-accent-purple/20 flex items-center justify-center mt-0.5">
+                        <div className="flex-shrink-0 w-8 h-8 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center mt-0.5">
                           <svg
-                            className="w-4 h-4 text-accent-purple"
+                            className="w-4 h-4 text-primary"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -856,7 +856,7 @@ function App() {
         {/* Experience Section */}
         <section
           id="experience"
-          className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-accent-purple/5 to-transparent"
+          className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-3">
@@ -870,7 +870,7 @@ function App() {
               {experience.map((exp, index) => (
                 <div
                   key={index}
-                  className="glass-morphism rounded-lg border border-white/10 hover:border-accent-purple/30 transition-all duration-300"
+                  className="glass-morphism rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-300"
                 >
                   <div className="p-4 sm:p-6">
                     {/* Compact Header */}
@@ -879,7 +879,7 @@ function App() {
                         <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-1">
                           {exp.role}
                         </h3>
-                        <p className="text-sm sm:text-base text-accent-purple font-semibold">
+                        <p className="text-sm sm:text-base text-primary font-semibold">
                           {exp.company}
                         </p>
                       </div>
@@ -904,7 +904,7 @@ function App() {
                     {/* Compact Achievements */}
                     <div className="mb-4">
                       <h4 className="text-sm font-semibold text-white mb-2 flex items-center gap-2">
-                        <span className="w-1 h-4 bg-gradient-to-b from-accent-purple to-accent-pink rounded-full"></span>
+                        <span className="w-1 h-4 bg-gradient-to-b from-primary to-primary rounded-full"></span>
                         Key Highlights
                       </h4>
                       <ul className="space-y-1.5">
@@ -915,7 +915,7 @@ function App() {
                               key={idx}
                               className="flex items-start gap-2 text-xs text-gray-400 leading-relaxed"
                             >
-                              <span className="text-accent-purple mt-0.5 text-sm">
+                              <span className="text-primary mt-0.5 text-sm">
                                 •
                               </span>
                               <span>{achievement}</span>
@@ -923,7 +923,7 @@ function App() {
                           ))}
                         {exp.achievements.length > 4 && (
                           <details className="mt-2">
-                            <summary className="text-xs text-accent-purple cursor-pointer hover:text-accent-pink transition-colors">
+                            <summary className="text-xs text-primary cursor-pointer hover:text-primary transition-colors">
                               Show {exp.achievements.length - 4} more...
                             </summary>
                             <ul className="space-y-1.5 mt-2">
@@ -934,7 +934,7 @@ function App() {
                                     key={idx}
                                     className="flex items-start gap-2 text-xs text-gray-400 leading-relaxed"
                                   >
-                                    <span className="text-accent-purple mt-0.5 text-sm">
+                                    <span className="text-primary mt-0.5 text-sm">
                                       •
                                     </span>
                                     <span>{achievement}</span>
@@ -953,7 +953,7 @@ function App() {
                           {exp.techStack.map((tech, techIdx) => (
                             <span
                               key={techIdx}
-                              className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs font-medium text-gray-400 hover:bg-accent-purple/10 hover:border-accent-purple/30 hover:text-accent-purple transition-all"
+                              className="px-2 py-1 bg-white/5 border border-white/10 rounded text-xs font-medium text-gray-400 hover:bg-primary/10 hover:border-primary/30 hover:text-primary transition-all"
                             >
                               {tech}
                             </span>
@@ -971,7 +971,7 @@ function App() {
         {/* Projects Section */}
         <section
           id="projects"
-          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-accent-pink/5 to-transparent"
+          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 sm:mb-3">
@@ -984,17 +984,17 @@ function App() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
               {projects.map((project, index) => {
                 const colors = [
-                  "from-primary to-secondary",
-                  "from-secondary to-accent-purple",
-                  "from-accent-purple to-accent-pink",
-                  "from-accent-pink to-primary",
-                  "from-accent-blue to-primary",
-                  "from-secondary to-accent-blue",
+                  "from-primary to-primary",
+                  "from-primary to-primary",
+                  "from-primary to-primary",
+                  "from-primary to-primary",
+                  "from-primary to-primary",
+                  "from-primary to-primary",
                 ];
                 return (
                   <div
                     key={index}
-                    className="glass-morphism rounded-lg overflow-hidden hover:border-accent-pink/30 transition-all duration-300 border border-white/10"
+                    className="glass-morphism rounded-lg overflow-hidden hover:border-primary/30 transition-all duration-300 border border-white/10"
                   >
                     <div
                       className={`h-1 bg-gradient-to-r ${
@@ -1029,7 +1029,7 @@ function App() {
         {/* Skills Section */}
         <section
           id="skills"
-          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-accent-blue/5 to-transparent"
+          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
         >
           <div className="max-w-4xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 sm:mb-3">
@@ -1054,9 +1054,9 @@ function App() {
                     key={index}
                     className={`glass-morphism p-4 sm:p-6 rounded-lg border-l-4 ${
                       categoryColors[index % categoryColors.length]
-                    } border border-white/10 hover:border-accent-blue/30 transition-all duration-300`}
+                    } border border-white/10 hover:border-primary/30 transition-all duration-300`}
                   >
-                    <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                    <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
                       {category}
                     </h3>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -1094,7 +1094,7 @@ function App() {
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               <a
                 href="mailto:marophossain@example.com"
-                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-primary to-secondary text-white rounded-lg font-semibold text-xs sm:text-sm hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-semibold text-xs sm:text-sm hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
@@ -1111,7 +1111,7 @@ function App() {
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass-morphism border border-secondary/50 text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-secondary/10 hover:border-secondary transform hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass-morphism border border-primary/50 text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-primary/10 hover:border-primary transform hover:scale-105 transition-all duration-300"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
@@ -1131,7 +1131,7 @@ function App() {
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass-morphism border border-accent-purple/50 text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-accent-purple/10 hover:border-accent-purple transform hover:scale-105 transition-all duration-300"
+                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass-morphism border border-primary/50 text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-primary/10 hover:border-primary transform hover:scale-105 transition-all duration-300"
               >
                 <svg
                   className="w-4 h-4 sm:w-5 sm:h-5"
