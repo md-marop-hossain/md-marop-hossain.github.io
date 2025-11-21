@@ -45,6 +45,20 @@
     animation: gradient 3s linear infinite;
   }
 
+  .gradient-icon {
+    background: linear-gradient(135deg, #00d9ff 0%, #22d3ee 50%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #00d9ff 0%, #22d3ee 50%, #0ea5e9 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   .card-hover {
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);

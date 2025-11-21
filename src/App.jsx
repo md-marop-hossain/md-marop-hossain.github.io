@@ -561,9 +561,9 @@ function App() {
             <div className="glass-morphism rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-300">
               <div className="p-4 sm:p-6">
                 <div className="flex items-start gap-2 sm:gap-3 mb-3 sm:mb-4">
-                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary/20 to-primary/20 rounded-lg border border-primary/30 flex items-center justify-center">
+                  <div className="flex-shrink-0 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-primary/20 to-cyan-400/20 rounded-lg border border-primary/30 flex items-center justify-center">
                     <svg
-                      className="w-5 h-5 sm:w-6 sm:h-6 text-primary"
+                      className="w-5 h-5 sm:w-6 sm:h-6 gradient-icon"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
@@ -575,78 +575,33 @@ function App() {
                     </svg>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base sm:text-lg font-bold mb-1 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
+                    <h3 className="text-base sm:text-lg font-bold mb-1 text-gradient">
                       AI Engineer | Problem Solver | Innovator
                     </h3>
-                    <div className="h-0.5 w-16 sm:w-20 bg-gradient-to-r from-primary to-primary rounded-full"></div>
+                    <div className="h-0.5 w-16 sm:w-20 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-full"></div>
                   </div>
                 </div>
 
                 <p className="text-gray-300 leading-relaxed text-xs sm:text-sm mb-3 sm:mb-4">
-                  With a{" "}
-                  <span className="text-primary font-semibold">
-                    B.Sc. in Computer Science and Engineering
-                  </span>{" "}
-                  from{" "}
-                  <span className="text-primary font-semibold">
-                    North South University
-                  </span>
-                  , I bring a solid academic foundation and expertise in{" "}
-                  <span className="text-primary font-semibold">
-                    deep learning
-                  </span>
-                  ,{" "}
-                  <span className="text-primary font-semibold">
-                    project management
-                  </span>
-                  , and{" "}
-                  <span className="text-primary font-semibold">
-                    computer vision
-                  </span>
-                  .
+                  With a B.Sc. in Computer Science and Engineering from North
+                  South University, I bring a solid academic foundation and
+                  expertise in deep learning, project management, and computer
+                  vision.
                 </p>
 
                 <p className="text-gray-300 leading-relaxed text-sm mb-4">
-                  As an{" "}
-                  <span className="text-primary font-semibold">
-                    AI Engineer (Intern)
-                  </span>{" "}
-                  at{" "}
-                  <span className="text-primary font-semibold">
-                    NidusLab-USA
-                  </span>
-                  , I contribute to developing advanced AI systems, focusing on
-                  building scalable{" "}
-                  <span className="text-primary font-semibold">
-                    microservices
-                  </span>
-                  , AI-powered{" "}
-                  <span className="text-primary font-semibold">
-                    recommendation engines
-                  </span>
-                  , and{" "}
-                  <span className="text-primary font-semibold">
-                    NLP-driven tools
-                  </span>{" "}
-                  for job portals.
+                  As an AI Engineer (Intern) at NidusLab-USA, I contribute to
+                  developing advanced AI systems, focusing on building scalable
+                  microservices, AI-powered recommendation engines, and
+                  NLP-driven tools for job portals.
                 </p>
 
                 <p className="text-gray-300 leading-relaxed text-sm mb-4">
                   Collaborating with the team, we enhance job-seeking processes
-                  through{" "}
-                  <span className="text-primary font-semibold">
-                    personalized job matching
-                  </span>
-                  ,{" "}
-                  <span className="text-primary font-semibold">
-                    automated document generation
-                  </span>
-                  , and{" "}
-                  <span className="text-primary font-semibold">
-                    voice-enabled AI chatbots
-                  </span>
-                  . I aim to support innovative projects that optimize user
-                  experiences and streamline complex workflows.
+                  through personalized job matching, automated document
+                  generation, and voice-enabled AI chatbots. I aim to support
+                  innovative projects that optimize user experiences and
+                  streamline complex workflows.
                 </p>
 
                 {/* Key focus areas */}
@@ -753,9 +708,9 @@ function App() {
                       <div className="flex gap-4">
                         {/* University Icon */}
                         <div className="flex-shrink-0">
-                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-primary/20 border border-primary/30 flex items-center justify-center">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/20 to-cyan-400/20 border border-primary/30 flex items-center justify-center">
                             <svg
-                              className="w-8 h-8 text-primary"
+                              className="w-8 h-8 gradient-icon"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
@@ -769,7 +724,7 @@ function App() {
                           <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-1">
                             {edu.degree}
                           </h3>
-                          <p className="text-sm sm:text-base text-primary font-semibold mb-1">
+                          <p className="text-sm sm:text-base text-gradient font-semibold mb-1">
                             {edu.institution}
                           </p>
                           <p className="text-xs sm:text-sm text-gray-400">
