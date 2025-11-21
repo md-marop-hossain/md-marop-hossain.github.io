@@ -34,7 +34,10 @@ export default {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
         'gradient-primary': 'linear-gradient(135deg, #000000 0%, #0A0A0A 50%, #000000 100%)',
-        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(0, 217, 255, 0.1) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.1) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(236, 72, 153, 0.1) 0px, transparent 50%)',
+        'gradient-cyan': 'linear-gradient(135deg, #00D9FF 0%, #33E1FF 50%, #00A8CC 100%)',
+        'gradient-cyan-blue': 'linear-gradient(135deg, #00D9FF 0%, #0EA5E9 50%, #0284C7 100%)',
+        'gradient-mesh': 'radial-gradient(at 0% 0%, rgba(0, 217, 255, 0.15) 0px, transparent 50%), radial-gradient(at 100% 0%, rgba(14, 165, 233, 0.1) 0px, transparent 50%), radial-gradient(at 100% 100%, rgba(6, 182, 212, 0.15) 0px, transparent 50%), radial-gradient(at 0% 100%, rgba(34, 211, 238, 0.1) 0px, transparent 50%)',
+        'gradient-shine': 'linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent)',
       },
       animation: {
         'float': 'float 3s ease-in-out infinite',

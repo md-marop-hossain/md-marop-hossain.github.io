@@ -352,8 +352,7 @@ function App() {
                     },
                     "accent-purple": {
                       active: "text-primary bg-primary/10",
-                      hover:
-                        "hover:text-primary hover:bg-primary/5",
+                      hover: "hover:text-primary hover:bg-primary/5",
                       glow: "from-primary/0 via-primary/10 to-primary/0",
                       indicator: "via-primary",
                     },
@@ -488,11 +487,15 @@ function App() {
             <div className="flex justify-center mb-6 sm:mb-8">
               <div className="glass-morphism-strong p-2 rounded-full animate-glow">
                 <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary rounded-full blur-xl opacity-50 animate-pulse-slow"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-full blur-xl opacity-60 animate-pulse-slow"></div>
                   <img
                     src="/profile.jpg"
                     alt="Profile"
-                    className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-primary/50 relative z-10"
+                    className="w-32 h-32 sm:w-40 sm:h-40 md:w-48 md:h-48 rounded-full object-cover border-4 border-transparent bg-gradient-to-r from-primary via-cyan-400 to-blue-500 p-[2px] relative z-10"
+                    style={{
+                      borderImage:
+                        "linear-gradient(135deg, #00D9FF, #22D3EE, #0EA5E9) 1",
+                    }}
                   />
                 </div>
               </div>
@@ -503,7 +506,7 @@ function App() {
             </h1>
 
             <div className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 h-14 sm:h-16 flex items-center justify-center px-4">
-              <span className="typing-cursor font-mono bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent font-bold">
+              <span className="typing-cursor font-mono bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold">
                 {typedText}
               </span>
             </div>
@@ -520,15 +523,23 @@ function App() {
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4">
               <button
                 onClick={() => scrollToSection("projects")}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-semibold text-base sm:text-lg hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
+                className="group relative px-8 sm:px-10 py-3.5 sm:py-4 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 text-black rounded-xl font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/40 hover:-translate-y-1 animate-gradient bg-[length:200%_auto]"
               >
-                View Projects
+                <span className="relative z-10">View Projects</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </button>
               <button
                 onClick={() => scrollToSection("contact")}
-                className="px-6 sm:px-8 py-3 sm:py-4 glass-morphism-strong border-2 border-primary/50 text-white rounded-lg font-semibold text-base sm:text-lg hover:bg-primary/10 hover:border-primary transform hover:scale-105 transition-all duration-300"
+                className="group relative px-8 sm:px-10 py-3.5 sm:py-4 bg-transparent border-2 border-transparent bg-clip-padding rounded-xl font-bold text-base sm:text-lg overflow-hidden transition-all duration-300 hover:text-black hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1"
+                style={{
+                  borderImage:
+                    "linear-gradient(135deg, #00D9FF, #0EA5E9, #06B6D4) 1",
+                }}
               >
-                Get in Touch
+                <span className="relative z-10 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  Get in Touch
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </button>
             </div>
           </div>
@@ -1056,7 +1067,7 @@ function App() {
                       categoryColors[index % categoryColors.length]
                     } border border-white/10 hover:border-primary/30 transition-all duration-300`}
                   >
-                    <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary to-primary bg-clip-text text-transparent">
+                    <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
                       {category}
                     </h3>
                     <div className="flex flex-wrap gap-1.5 sm:gap-2">
@@ -1094,27 +1105,28 @@ function App() {
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               <a
                 href="mailto:marophossain@example.com"
-                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 bg-gradient-to-r from-primary to-primary text-white rounded-lg font-semibold text-xs sm:text-sm hover:shadow-lg hover:shadow-primary/50 transform hover:scale-105 transition-all duration-300"
+                className="group relative flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 text-black rounded-xl font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/40 hover:-translate-y-1 animate-gradient bg-[length:200%_auto]"
               >
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  className="w-5 h-5 sm:w-5 sm:h-5 relative z-10"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
                   <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
                   <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                 </svg>
-                Email Me
+                <span className="relative z-10">Email Me</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-500 to-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </a>
 
               <a
                 href="https://linkedin.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass-morphism border border-primary/50 text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-primary/10 hover:border-primary transform hover:scale-105 transition-all duration-300"
+                className="group relative flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 bg-transparent border-2 border-primary rounded-xl font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:text-black hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1"
               >
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  className="w-5 h-5 sm:w-5 sm:h-5 relative z-10"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -1124,17 +1136,18 @@ function App() {
                     clipRule="evenodd"
                   />
                 </svg>
-                LinkedIn
+                <span className="relative z-10">LinkedIn</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </a>
 
               <a
                 href="https://github.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1.5 sm:gap-2 px-4 sm:px-5 py-2 sm:py-2.5 glass-morphism border border-primary/50 text-white rounded-lg font-semibold text-xs sm:text-sm hover:bg-primary/10 hover:border-primary transform hover:scale-105 transition-all duration-300"
+                className="group relative flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 bg-transparent border-2 border-primary rounded-xl font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:text-black hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1"
               >
                 <svg
-                  className="w-4 h-4 sm:w-5 sm:h-5"
+                  className="w-5 h-5 sm:w-5 sm:h-5 relative z-10"
                   fill="currentColor"
                   viewBox="0 0 20 20"
                 >
@@ -1144,7 +1157,10 @@ function App() {
                     clipRule="evenodd"
                   />
                 </svg>
-                GitHub
+                <span className="relative z-10 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                  GitHub
+                </span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
               </a>
             </div>
           </div>
