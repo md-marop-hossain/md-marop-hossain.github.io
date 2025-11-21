@@ -7,6 +7,7 @@ function App() {
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedProjects, setExpandedProjects] = useState({});
 
   const roles = [
     "AI Engineer @NidusLab-USA",
@@ -15,6 +16,13 @@ function App() {
     "LangChain & LangGraph Developer",
     "Agentic AI & FastAPI Expert",
   ];
+
+  const toggleProject = (index) => {
+    setExpandedProjects((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
+  };
 
   // Typing effect
   useEffect(() => {
@@ -74,86 +82,124 @@ function App() {
 
   const projects = [
     {
-      title: "Advanced RAG System",
-      description:
-        "Built a production-grade Retrieval-Augmented Generation system with vector databases and semantic search, achieving 95% accuracy in domain-specific queries.",
-      tech: ["LangChain", "Pinecone", "GPT-4", "FastAPI"],
+      title:
+        "Next-Generation Multi-Model Personal AI Agent Chatbot Platform with Real-Time Web Search",
+      description: [
+        "Combines advanced language models from OpenAI and Groq with real-time web search, enabling dynamic, up-to-date, and intelligent conversational experiences.",
+        "Developed using FastAPI (backend), LangGraph and LangChain (agent logic and tool integration), Streamlit (frontend), and Uvicorn (hosting), making the platform robust, extensible, and production-ready.",
+      ],
+      tech: [
+        "FastAPI",
+        "LangGraph",
+        "LangChain",
+        "Streamlit",
+        "Uvicorn",
+        "OpenAI",
+        "Groq",
+      ],
+      link: "#",
     },
     {
-      title: "LLM Fine-tuning Pipeline",
-      description:
-        "Developed an automated fine-tuning pipeline for domain-specific language models using LoRA and QLoRA techniques, reducing training time by 60%.",
-      tech: ["PyTorch", "Hugging Face", "PEFT", "Weights & Biases"],
+      title:
+        "Hybrid Log Classification System with Deepseek-R1 LLM, BERT, NLP and Regex",
+      description: [
+        "Developed a hybrid AI system for automated log message classification using Regex pattern matching, BERT embeddings with logistic regression, and Deepseek R1 Large Language Models (LLM), with DBSCAN clustering for regex discovery to automatically categorize log messages from enterprise systems, ensuring high accuracy and adaptability for both common and rare log types.",
+        "Designed a scalable pipeline that combines rule-based, machine learning, and GenAI methods-helping organizations detect errors, security threats, and system events faster, reduce manual log review, and improve IT operations in real-world industry environments.",
+      ],
+      tech: ["Deepseek-R1", "BERT", "NLP", "Regex", "DBSCAN", "Python"],
+      link: "#",
     },
     {
-      title: "Real-time Object Detection",
-      description:
-        "Implemented a state-of-the-art object detection system for industrial applications using YOLO v8, processing 60 FPS with 98% accuracy.",
-      tech: ["YOLOv8", "OpenCV", "TensorRT", "CUDA"],
+      title: "GPT-Powered Email Assistant",
+      description: [
+        "Built an AI-driven email assistant using Python and OpenAI GPT model (GPT-4.1 and 3.5) to automate email scanning, smart prioritization, and automatic categorization of business and sponsorship messages, compatible with any email provider.",
+        "Enabled AI-generated professional reply suggestions and user review workflows, supporting both OpenAI and local LLMs for privacy, resulting in significant time savings and improved inbox organization.",
+      ],
+      tech: ["Python", "GPT-4", "GPT-3.5", "OpenAI API", "NLP"],
+      link: "#",
     },
     {
-      title: "Multi-Agent AI System",
-      description:
-        "Architected a collaborative multi-agent framework for complex problem-solving using LangGraph, enabling autonomous task decomposition and execution.",
-      tech: ["LangGraph", "AutoGPT", "Redis", "Docker"],
+      title: "EdTech LLM Q&A Suite: LangChain + Gemini + Streamlit",
+      description: [
+        "Developed an AI-powered Q&A platform using LangChain, Google Gemini (PaLM), and Streamlit, delivering instant, context-aware answers for educational and online platforms through a user-friendly interface.",
+        "Integrated a centralized CSV knowledge base for efficient information retrieval, streamlining support and knowledge management to reduce repetitive queries and enhance scalability.",
+      ],
+      tech: ["LangChain", "Google Gemini", "Streamlit", "PaLM", "Python"],
+      link: "#",
     },
     {
-      title: "Conversational AI Platform",
-      description:
-        "Created an enterprise conversational AI platform with context management, supporting 10k+ concurrent users with sub-200ms latency.",
-      tech: ["Rasa", "Elasticsearch", "Kubernetes", "PostgreSQL"],
+      title:
+        "Enhancing Ocular Disease Diagnosis, Blood Vessel Segmentation, and Vessel Diameter Estimation Using an Advanced Deep Learning Approach",
+      description: [
+        "Developed retinal vessel segmentation and diameter estimation algorithms for diagnosing ischemia, macular degeneration, and cardiovascular diseases, enabling early, cost-effective detection with potential for mobile or web integration.",
+        "Designed an advanced system using pre-trained models (EfficientNetV2S, ResNet50, DenseNet121) to classify ocular diseases (cataracts, glaucoma, diabetic retinopathy) with high accuracy, improving diagnostic efficiency.",
+      ],
+      tech: [
+        "EfficientNetV2S",
+        "ResNet50",
+        "DenseNet121",
+        "Deep Learning",
+        "Computer Vision",
+      ],
+      link: "#",
     },
     {
-      title: "Vision Transformer for Medical Imaging",
-      description:
-        "Developed a Vision Transformer model for medical image analysis, improving diagnostic accuracy by 15% over traditional CNNs.",
-      tech: ["ViT", "PyTorch", "MONAI", "TensorBoard"],
+      title:
+        "Segmentation of Blood Vessels, Optic Disc Localization, Exudates Detection for Diabetic Retinopathy, and Glaucoma Diagnosis From Fundus Images",
+      description: [
+        "Developed an automated diagnostic system using image processing and machine learning to detect diabetic retinopathy and glaucoma, achieving 98.77% accuracy in optic disc localization and 75.73% accuracy in retinal feature classification.",
+        "Engineered blood vessel segmentation algorithms with improved accuracy and noise reduction using morphological operations, Otsu thresholding, and deep learning techniques.",
+      ],
+      tech: [
+        "OpenCV",
+        "Machine Learning",
+        "Image Processing",
+        "Python",
+        "Deep Learning",
+      ],
+      link: "#",
+    },
+    {
+      title:
+        "Predictive Modeling and Analysis of Software Engineers Salary Using Machine Learning",
+      description: [
+        "Built a ML framework using regression models (Decision Trees, Random Forest, Linear Regression, XGBoost) to predict software engineer salaries with 76% accuracy, leveraging 60,000+ entries from the 2023 Stack Overflow Developer Survey.",
+        "Deployed a user-friendly web application for real-time salary predictions, supporting job seekers and recruiters in salary negotiations and career planning.",
+      ],
+      tech: [
+        "XGBoost",
+        "Random Forest",
+        "Linear Regression",
+        "Python",
+        "Scikit-learn",
+        "Streamlit",
+      ],
+      link: "#",
     },
   ];
 
   const skills = {
-    "Large Language Models": [
+    "Programming Languages & Tools": [
+      { name: "Python", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "C/C++", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "Java", color: "bg-primary/20 border-primary/50 text-primary" },
       {
-        name: "GPT-4 / Claude",
+        name: "JavaScript",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
+      { name: "Git", color: "bg-primary/20 border-primary/50 text-primary" },
       {
-        name: "LangChain",
+        name: "SQL (advanced)",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
+      { name: "MySQL", color: "bg-primary/20 border-primary/50 text-primary" },
       {
-        name: "Llama 2/3",
+        name: "MongoDB",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
-      {
-        name: "Fine-tuning (LoRA)",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Prompt Engineering",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
+      { name: "Bash", color: "bg-primary/20 border-primary/50 text-primary" },
     ],
-    "Computer Vision": [
-      {
-        name: "YOLO",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      { name: "OpenCV", color: "bg-primary/20 border-primary/50 text-primary" },
-      {
-        name: "SAM",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Vision Transformers",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Object Detection",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-    ],
-    "ML Frameworks": [
+    "Machine Learning & AI": [
       {
         name: "PyTorch",
         color: "bg-primary/20 border-primary/50 text-primary",
@@ -162,76 +208,94 @@ function App() {
         name: "TensorFlow",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
+      { name: "Keras", color: "bg-primary/20 border-primary/50 text-primary" },
       {
-        name: "Hugging Face",
+        name: "Scikit-learn",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      { name: "OpenCV", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "NLTK", color: "bg-primary/20 border-primary/50 text-primary" },
+      {
+        name: "HuggingFace",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
-        name: "scikit-learn",
+        name: "Fine-tuning",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
       {
-        name: "JAX",
+        name: "Prompt Engineering",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      {
+        name: "Generative AI",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      { name: "RAG", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "FAISS", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "Chroma", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "NLP", color: "bg-primary/20 border-primary/50 text-primary" },
+      {
+        name: "Statistical Analysis",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      {
+        name: "Data Cleaning",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
-    "DevOps & MLOps": [
+    "Large Language Models (LLMs)": [
+      { name: "GPT", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "BERT", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "Claude", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "LLaMA", color: "bg-primary/20 border-primary/50 text-primary" },
+      {
+        name: "DeepSeek",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      {
+        name: "LangChain",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      {
+        name: "LangGraph",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+    ],
+    "Data Science & Visualization": [
+      { name: "Pandas", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "NumPy", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "SciPy", color: "bg-primary/20 border-primary/50 text-primary" },
+      {
+        name: "Matplotlib",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      {
+        name: "Seaborn",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+    ],
+    "Web & Application Development": [
+      {
+        name: "FastAPI",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      {
+        name: "React.js",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+      { name: "Django", color: "bg-primary/20 border-primary/50 text-primary" },
+      { name: "PHP", color: "bg-primary/20 border-primary/50 text-primary" },
+      {
+        name: "Streamlit",
+        color: "bg-primary/20 border-primary/50 text-primary",
+      },
+    ],
+    "Cloud & DevOps": [
+      { name: "AWS", color: "bg-primary/20 border-primary/50 text-primary" },
       { name: "Docker", color: "bg-primary/20 border-primary/50 text-primary" },
       {
-        name: "Kubernetes",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "MLflow",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Weights & Biases",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
         name: "GitHub Actions",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-    ],
-    "Databases & Vector Stores": [
-      {
-        name: "Pinecone",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Weaviate",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "PostgreSQL",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "MongoDB",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Redis",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-    ],
-    Programming: [
-      { name: "Python", color: "bg-primary/20 border-primary/50 text-primary" },
-      {
-        name: "C++",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "JavaScript",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "Rust",
-        color: "bg-primary/20 border-primary/50 text-primary",
-      },
-      {
-        name: "CUDA",
         color: "bg-primary/20 border-primary/50 text-primary",
       },
     ],
@@ -968,13 +1032,83 @@ function App() {
                       }`}
                     ></div>
                     <div className="p-6">
-                      <h3 className="text-lg font-bold mb-2 text-white">
+                      <h3 className="text-lg font-bold mb-3 text-white">
                         {project.title}
                       </h3>
-                      <p className="text-gray-400 mb-4 leading-relaxed text-sm">
-                        {project.description}
-                      </p>
-                      <div className="flex flex-wrap gap-1.5">
+                      <ul className="text-gray-400 mb-4 leading-relaxed text-sm space-y-2">
+                        {Array.isArray(project.description) ? (
+                          <>
+                            <li className="flex items-start gap-2">
+                              <span className="text-primary mt-1 flex-shrink-0">
+                                •
+                              </span>
+                              <span>{project.description[0]}</span>
+                            </li>
+                            {expandedProjects[index] &&
+                              project.description.slice(1).map((point, idx) => (
+                                <li
+                                  key={idx + 1}
+                                  className="flex items-start gap-2"
+                                >
+                                  <span className="text-primary mt-1 flex-shrink-0">
+                                    •
+                                  </span>
+                                  <span>{point}</span>
+                                </li>
+                              ))}
+                            {project.description.length > 1 && (
+                              <button
+                                onClick={() => toggleProject(index)}
+                                className="text-primary hover:text-cyan-400 text-sm font-semibold flex items-center gap-1 transition-colors duration-300 mt-2"
+                              >
+                                {expandedProjects[index] ? (
+                                  <>
+                                    Show less
+                                    <svg
+                                      className="w-4 h-4"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M5 15l7-7 7 7"
+                                      />
+                                    </svg>
+                                  </>
+                                ) : (
+                                  <>
+                                    Show more...
+                                    <svg
+                                      className="w-4 h-4"
+                                      fill="none"
+                                      stroke="currentColor"
+                                      viewBox="0 0 24 24"
+                                    >
+                                      <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M19 9l-7 7-7-7"
+                                      />
+                                    </svg>
+                                  </>
+                                )}
+                              </button>
+                            )}
+                          </>
+                        ) : (
+                          <li className="flex items-start gap-2">
+                            <span className="text-primary mt-1 flex-shrink-0">
+                              •
+                            </span>
+                            <span>{project.description}</span>
+                          </li>
+                        )}
+                      </ul>
+                      <div className="flex flex-wrap gap-1.5 mb-4">
                         {project.tech.map((tech, techIndex) => (
                           <span
                             key={techIndex}
@@ -984,6 +1118,29 @@ function App() {
                           </span>
                         ))}
                       </div>
+                      {project.link && (
+                        <a
+                          href={project.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 text-sm font-semibold text-gradient hover:gap-3 transition-all duration-300"
+                        >
+                          View Project
+                          <svg
+                            className="w-4 h-4"
+                            fill="none"
+                            stroke="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            />
+                          </svg>
+                        </a>
+                      )}
                     </div>
                   </div>
                 );
@@ -1122,9 +1279,163 @@ function App() {
         </section>
 
         {/* Footer */}
-        <footer className="py-8 px-4 sm:px-6 lg:px-8 glass-morphism-strong border-t border-white/10">
-          <div className="max-w-7xl mx-auto text-center">
-            <p className="text-gray-400">© 2024 Md Marop Hossain</p>
+        <footer className="relative py-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          {/* Background Effects */}
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-primary/10"></div>
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent"></div>
+
+          <div className="max-w-7xl mx-auto relative z-10">
+            {/* Main Footer Content */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+              {/* Brand Section */}
+              <div className="text-center md:text-left space-y-4">
+                <h3 className="text-2xl font-bold">
+                  <span className="gradient-text">Md Marop Hossain</span>
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  AI Engineer & Machine Learning Specialist
+                </p>
+                <p className="text-gray-500 text-xs leading-relaxed">
+                  Building intelligent solutions with cutting-edge AI
+                  technologies
+                </p>
+              </div>
+
+              {/* Quick Links */}
+              <div className="text-center space-y-4">
+                <h4 className="text-lg font-semibold text-gray-300 mb-4">
+                  Quick Links
+                </h4>
+                <div className="flex flex-col space-y-3">
+                  <a
+                    href="#about"
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm hover:translate-x-1 inline-block"
+                  >
+                    About Me
+                  </a>
+                  <a
+                    href="#projects"
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm hover:translate-x-1 inline-block"
+                  >
+                    View Projects
+                  </a>
+                  <a
+                    href="#skills"
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm hover:translate-x-1 inline-block"
+                  >
+                    Skills
+                  </a>
+                  <a
+                    href="#contact"
+                    className="text-gray-400 hover:text-primary transition-colors duration-300 text-sm hover:translate-x-1 inline-block"
+                  >
+                    Get in Touch
+                  </a>
+                </div>
+              </div>
+
+              {/* Social Links */}
+              <div className="text-center md:text-right space-y-4">
+                <h4 className="text-lg font-semibold text-gray-300 mb-4">
+                  Connect With Me
+                </h4>
+                <div className="flex justify-center md:justify-end gap-4">
+                  <a
+                    href="mailto:marophossain@example.com"
+                    className="group relative w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+                    title="Email Me"
+                  >
+                    <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-300"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="https://linkedin.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+                    title="LinkedIn"
+                  >
+                    <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-300"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.338 16.338H13.67V12.16c0-.995-.017-2.277-1.387-2.277-1.39 0-1.601 1.086-1.601 2.207v4.248H8.014v-8.59h2.559v1.174h.037c.356-.675 1.227-1.387 2.526-1.387 2.703 0 3.203 1.778 3.203 4.092v4.711zM5.005 6.575a1.548 1.548 0 11-.003-3.096 1.548 1.548 0 01.003 3.096zm-1.337 9.763H6.34v-8.59H3.667v8.59zM17.668 1H2.328C1.595 1 1 1.581 1 2.298v15.403C1 18.418 1.595 19 2.328 19h15.34c.734 0 1.332-.582 1.332-1.299V2.298C19 1.581 18.402 1 17.668 1z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </a>
+
+                  <a
+                    href="https://github.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative w-12 h-12 flex items-center justify-center rounded-xl bg-white/5 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-primary/25"
+                    title="GitHub"
+                  >
+                    <svg
+                      className="w-5 h-5 text-gray-400 group-hover:text-primary transition-colors duration-300"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 0C4.477 0 0 4.484 0 10.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0110 4.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.942.359.31.678.921.678 1.856 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0020 10.017C20 4.484 15.522 0 10 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </a>
+                </div>
+                <p className="text-xs text-gray-500 mt-6">
+                  Let's collaborate on something amazing!
+                </p>
+              </div>
+            </div>
+
+            {/* Divider with gradient */}
+            <div className="relative mb-8">
+              <div className="absolute inset-0 flex items-center">
+                <div className="w-full border-t border-white/10"></div>
+              </div>
+              <div className="relative flex justify-center">
+                <div className="bg-gradient-to-r from-transparent via-primary/20 to-transparent h-[2px] w-64"></div>
+              </div>
+            </div>
+
+            {/* Bottom Bar */}
+            <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm">
+              <p className="text-gray-400">
+                © {new Date().getFullYear()} Md Marop Hossain. All rights
+                reserved.
+              </p>
+              <div className="flex items-center gap-2">
+                <span className="text-gray-500">Crafted with</span>
+                <svg
+                  className="w-4 h-4 text-primary animate-pulse"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-gray-500">and</span>
+                <span className="gradient-text font-semibold">
+                  React + Vite
+                </span>
+              </div>
+            </div>
           </div>
         </footer>
       </div>
