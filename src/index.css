@@ -1,0 +1,230 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #000000;
+    color: #ffffff;
+    transition: color 0.3s ease;
+    background: linear-gradient(to bottom, #000000, #0a0a0a, #000000);
+    background-attachment: fixed;
+  }
+}
+
+@layer components {
+  .glass-morphism {
+    background: rgba(26, 26, 26, 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  }
+
+  .glass-morphism-strong {
+    background: rgba(26, 26, 26, 0.8);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 217, 255, 0.2);
+    box-shadow: 0 8px 32px 0 rgba(0, 217, 255, 0.1);
+  }
+
+  .gradient-text {
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+    background-image: linear-gradient(
+      90deg,
+      #00d9ff 0%,
+      #6366f1 50%,
+      #a855f7 100%
+    );
+    background-size: 200% auto;
+    animation: gradient 3s linear infinite;
+  }
+
+  .card-hover {
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-hover:hover {
+    transform: translateY(-0.5rem);
+  }
+
+  .card-hover:hover {
+    box-shadow: 0 20px 40px rgba(0, 217, 255, 0.15),
+      0 0 20px rgba(99, 102, 241, 0.1);
+  }
+
+  .skill-badge {
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    font-size: 0.875rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+  .skill-badge:hover {
+    transform: scale(1.1);
+  }
+
+  .section-gradient {
+    background: radial-gradient(
+        ellipse at top,
+        rgba(0, 217, 255, 0.05) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at bottom,
+        rgba(99, 102, 241, 0.05) 0%,
+        transparent 50%
+      );
+  }
+
+  /* Navbar enhancements */
+  nav button {
+    position: relative;
+  }
+
+  nav button::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+    background: radial-gradient(
+      circle,
+      rgba(0, 217, 255, 0.1) 0%,
+      transparent 70%
+    );
+    transition: transform 0.5s ease;
+    pointer-events: none;
+  }
+
+  nav button:hover::before {
+    transform: translate(-50%, -50%) scale(1.5);
+  }
+
+  /* Education & Experience enhancements */
+  #education .glass-morphism,
+  #experience .glass-morphism {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  #education .glass-morphism:hover,
+  #experience .glass-morphism:hover {
+    transform: translateY(-8px) scale(1.02);
+  }
+
+  /* Timeline animation */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  #education > div > div > div,
+  #experience > div > div {
+    animation: fadeInUp 0.6s ease-out forwards;
+    opacity: 0;
+  }
+
+  #education > div > div > div:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  #education > div > div > div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  #education > div > div > div:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  #experience > div > div:nth-child(1) {
+    animation-delay: 0.1s;
+  }
+
+  #experience > div > div:nth-child(2) {
+    animation-delay: 0.2s;
+  }
+
+  #experience > div > div:nth-child(3) {
+    animation-delay: 0.3s;
+  }
+
+  /* Details/Summary styling for experience section */
+  details summary {
+    list-style: none;
+  }
+
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+
+  details[open] summary {
+    display: none;
+  }
+} /* Typing animation cursor */
+.typing-cursor::after {
+  content: "|";
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0f0f0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #00d9ff;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #33e1ff;
+}
