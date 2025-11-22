@@ -439,6 +439,88 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white relative">
+      {/* AI Neural Network Grid Background */}
+      <div className="fixed inset-0 pointer-events-none overflow-hidden">
+        {/* Animated grid lines */}
+        <div className="absolute inset-0 opacity-20">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+              linear-gradient(rgba(0, 217, 255, 0.1) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px)
+            `,
+              backgroundSize: "50px 50px",
+              animation: "gridMove 20s linear infinite",
+            }}
+          ></div>
+        </div>
+
+        {/* Floating AI nodes */}
+        <div className="absolute top-20 left-10 w-2 h-2 bg-primary rounded-full animate-pulse opacity-60"></div>
+        <div
+          className="absolute top-40 right-20 w-2 h-2 bg-cyan-400 rounded-full animate-pulse opacity-60"
+          style={{ animationDelay: "0.5s" }}
+        ></div>
+        <div
+          className="absolute bottom-40 left-1/4 w-2 h-2 bg-blue-500 rounded-full animate-pulse opacity-60"
+          style={{ animationDelay: "1s" }}
+        ></div>
+        <div
+          className="absolute top-1/3 right-1/3 w-2 h-2 bg-primary rounded-full animate-pulse opacity-60"
+          style={{ animationDelay: "1.5s" }}
+        ></div>
+        <div
+          className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-cyan-400 rounded-full animate-pulse opacity-60"
+          style={{ animationDelay: "2s" }}
+        ></div>
+
+        {/* Connection lines between nodes */}
+        <svg className="absolute inset-0 w-full h-full opacity-10">
+          <line
+            x1="10%"
+            y1="20%"
+            x2="90%"
+            y2="40%"
+            stroke="url(#gradient1)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="10"
+              dur="3s"
+              repeatCount="indefinite"
+            />
+          </line>
+          <line
+            x1="25%"
+            y1="70%"
+            x2="75%"
+            y2="30%"
+            stroke="url(#gradient1)"
+            strokeWidth="1"
+            strokeDasharray="5,5"
+          >
+            <animate
+              attributeName="stroke-dashoffset"
+              from="0"
+              to="10"
+              dur="4s"
+              repeatCount="indefinite"
+            />
+          </line>
+          <defs>
+            <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stopColor="#00D9FF" />
+              <stop offset="50%" stopColor="#0EA5E9" />
+              <stop offset="100%" stopColor="#06B6D4" />
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
       {/* Background Gradient Mesh */}
       <div className="fixed inset-0 bg-gradient-mesh pointer-events-none"></div>
 
@@ -629,17 +711,20 @@ function App() {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 px-4">
-              Hi, I'm <span className="gradient-text">Md Marop Hossain</span>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 px-4 tracking-tight">
+              Hi, I'm{" "}
+              <span className="gradient-text font-display">
+                Md Marop Hossain
+              </span>
             </h1>
 
             <div className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 h-14 sm:h-16 flex items-center justify-center px-4">
-              <span className="typing-cursor font-mono bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent font-bold">
+              <span className="typing-cursor font-mono bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent font-semibold tracking-wide">
                 {typedText}
               </span>
             </div>
 
-            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4">
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 font-light">
               As an AI Engineer (Intern) at NidusLab-USA, I contribute to the
               development of advanced AI systems, focusing on building scalable
               microservices, AI-powered recommendation engines, and NLP-driven
