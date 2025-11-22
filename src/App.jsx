@@ -695,18 +695,96 @@ function App() {
         >
           <div className="max-w-7xl mx-auto text-center">
             <div className="flex justify-center mb-6 sm:mb-8">
-              <div className="glass-morphism-strong p-2 rounded-full animate-glow">
-                <div className="relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-full blur-xl opacity-60 animate-pulse-slow"></div>
-                  <img
-                    src="/profile.jpg"
-                    alt="Profile"
-                    className="w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 rounded-full object-cover border-4 border-transparent bg-gradient-to-r from-primary via-cyan-400 to-blue-500 p-[2px] relative z-10"
-                    style={{
-                      borderImage:
-                        "linear-gradient(135deg, #00D9FF, #22D3EE, #0EA5E9) 1",
-                    }}
-                  />
+              <div className="relative group cursor-pointer">
+                {/* Outer rotating ring */}
+                <div className="absolute inset-0 rounded-full">
+                  <svg
+                    className="w-full h-full animate-spin-slow"
+                    style={{ animationDuration: "20s" }}
+                    viewBox="0 0 200 200"
+                  >
+                    <circle
+                      cx="100"
+                      cy="100"
+                      r="95"
+                      fill="none"
+                      stroke="url(#gradient-ring)"
+                      strokeWidth="2"
+                      strokeDasharray="10,5"
+                      opacity="0.3"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="gradient-ring"
+                        x1="0%"
+                        y1="0%"
+                        x2="100%"
+                        y2="100%"
+                      >
+                        <stop offset="0%" stopColor="#00D9FF" />
+                        <stop offset="50%" stopColor="#0EA5E9" />
+                        <stop offset="100%" stopColor="#06B6D4" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </div>
+
+                {/* Floating particles around image */}
+                <div
+                  className="absolute -top-2 -left-2 w-3 h-3 bg-primary rounded-full animate-bounce"
+                  style={{ animationDelay: "0s", animationDuration: "3s" }}
+                ></div>
+                <div
+                  className="absolute -top-4 right-8 w-2 h-2 bg-cyan-400 rounded-full animate-bounce"
+                  style={{ animationDelay: "0.5s", animationDuration: "3.5s" }}
+                ></div>
+                <div
+                  className="absolute top-8 -right-3 w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce"
+                  style={{ animationDelay: "1s", animationDuration: "4s" }}
+                ></div>
+                <div
+                  className="absolute bottom-8 -left-4 w-2 h-2 bg-primary rounded-full animate-bounce"
+                  style={{ animationDelay: "1.5s", animationDuration: "3.2s" }}
+                ></div>
+                <div
+                  className="absolute -bottom-3 right-12 w-3 h-3 bg-cyan-400 rounded-full animate-bounce"
+                  style={{ animationDelay: "2s", animationDuration: "3.8s" }}
+                ></div>
+
+                {/* Hexagonal container */}
+                <div className="relative w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-56 lg:w-64 lg:h-64 transition-transform duration-500 group-hover:scale-105">
+                  {/* Pulsing glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-full blur-2xl opacity-40 group-hover:opacity-70 transition-opacity duration-500 animate-pulse-slow"></div>
+
+                  {/* Hexagonal border effect */}
+                  <div className="absolute inset-0 rounded-full p-[3px] bg-gradient-to-r from-primary via-cyan-400 to-blue-500 animate-gradient bg-[length:200%_auto]">
+                    <div className="w-full h-full rounded-full bg-black/80 p-[2px]">
+                      {/* Inner glowing border */}
+                      <div className="w-full h-full rounded-full bg-gradient-to-br from-primary/30 via-transparent to-blue-500/30 p-1">
+                        <div className="w-full h-full rounded-full overflow-hidden relative">
+                          {/* Shine effect on hover */}
+                          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out"></div>
+
+                          <img
+                            src="/profile.jpg"
+                            alt="Profile"
+                            className="w-full h-full object-cover relative z-10 group-hover:scale-110 transition-transform duration-500"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Corner accent elements */}
+                  <div className="absolute -top-1 -left-1 w-6 h-6 border-t-2 border-l-2 border-primary rounded-tl-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute -top-1 -right-1 w-6 h-6 border-t-2 border-r-2 border-cyan-400 rounded-tr-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute -bottom-1 -left-1 w-6 h-6 border-b-2 border-l-2 border-blue-500 rounded-bl-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                  <div className="absolute -bottom-1 -right-1 w-6 h-6 border-b-2 border-r-2 border-primary rounded-br-lg opacity-60 group-hover:opacity-100 transition-opacity"></div>
+                </div>
+
+                {/* AI Badge indicator */}
+                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 text-black px-4 py-1.5 rounded-full text-xs font-bold shadow-lg shadow-primary/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  AI Engineer
                 </div>
               </div>
             </div>

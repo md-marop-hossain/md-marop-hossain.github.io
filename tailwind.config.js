@@ -50,6 +50,8 @@ export default {
         'fadeIn': 'fadeIn 0.5s ease-in',
         'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'gradient': 'gradient 8s linear infinite',
+        'spin-slow': 'spin 20s linear infinite',
+        'bounce': 'bounce 3s ease-in-out infinite',
       },
       keyframes: {
         float: {
