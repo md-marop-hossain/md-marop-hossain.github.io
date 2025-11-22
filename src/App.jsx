@@ -1379,45 +1379,110 @@ function App() {
         {/* Skills Section */}
         <section
           id="skills"
-          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
+          className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
         >
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 sm:mb-3">
-              <span className="gradient-text">Technical Skills</span>
-            </h2>
-            <p className="text-center text-gray-400 mb-8 sm:mb-10 text-sm sm:text-base px-4">
-              Expertise across AI, ML, and software development
-            </p>
+          {/* Animated background elements */}
+          <div className="absolute inset-0 opacity-20">
+            <div className="absolute top-10 left-10 w-24 h-24 bg-primary/10 rounded-full blur-2xl animate-pulse"></div>
+            <div className="absolute bottom-10 right-10 w-32 h-32 bg-cyan-400/10 rounded-full blur-2xl animate-pulse" style={{animationDelay: '1s'}}></div>
+          </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+          <div className="max-w-6xl mx-auto relative z-10">
+            <div className="text-center mb-8">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+                <span className="gradient-text">Technical Skills</span>
+              </h2>
+              <p className="text-gray-400 text-sm px-4 mb-4">
+                Expertise across AI, ML, and software development
+              </p>
+              
+              {/* Skill count badges */}
+              <div className="flex flex-wrap justify-center gap-2 sm:gap-3">
+                {Object.entries(skills).map(([category, skillList], index) => (
+                  <div key={index} className="group relative">
+                    <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-full blur opacity-0 group-hover:opacity-40 transition-opacity duration-300"></div>
+                    <div className="relative px-3 py-1 bg-white/5 border border-white/10 rounded-full text-xs font-semibold text-gray-300 hover:text-white hover:border-primary/50 transition-all duration-300">
+                      {skillList.length} {category.split(' ')[0]}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
               {Object.entries(skills).map(([category, skillList], index) => {
-                const categoryColors = [
-                  "border-l-primary",
-                  "border-l-secondary",
-                  "border-l-accent-purple",
-                  "border-l-accent-pink",
-                  "border-l-accent-blue",
-                  "border-l-primary",
+                const gradients = [
+                  "from-primary/20 to-primary/5",
+                  "from-cyan-400/20 to-cyan-400/5",
+                  "from-blue-500/20 to-blue-500/5",
+                  "from-purple-500/20 to-purple-500/5",
+                  "from-pink-500/20 to-pink-500/5",
+                  "from-indigo-500/20 to-indigo-500/5",
                 ];
+                const iconColors = [
+                  "text-primary",
+                  "text-cyan-400",
+                  "text-blue-500",
+                  "text-purple-500",
+                  "text-pink-500",
+                  "text-indigo-500",
+                ];
+                
                 return (
                   <div
                     key={index}
-                    className={`glass-morphism p-4 sm:p-6 rounded-lg border-l-4 ${
-                      categoryColors[index % categoryColors.length]
-                    } border border-white/10 hover:border-primary/30 transition-all duration-300`}
+                    className="group relative"
                   >
-                    <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                      {category}
-                    </h3>
-                    <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                      {skillList.map((skill, skillIndex) => (
-                        <span
-                          key={skillIndex}
-                          className={`px-1.5 sm:px-2 py-0.5 sm:py-1 text-[10px] sm:text-xs ${skill.color} border font-medium rounded`}
-                        >
-                          {skill.name}
-                        </span>
-                      ))}
+                    {/* Hover glow effect */}
+                    <div className={`absolute -inset-0.5 bg-gradient-to-r ${gradients[index % gradients.length]} rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-500`}></div>
+                    
+                    {/* Card */}
+                    <div className="relative glass-morphism p-4 sm:p-5 rounded-xl border border-white/10 hover:border-primary/30 transition-all duration-300 hover:transform hover:-translate-y-1">
+                      {/* Header with icon */}
+                      <div className="flex items-center gap-3 mb-3">
+                        <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${gradients[index % gradients.length]} flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
+                          <svg className={`w-4 h-4 ${iconColors[index % iconColors.length]}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            {index === 0 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />}
+                            {index === 1 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />}
+                            {index === 2 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />}
+                            {index === 3 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />}
+                            {index === 4 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />}
+                            {index === 5 && <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z" />}
+                          </svg>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-sm sm:text-base font-bold bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:from-cyan-400 group-hover:via-primary group-hover:to-blue-500 transition-all duration-300">
+                            {category}
+                          </h3>
+                          <p className="text-xs text-gray-500">{skillList.length} technologies</p>
+                        </div>
+                        
+                        {/* Expand indicator */}
+                        <div className="w-7 h-7 rounded-lg bg-white/5 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300">
+                          <svg className="w-3.5 h-3.5 text-gray-400 group-hover:text-primary transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                          </svg>
+                        </div>
+                      </div>
+
+                      {/* Skills grid */}
+                      <div className="flex flex-wrap gap-1.5">
+                        {skillList.map((skill, skillIndex) => (
+                          <span
+                            key={skillIndex}
+                            className="group/skill relative px-2.5 py-1 text-xs font-medium text-gray-300 bg-white/5 border border-white/10 rounded-lg hover:bg-primary/10 hover:border-primary/50 hover:text-white hover:scale-105 hover:-translate-y-0.5 transition-all duration-300 cursor-pointer"
+                          >
+                            {/* Shimmer effect on hover */}
+                            <div className="absolute inset-0 rounded-lg overflow-hidden">
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover/skill:translate-x-full transition-transform duration-700"></div>
+                            </div>
+                            <span className="relative z-10">{skill.name}</span>
+                          </span>
+                        ))}
+                      </div>
+
+                      {/* Bottom accent line */}
+                      <div className={`mt-3 h-0.5 bg-gradient-to-r ${gradients[index % gradients.length]} rounded-full transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left`}></div>
                     </div>
                   </div>
                 );
