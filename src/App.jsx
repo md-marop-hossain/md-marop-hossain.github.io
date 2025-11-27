@@ -1919,7 +1919,7 @@ function App() {
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4">
               <a
-                href="mailto:marophossain@example.com"
+                href="mailto:marop.hossain21@gmail.com"
                 className="group relative flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 text-black rounded-xl font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-500/40 hover:-translate-y-1 animate-gradient bg-[length:200%_auto]"
               >
                 <svg
@@ -1935,7 +1935,7 @@ function App() {
               </a>
 
               <a
-                href="https://linkedin.com"
+                href="https://www.linkedin.com/in/md-marop-hossain"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 bg-transparent border-2 border-primary rounded-xl font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:text-black hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1"
@@ -1956,7 +1956,7 @@ function App() {
               </a>
 
               <a
-                href="https://github.com"
+                href="https://github.com/md-marop-hossain"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative flex items-center gap-2 sm:gap-2.5 px-6 sm:px-8 py-3 sm:py-3.5 bg-transparent border-2 border-primary rounded-xl font-bold text-sm sm:text-base overflow-hidden transition-all duration-300 hover:text-black hover:shadow-2xl hover:shadow-cyan-500/30 hover:-translate-y-1"
