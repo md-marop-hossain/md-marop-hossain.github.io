@@ -37,7 +37,6 @@
       radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.03) 0%, transparent 50%);
     background-size: 60px 60px, 60px 60px, 800px 800px, 600px 600px, 1000px 1000px;
     background-position: 0 0, 0 0, 0% 0%, 100% 100%, 50% 50%;
-    animation: aiNeuralGrid 60s ease-in-out infinite;
   }
 
   /* Floating particles and data streams */
@@ -62,7 +61,6 @@
       radial-gradient(2px 2px at 65% 85%, rgba(14, 165, 233, 0.3), transparent);
     background-size: 100px 100%, 300px 300px, 400px 400px, 350px 350px, 450px 450px, 250px 250px, 380px 380px;
     background-position: 0% 0%, 20% 30%, 40% 70%, 60% 20%, 80% 50%, 30% 80%, 70% 90%;
-    animation: dataStreams 70s linear infinite;
   }
 
   @keyframes aiNeuralGrid {
@@ -192,7 +190,6 @@
       radial-gradient(circle at 25% 25%, rgba(0, 217, 255, 0.15) 2px, transparent 2px),
       radial-gradient(circle at 75% 75%, rgba(6, 182, 212, 0.15) 2px, transparent 2px);
     background-size: 100px 100px, 80px 80px, 150px 150px, 200px 200px;
-    animation: circuitFlow 50s ease-in-out infinite;
   }
 
   /* Code Particles Animation */
@@ -213,7 +210,6 @@
     font-size: 12px;
     color: rgba(0, 217, 255, 0.3);
     white-space: nowrap;
-    animation: codeMatrix 25s linear infinite;
   }
 
   .code-particle:nth-child(1) { left: 5%; animation-delay: -2s; }
@@ -285,7 +281,6 @@
       linear-gradient(-45deg, transparent 48%, rgba(14, 165, 233, 0.02) 49%, rgba(14, 165, 233, 0.02) 51%, transparent 52%);
     background-size: 300px 300px, 400px 400px, 250px 250px, 350px 350px, 150px 150px, 180px 180px;
     background-position: 0% 0%, 100% 100%, 50% 0%, 0% 100%, 25% 25%, 75% 75%;
-    animation: brainPulse 50s ease-in-out infinite;
     pointer-events: none;
     z-index: 1;
   }

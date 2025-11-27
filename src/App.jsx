@@ -451,7 +451,6 @@ function App() {
               linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px)
             `,
               backgroundSize: "50px 50px",
-              animation: "gridMove 60s linear infinite",
             }}
           ></div>
         </div>
@@ -591,11 +590,7 @@ function App() {
       <div className="bg-black relative z-10">
         {/* Fixed Navbar */}
         <nav
-          className={`fixed top-0 w-full backdrop-blur-md z-50 border-b transition-all duration-300 ${
-            isScrolled
-              ? "glass-morphism-strong border-white/10 shadow-lg shadow-primary/5"
-              : "bg-black/50 border-white/5"
-          }`}
+          className="fixed top-0 w-full backdrop-blur-md z-50 border-b transition-all duration-300 bg-black/50 border-white/5"
         >
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
@@ -603,9 +598,77 @@ function App() {
                 className="flex items-center group cursor-pointer"
                 onClick={() => scrollToSection("home")}
               >
-                <span className="text-2xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300">
-                  AI Engineer
-                </span>
+                <div className="relative group">
+                  {/* Neural Network Connection Lines - Hidden on mobile */}
+                  <div className="absolute -inset-2 opacity-0 group-hover:opacity-30 transition-opacity duration-500 hidden md:block">
+                    <svg className="w-full h-full" viewBox="0 0 80 30">
+                      <line x1="5" y1="15" x2="75" y2="15" stroke="url(#navGradient)" strokeWidth="1" strokeDasharray="2,2" opacity="0.6">
+                        <animate attributeName="stroke-dashoffset" from="0" to="4" dur="2s" repeatCount="indefinite" />
+                      </line>
+                      <circle cx="10" cy="15" r="1" fill="#00D9FF" opacity="0.8">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" />
+                      </circle>
+                      <circle cx="70" cy="15" r="1" fill="#06B6D4" opacity="0.8">
+                        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite" begin="1s" />
+                      </circle>
+                      <defs>
+                        <linearGradient id="navGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                          <stop offset="0%" stopColor="#00D9FF" />
+                          <stop offset="100%" stopColor="#06B6D4" />
+                        </linearGradient>
+                      </defs>
+                    </svg>
+                  </div>
+                  
+                  <div className="flex items-center space-x-2 sm:space-x-3 relative z-10">
+                    {/* AI Hexagonal Logo - Responsive */}
+                    <div className="relative">
+                      <div className="w-6 h-6 sm:w-8 sm:h-8 relative">
+                        {/* Hexagonal Background */}
+                        <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 rounded-md sm:rounded-lg transform rotate-45 group-hover:rotate-90 transition-transform duration-700"></div>
+                        <div className="absolute inset-0.5 sm:inset-1 bg-black rounded-md sm:rounded-lg transform rotate-45"></div>
+                        {/* Initials */}
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-primary font-bold text-xs sm:text-sm tracking-wider font-mono group-hover:scale-110 transition-transform duration-300">MH</span>
+                        </div>
+                        {/* Pulsing Ring */}
+                        <div className="absolute inset-0 border border-primary/30 sm:border-2 rounded-md sm:rounded-lg animate-pulse group-hover:border-primary/60 transition-colors duration-300"></div>
+                      </div>
+                      {/* Neural Nodes - Hidden on mobile */}
+                      <div className="absolute -top-0.5 -right-0.5 w-1.5 h-1.5 bg-green-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 animate-pulse hidden sm:block"></div>
+                      <div className="absolute -bottom-0.5 -left-0.5 w-1 h-1 bg-cyan-400 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 animate-pulse hidden sm:block"></div>
+                    </div>
+                    
+                    {/* Name and Title - Responsive */}
+                    <div className="flex flex-col min-w-0">
+                      <div className="flex items-center space-x-1 sm:space-x-2">
+                        <span className="text-sm sm:text-lg md:text-xl font-bold gradient-text group-hover:scale-105 transition-transform duration-300 tracking-wide truncate">
+                          Md Marop Hossain
+                        </span>
+                        {/* AI Status Indicator - Simplified on mobile */}
+                        <div className="flex items-center space-x-1 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+                          <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-green-400 rounded-full animate-pulse"></div>
+                          <span className="text-xs text-green-400 font-mono hidden sm:inline">ONLINE</span>
+                        </div>
+                      </div>
+                      {/* AI Engineer Designation - Responsive */}
+                      <div className="flex items-center space-x-1 sm:space-x-2">
+                        <div className="flex items-center space-x-1">
+                          <div className="w-0.5 h-0.5 sm:w-1 sm:h-1 bg-primary rounded-full animate-pulse"></div>
+                          <span className="text-xs sm:text-xs text-primary font-mono tracking-widest opacity-80 group-hover:opacity-100 transition-opacity duration-300">
+                            AI.ENG
+                          </span>
+                        </div>
+                        {/* Data Flow Indicator - Simplified on mobile */}
+                        <div className="flex space-x-0.5 opacity-40 group-hover:opacity-80 transition-opacity duration-300">
+                          <div className="w-0.5 h-1 sm:h-2 bg-primary/60 animate-pulse" style={{ animationDelay: '0s' }}></div>
+                          <div className="w-0.5 h-1.5 sm:h-3 bg-cyan-400/60 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                          <div className="w-0.5 h-1 sm:h-2.5 bg-blue-500/60 animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
 
               <div className="hidden md:flex space-x-2">
@@ -855,7 +918,7 @@ function App() {
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 px-4 tracking-tight relative">
               {/* AI Processing Indicator - Mobile Responsive */}
-              <div className="absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-primary opacity-60">
+              <div className="absolute -top-3 sm:-top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-primary opacity-60">
                 <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse"></div>
                 <span className="font-mono text-xs sm:text-sm">AI_SYSTEM_ONLINE</span>
                 <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
@@ -1650,35 +1713,56 @@ function App() {
         {/* Certifications & Achievements Section */}
         <section
           id="certifications"
-          className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8"
+          className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent relative overflow-hidden"
         >
-          <div className="max-w-5xl mx-auto">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-2">
-              <span className="gradient-text">
-                Certifications & Achievements
-              </span>
-            </h2>
-            <p className="text-center text-gray-400 mb-6 sm:mb-8 text-xs sm:text-sm px-4">
-              Continuous learning and professional development
-            </p>
+          {/* Background Elements */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-20 left-10 w-32 h-32 bg-gradient-to-r from-primary/10 to-cyan-400/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-20 right-10 w-40 h-40 bg-gradient-to-r from-blue-500/10 to-primary/10 rounded-full blur-3xl"></div>
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-gradient-to-r from-cyan-400/5 to-blue-500/5 rounded-full blur-3xl"></div>
+          </div>
+          
+          <div className="max-w-6xl mx-auto relative">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
+                <span className="gradient-text">
+                  Certifications & Achievements
+                </span>
+              </h2>
+              <div className="flex items-center justify-center space-x-4 mb-6">
+                <div className="h-px w-16 bg-gradient-to-r from-transparent to-primary"></div>
+                <div className="flex items-center space-x-2">
+                  <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                  <span className="text-sm font-mono text-primary opacity-80">VERIFIED_CREDENTIALS</span>
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                </div>
+                <div className="h-px w-16 bg-gradient-to-l from-transparent to-primary"></div>
+              </div>
+              <p className="text-center text-gray-400 text-sm sm:text-base px-4 max-w-2xl mx-auto">
+                Professional certifications and achievements validating expertise in AI, machine learning, and software engineering
+              </p>
+            </div>
 
-            <div className="space-y-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
               {certifications.map((cert, index) => (
                 <div
                   key={index}
-                  className="glass-morphism p-4 sm:p-5 rounded-lg border border-white/10 hover:border-primary/30 transition-all duration-300"
+                  className="group relative"
                 >
-                  <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-3 mb-3">
-                    <div className="flex-1">
-                      <h3 className="text-base sm:text-lg font-bold mb-1.5">
-                        <span className="bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                          {cert.title}
-                        </span>
-                      </h3>
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-gray-400">
-                        <span className="flex items-center gap-1">
+                  {/* Certificate Card */}
+                  <div className="relative glass-morphism-strong rounded-2xl p-6 border border-primary/20 hover:border-primary/40 transition-all duration-500 hover:scale-105 hover:shadow-2xl hover:shadow-primary/20">
+                    
+                    {/* Badge Number */}
+                    <div className="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-primary to-cyan-400 rounded-full flex items-center justify-center text-black font-bold text-sm">
+                      {index + 1}
+                    </div>
+                    
+                    {/* Achievement Icon */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-3">
+                        <div className="w-12 h-12 bg-gradient-to-r from-primary/20 to-cyan-400/20 rounded-xl flex items-center justify-center border border-primary/30">
                           <svg
-                            className="w-3.5 h-3.5 text-primary"
+                            className="w-6 h-6 text-primary"
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"
@@ -1687,36 +1771,56 @@ function App() {
                               strokeLinecap="round"
                               strokeLinejoin="round"
                               strokeWidth={2}
-                              d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
+                              d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"
                             />
                           </svg>
-                          {cert.issuer}
-                        </span>
-                        <span className="text-gray-600">•</span>
-                        <span className="flex items-center gap-1">
-                          <svg
-                            className="w-3.5 h-3.5 text-primary"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                            />
-                          </svg>
-                          {cert.date}
-                        </span>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-lg font-bold mb-1">
+                            <span className="gradient-text">
+                              {cert.title}
+                            </span>
+                          </h3>
+                          <div className="flex items-center space-x-2 text-sm">
+                            <span className="text-primary font-medium">{cert.issuer}</span>
+                            <span className="text-gray-500">•</span>
+                            <span className="text-gray-400">{cert.date}</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
+
+                    {/* Verification Status */}
+                    <div className="flex items-center mb-4">
+                      <div className="inline-flex items-center space-x-2 px-3 py-2 bg-green-400/10 border border-green-400/20 rounded-lg">
+                        <div className="w-4 h-4 bg-green-400 rounded-full flex items-center justify-center">
+                          <svg className="w-2.5 h-2.5 text-black" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                          </svg>
+                        </div>
+                        <span className="text-green-400 text-sm font-medium">Verified Credential</span>
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <div className="space-y-2 mb-6">
+                      {cert.description.map((point, idx) => (
+                        <div key={idx} className="flex items-start space-x-3">
+                          <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-primary to-cyan-400 mt-2 shrink-0"></div>
+                          <p className="text-sm text-gray-300 leading-relaxed">
+                            {point}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* View Certificate Button */}
                     <a
                       href={cert.certificateLink}
-                      className="group relative flex items-center gap-1.5 px-4 py-2 bg-transparent border border-primary rounded-lg font-semibold text-xs overflow-hidden transition-all duration-300 hover:text-black hover:shadow-lg hover:shadow-primary/30 shrink-0"
+                      className="group/btn relative flex items-center justify-center space-x-2 w-full px-4 py-3 bg-gradient-to-r from-primary/20 to-cyan-400/20 border border-primary/30 rounded-xl font-semibold text-sm text-primary overflow-hidden transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20"
                     >
                       <svg
-                        className="w-3.5 h-3.5 relative z-10"
+                        className="w-4 h-4 relative z-10 group-hover/btn:rotate-12 transition-transform duration-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -1728,25 +1832,72 @@ function App() {
                           d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
                         />
                       </svg>
-                      <span className="relative z-10">View</span>
-                      <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
+                      <span className="relative z-10 group-hover/btn:text-white transition-colors duration-300">View Certificate</span>
+                      <svg
+                        className="w-4 h-4 relative z-10 group-hover/btn:translate-x-1 transition-transform duration-300"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                      <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover/btn:translate-y-0 transition-transform duration-300"></div>
                     </a>
-                  </div>
 
-                  <div className="space-y-2">
-                    {cert.description.map((point, idx) => (
-                      <div key={idx} className="flex gap-2">
-                        <div className="shrink-0 mt-1.5">
-                          <div className="w-1 h-1 rounded-full bg-gradient-to-r from-primary to-cyan-400"></div>
-                        </div>
-                        <p className="text-xs sm:text-sm text-gray-400 leading-relaxed">
-                          {point}
-                        </p>
-                      </div>
-                    ))}
+                    {/* Floating Elements */}
+                    <div className="absolute -top-2 left-1/4 w-4 h-4 bg-primary/30 rounded-full blur-sm animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ animationDelay: '0s' }}></div>
+                    <div className="absolute -bottom-1 right-1/4 w-3 h-3 bg-cyan-400/30 rounded-full blur-sm animate-pulse opacity-0 group-hover:opacity-100 transition-opacity duration-500" style={{ animationDelay: '0.3s' }}></div>
                   </div>
                 </div>
               ))}
+            </div>
+
+            {/* Achievement Stats */}
+            <div className="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-primary/20 to-cyan-400/20 rounded-2xl flex items-center justify-center border border-primary/30">
+                  <svg className="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                  </svg>
+                </div>
+                <h4 className="text-2xl font-bold gradient-text">{certifications.length}+</h4>
+                <p className="text-sm text-gray-400">Certifications</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-green-400/20 to-emerald-400/20 rounded-2xl flex items-center justify-center border border-green-400/30">
+                  <svg className="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                  </svg>
+                </div>
+                <h4 className="text-2xl font-bold text-green-400">100%</h4>
+                <p className="text-sm text-gray-400">Verified</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-blue-400/20 to-indigo-400/20 rounded-2xl flex items-center justify-center border border-blue-400/30">
+                  <svg className="w-8 h-8 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <h4 className="text-2xl font-bold text-blue-400">AI/ML</h4>
+                <p className="text-sm text-gray-400">Focus Area</p>
+              </div>
+
+              <div className="text-center">
+                <div className="w-16 h-16 mx-auto mb-3 bg-gradient-to-r from-purple-400/20 to-pink-400/20 rounded-2xl flex items-center justify-center border border-purple-400/30">
+                  <svg className="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <h4 className="text-2xl font-bold text-purple-400">2024</h4>
+                <p className="text-sm text-gray-400">Latest</p>
+              </div>
             </div>
           </div>
         </section>
