@@ -521,6 +521,70 @@ function App() {
         </svg>
       </div>
 
+      {/* Professional AI Engineer Animated Backgrounds */}
+      
+      {/* AI Neural Network Overlay */}
+      <div className="ai-neural-overlay"></div>
+      
+      {/* AI Geometric Background */}
+      <div className="ai-geometric-bg"></div>
+      
+      {/* Neural Network Nodes */}
+      <div className="neural-nodes">
+        <div className="neural-node"></div>
+        <div className="neural-node"></div>
+        <div className="neural-node"></div>
+        <div className="neural-node"></div>
+        <div className="neural-node"></div>
+      </div>
+      
+      {/* Floating Code Particles */}
+      <div className="code-particles">
+        <div className="code-particle">import tensorflow as tf</div>
+        <div className="code-particle">model = Sequential()</div>
+        <div className="code-particle">from sklearn.neural_network</div>
+        <div className="code-particle">def predict(X): return model.predict(X)</div>
+        <div className="code-particle">import numpy as np</div>
+        <div className="code-particle">class NeuralNetwork:</div>
+        <div className="code-particle">optimizer='adam', loss='mse'</div>
+        <div className="code-particle">X_train, y_train = dataset.load()</div>
+        <div className="code-particle">from transformers import AutoModel</div>
+        <div className="code-particle">pipeline = Pipeline(steps=[])</div>
+      </div>
+      
+      {/* AI Data Streams */}
+      <div className="fixed inset-0 pointer-events-none z-1 overflow-hidden">
+        {/* Vertical data streams */}
+        <div className="absolute top-0 left-1/6 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
+        <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
+        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-blue-500/20 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '3.5s' }}></div>
+        <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '4.5s' }}></div>
+        <div className="absolute top-0 left-5/6 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}></div>
+        
+        {/* Horizontal data streams */}
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '5s' }}></div>
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/15 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
+        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/15 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '5.5s' }}></div>
+      </div>
+      
+      {/* AI Processing Indicators */}
+      <div className="fixed top-20 right-8 pointer-events-none z-2">
+        <div className="flex flex-col space-y-2 opacity-30">
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+            <span className="text-xs font-mono text-green-400">AI_ACTIVE</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+            <span className="text-xs font-mono text-blue-400">NEURAL_NET</span>
+          </div>
+          <div className="flex items-center space-x-2">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <span className="text-xs font-mono text-cyan-400">ML_ENGINE</span>
+          </div>
+        </div>
+      </div>
+
       {/* Background Gradient Mesh */}
       <div className="fixed inset-0 bg-gradient-mesh pointer-events-none"></div>
 
@@ -789,20 +853,74 @@ function App() {
               </div>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 px-4 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 px-4 tracking-tight relative">
+              {/* AI Processing Indicator */}
+              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 text-xs text-primary opacity-60">
+                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                <span className="font-mono">AI_SYSTEM_ONLINE</span>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              </div>
+              
+              {/* Neural Network Visualization */}
+              <div className="absolute -left-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+                <div className="flex flex-col space-y-1 opacity-30">
+                  <div className="w-8 h-1 bg-gradient-to-r from-primary to-transparent rounded-full animate-pulse"></div>
+                  <div className="w-6 h-1 bg-gradient-to-r from-cyan-400 to-transparent rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="w-10 h-1 bg-gradient-to-r from-blue-500 to-transparent rounded-full animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+                </div>
+              </div>
+              
+              {/* Data Flow Visualization */}
+              <div className="absolute -right-8 top-1/2 transform -translate-y-1/2 hidden lg:block">
+                <div className="flex flex-col space-y-1 opacity-30">
+                  <div className="w-8 h-1 bg-gradient-to-l from-primary to-transparent rounded-full animate-pulse"></div>
+                  <div className="w-6 h-1 bg-gradient-to-l from-cyan-400 to-transparent rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                  <div className="w-10 h-1 bg-gradient-to-l from-blue-500 to-transparent rounded-full animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+                </div>
+              </div>
+              
               Hi, I'm{" "}
-              <span className="gradient-text font-display">
+              <span className="gradient-text font-display relative">
                 Md Marop Hossain
+                {/* AI Recognition Badge */}
+                <div className="absolute -top-6 -right-4 text-xs">
+                  <div className="bg-primary/20 border border-primary/50 rounded-full px-2 py-1 text-primary font-mono opacity-60 animate-pulse">
+                    ID_VERIFIED
+                  </div>
+                </div>
               </span>
             </h1>
 
-            <div className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 h-14 sm:h-16 flex items-center justify-center px-4">
-              <span className="typing-cursor font-mono bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent font-semibold tracking-wide">
+            <div className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 h-14 sm:h-16 flex items-center justify-center px-4 relative">
+              {/* AI Processing Bars */}
+              <div className="absolute left-0 top-1/2 transform -translate-y-1/2 hidden md:flex flex-col space-y-1 opacity-40">
+                <div className="w-16 h-0.5 bg-primary rounded-full animate-pulse"></div>
+                <div className="w-12 h-0.5 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+                <div className="w-20 h-0.5 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+                <div className="w-8 h-0.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.6s' }}></div>
+              </div>
+              
+              {/* Central Typing Text */}
+              <span className="typing-cursor font-mono bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent font-semibold tracking-wide relative">
                 {typedText}
+                {/* AI Thinking Indicator */}
+                <div className="absolute -right-8 top-0 flex space-x-1">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full animate-bounce" style={{ animationDelay: '0s' }}></div>
+                  <div className="w-1.5 h-1.5 bg-cyan-400 rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                  <div className="w-1.5 h-1.5 bg-blue-500 rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                </div>
               </span>
+              
+              {/* AI Processing Bars Right */}
+              <div className="absolute right-0 top-1/2 transform -translate-y-1/2 hidden md:flex flex-col space-y-1 opacity-40">
+                <div className="w-14 h-0.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.1s' }}></div>
+                <div className="w-18 h-0.5 bg-cyan-400 rounded-full animate-pulse" style={{ animationDelay: '0.3s' }}></div>
+                <div className="w-10 h-0.5 bg-blue-500 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <div className="w-16 h-0.5 bg-primary rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+              </div>
             </div>
 
-            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-8 sm:mb-12 leading-relaxed px-4 font-light">
+            <p className="text-sm sm:text-base md:text-lg text-gray-400 max-w-3xl mx-auto mb-6 leading-relaxed px-4 font-light">
               As an AI Engineer (Intern) at NidusLab-USA, I contribute to the
               development of advanced AI systems, focusing on building scalable
               microservices, AI-powered recommendation engines, and NLP-driven
@@ -810,6 +928,44 @@ function App() {
               impactful solutions that optimize user experiences and streamline
               complex workflows.
             </p>
+
+            {/* AI System Status Panel */}
+            <div className="flex justify-center mb-8 sm:mb-12">
+              <div className="glass-morphism rounded-lg p-4 max-w-lg mx-4 border border-primary/20">
+                <div className="grid grid-cols-3 gap-4 text-center">
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-green-400 to-green-500 flex items-center justify-center mb-2 animate-pulse">
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                    <span className="text-xs font-mono text-green-400">MODELS</span>
+                    <span className="text-xs font-mono text-gray-400">ACTIVE</span>
+                  </div>
+                  
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-primary to-cyan-400 flex items-center justify-center mb-2 animate-pulse" style={{ animationDelay: '0.2s' }}>
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                    <span className="text-xs font-mono text-primary">NEURAL</span>
+                    <span className="text-xs font-mono text-gray-400">READY</span>
+                  </div>
+                  
+                  <div className="flex flex-col items-center">
+                    <div className="w-8 h-8 rounded-full bg-gradient-to-r from-blue-400 to-blue-500 flex items-center justify-center mb-2 animate-pulse" style={{ animationDelay: '0.4s' }}>
+                      <div className="w-3 h-3 bg-white rounded-full"></div>
+                    </div>
+                    <span className="text-xs font-mono text-blue-400">API</span>
+                    <span className="text-xs font-mono text-gray-400">ONLINE</span>
+                  </div>
+                </div>
+                
+                <div className="mt-4 flex justify-center">
+                  <div className="flex items-center space-x-2 text-xs font-mono text-gray-400">
+                    <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+                    <span>AI_ENGINEER_PORTFOLIO_v2.1.0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4">
               <button
