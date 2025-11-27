@@ -451,7 +451,7 @@ function App() {
               linear-gradient(90deg, rgba(0, 217, 255, 0.1) 1px, transparent 1px)
             `,
               backgroundSize: "50px 50px",
-              animation: "gridMove 20s linear infinite",
+              animation: "gridMove 60s linear infinite",
             }}
           ></div>
         </div>
@@ -555,16 +555,16 @@ function App() {
       {/* AI Data Streams */}
       <div className="fixed inset-0 pointer-events-none z-1 overflow-hidden">
         {/* Vertical data streams */}
-        <div className="absolute top-0 left-1/6 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '3s' }}></div>
-        <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '4s' }}></div>
-        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-blue-500/20 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '3.5s' }}></div>
-        <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '4.5s' }}></div>
-        <div className="absolute top-0 left-5/6 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '3.8s' }}></div>
+        <div className="absolute top-0 left-1/6 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '4s' }}></div>
+        <div className="absolute top-0 left-1/3 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '5s' }}></div>
+        <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-transparent via-blue-500/20 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '4.5s' }}></div>
+        <div className="absolute top-0 left-2/3 w-px h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent animate-pulse" style={{ animationDelay: '0.5s', animationDuration: '5.5s' }}></div>
+        <div className="absolute top-0 left-5/6 w-px h-full bg-gradient-to-b from-transparent via-cyan-400/20 to-transparent animate-pulse" style={{ animationDelay: '1.5s', animationDuration: '4.8s' }}></div>
         
         {/* Horizontal data streams */}
-        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '5s' }}></div>
-        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/15 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '6s' }}></div>
-        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/15 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '5.5s' }}></div>
+        <div className="absolute top-1/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent animate-pulse" style={{ animationDelay: '0s', animationDuration: '6s' }}></div>
+        <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-400/15 to-transparent animate-pulse" style={{ animationDelay: '2s', animationDuration: '7s' }}></div>
+        <div className="absolute top-3/4 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-500/15 to-transparent animate-pulse" style={{ animationDelay: '1s', animationDuration: '6.5s' }}></div>
       </div>
       
       {/* AI Processing Indicators */}
@@ -796,23 +796,23 @@ function App() {
                 {/* Floating particles around image */}
                 <div
                   className="absolute -top-2 -left-2 w-3 h-3 bg-primary rounded-full animate-bounce"
-                  style={{ animationDelay: "0s", animationDuration: "3s" }}
+                  style={{ animationDelay: "0s", animationDuration: "4s" }}
                 ></div>
                 <div
                   className="absolute -top-4 right-8 w-2 h-2 bg-cyan-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "0.5s", animationDuration: "3.5s" }}
+                  style={{ animationDelay: "0.5s", animationDuration: "4.5s" }}
                 ></div>
                 <div
                   className="absolute top-8 -right-3 w-2.5 h-2.5 bg-blue-500 rounded-full animate-bounce"
-                  style={{ animationDelay: "1s", animationDuration: "4s" }}
+                  style={{ animationDelay: "1s", animationDuration: "5s" }}
                 ></div>
                 <div
                   className="absolute bottom-8 -left-4 w-2 h-2 bg-primary rounded-full animate-bounce"
-                  style={{ animationDelay: "1.5s", animationDuration: "3.2s" }}
+                  style={{ animationDelay: "1.5s", animationDuration: "4.2s" }}
                 ></div>
                 <div
                   className="absolute -bottom-3 right-12 w-3 h-3 bg-cyan-400 rounded-full animate-bounce"
-                  style={{ animationDelay: "2s", animationDuration: "3.8s" }}
+                  style={{ animationDelay: "2s", animationDuration: "4.8s" }}
                 ></div>
 
                 {/* Hexagonal container */}
@@ -854,11 +854,11 @@ function App() {
             </div>
 
             <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 sm:mb-6 px-4 tracking-tight relative">
-              {/* AI Processing Indicator */}
-              <div className="absolute -top-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-2 text-xs text-primary opacity-60">
-                <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
-                <span className="font-mono">AI_SYSTEM_ONLINE</span>
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+              {/* AI Processing Indicator - Mobile Responsive */}
+              <div className="absolute -top-6 sm:-top-8 left-1/2 transform -translate-x-1/2 flex items-center justify-center space-x-1 sm:space-x-2 text-xs sm:text-sm text-primary opacity-60">
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full animate-pulse"></div>
+                <span className="font-mono text-xs sm:text-sm">AI_SYSTEM_ONLINE</span>
+                <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-400 rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
               </div>
               
               {/* Neural Network Visualization */}
@@ -983,7 +983,7 @@ function App() {
                     "linear-gradient(135deg, #00D9FF, #0EA5E9, #06B6D4) 1",
                 }}
               >
-                <span className="relative z-10 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span className="relative z-10 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:text-white transition-colors duration-300">
                   Get in Touch
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
@@ -1386,7 +1386,7 @@ function App() {
           id="projects"
           className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent via-primary/5 to-transparent"
         >
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-6xl mx-auto">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-2 sm:mb-3">
               <span className="gradient-text">Featured Projects</span>
             </h2>
@@ -1394,7 +1394,7 @@ function App() {
               Notable AI and ML projects
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {projects.map((project, index) => {
                 const colors = [
                   "from-primary to-primary",
@@ -1821,7 +1821,7 @@ function App() {
                     clipRule="evenodd"
                   />
                 </svg>
-                <span className="relative z-10 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <span className="relative z-10 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 bg-clip-text text-transparent group-hover:text-white transition-colors duration-300">
                   GitHub
                 </span>
                 <div className="absolute inset-0 bg-gradient-to-r from-primary via-cyan-400 to-blue-500 translate-y-full group-hover:translate-y-0 transition-transform duration-300"></div>
