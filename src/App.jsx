@@ -993,7 +993,7 @@ function App() {
             </p>
 
             {/* AI System Status Panel */}
-            <div className="flex justify-center mb-8 sm:mb-12">
+            {/* <div className="flex justify-center mb-8 sm:mb-12">
               <div className="glass-morphism rounded-lg p-4 max-w-lg mx-4 border border-primary/20">
                 <div className="grid grid-cols-3 gap-4 text-center">
                   <div className="flex flex-col items-center">
@@ -1028,7 +1028,7 @@ function App() {
                   </div>
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="flex flex-wrap justify-center gap-3 sm:gap-4 px-4">
               <button
