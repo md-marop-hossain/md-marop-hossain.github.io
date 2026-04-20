@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import profileImage from "../Gemini_Generated_Image_1i77sd1i77sd1i77.png";
 
 /* ---------------- Data ---------------- */
 
@@ -241,19 +240,19 @@ const certifications = [
 const accentClass = {
   frost: {
     border: "hover:border-frost/40",
-    glow: "group-hover:shadow-[0_0_60px_-10px_rgba(110,231,255,0.35)]",
+    glow: "group-hover:shadow-[0_0_60px_-10px_rgba(212,212,216,0.3)]",
     text: "text-frost",
     bg: "from-frost/20 via-frost/5 to-transparent",
   },
   violet: {
     border: "hover:border-violet-glow/40",
-    glow: "group-hover:shadow-[0_0_60px_-10px_rgba(167,139,250,0.35)]",
+    glow: "group-hover:shadow-[0_0_60px_-10px_rgba(113,113,122,0.32)]",
     text: "text-violet-glow",
     bg: "from-violet-glow/20 via-violet-glow/5 to-transparent",
   },
   magenta: {
     border: "hover:border-magenta-glow/40",
-    glow: "group-hover:shadow-[0_0_60px_-10px_rgba(244,114,182,0.35)]",
+    glow: "group-hover:shadow-[0_0_60px_-10px_rgba(24,24,27,0.35)]",
     text: "text-magenta-glow",
     bg: "from-magenta-glow/20 via-magenta-glow/5 to-transparent",
   },
@@ -398,7 +397,7 @@ function App() {
         className="pointer-events-none fixed inset-0 z-[1] hidden md:block"
         style={{
           background:
-            "radial-gradient(500px circle at var(--sx, 50%) var(--sy, 50%), rgba(110,231,255,0.06), transparent 40%)",
+            "radial-gradient(500px circle at var(--sx, 50%) var(--sy, 50%), rgba(212,212,216,0.06), transparent 40%)",
         }}
       />
 
@@ -429,12 +428,12 @@ function App() {
               className="flex items-center gap-3 group"
               aria-label="Home"
             >
-              <span className="relative w-9 h-9 grid place-items-center rounded-xl bg-gradient-signature shadow-glow overflow-hidden">
-                <span className="absolute inset-[2px] rounded-[10px] bg-ink-900 grid place-items-center">
-                  <span className="font-display font-semibold text-sm text-gradient">
-                    MH
-                  </span>
+              <span className="relative grid place-items-center w-9 h-9 rounded-xl overflow-hidden bg-white/[0.04] border border-white/10 group-hover:border-frost/50 transition-all duration-500">
+                <span className="absolute inset-0 bg-gradient-signature opacity-0 group-hover:opacity-25 blur-sm transition-opacity duration-500" />
+                <span className="relative font-display font-bold text-sm tracking-tight text-gradient group-hover:scale-110 transition-transform duration-500">
+                  MH
                 </span>
+                <span className="absolute top-1 right-1 w-1 h-1 rounded-full bg-frost animate-pulse" />
               </span>
               <span className="hidden sm:flex flex-col leading-tight">
                 <span className="font-display text-sm font-semibold text-white tracking-tight">
@@ -661,8 +660,8 @@ function App() {
               </SocialIcon>
               <div className="ml-1 pl-3 border-l border-white/10 hidden sm:flex items-center gap-2 text-xs font-mono text-gray-500">
                 <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-zinc-300 opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-zinc-300" />
                 </span>
                 Available for collaboration
               </div>
@@ -687,11 +686,11 @@ function App() {
                     strokeWidth="0.5"
                     strokeDasharray="1 4"
                   />
-                  <circle cx="100" cy="2" r="2" fill="#6ee7ff" />
+                  <circle cx="100" cy="2" r="2" fill="#f4f4f5" />
                   <defs>
                     <linearGradient id="orbit-a" x1="0" x2="1" y1="0" y2="1">
-                      <stop offset="0%" stopColor="#6ee7ff" stopOpacity="0.7" />
-                      <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.2" />
+                      <stop offset="0%" stopColor="#f4f4f5" stopOpacity="0.65" />
+                      <stop offset="100%" stopColor="#71717a" stopOpacity="0.22" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -715,11 +714,11 @@ function App() {
                     strokeWidth="0.6"
                     strokeDasharray="2 6"
                   />
-                  <circle cx="100" cy="3" r="1.8" fill="#f472b6" />
+                  <circle cx="100" cy="3" r="1.8" fill="#18181b" />
                   <defs>
                     <linearGradient id="orbit-b" x1="0" x2="1" y1="0" y2="1">
-                      <stop offset="0%" stopColor="#f472b6" stopOpacity="0.5" />
-                      <stop offset="100%" stopColor="#a78bfa" stopOpacity="0.2" />
+                      <stop offset="0%" stopColor="#18181b" stopOpacity="0.55" />
+                      <stop offset="100%" stopColor="#71717a" stopOpacity="0.22" />
                     </linearGradient>
                   </defs>
                 </svg>
@@ -733,7 +732,7 @@ function App() {
                 <div className="w-full h-full rounded-full p-[3px] bg-ink-900">
                   <div className="relative w-full h-full rounded-full overflow-hidden">
                     <img
-                      src={profileImage}
+                      src="/profile.webp"
                       alt="Md Marop Hossain"
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                     />
@@ -1222,8 +1221,8 @@ function App() {
               </div>
               <div className="flex items-center justify-between">
                 <span>Status</span>
-                <span className="flex items-center gap-1.5 text-emerald-400">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                <span className="flex items-center gap-1.5 text-zinc-300">
+                  <span className="w-1.5 h-1.5 rounded-full bg-zinc-300 animate-pulse" />
                   Open to collaborate
                 </span>
               </div>
@@ -1241,12 +1240,11 @@ function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <span className="relative w-8 h-8 grid place-items-center rounded-lg bg-gradient-signature">
-                <span className="absolute inset-[2px] rounded-[7px] bg-ink-900 grid place-items-center">
-                  <span className="font-display font-semibold text-xs text-gradient">
-                    MH
-                  </span>
+              <span className="relative grid place-items-center w-8 h-8 rounded-lg overflow-hidden bg-white/[0.04] border border-white/10">
+                <span className="font-display font-bold text-xs tracking-tight text-gradient">
+                  MH
                 </span>
+                <span className="absolute top-0.5 right-0.5 w-1 h-1 rounded-full bg-frost/80" />
               </span>
               <span className="text-sm text-gray-500">
                 © {new Date().getFullYear()} Md Marop Hossain — Designed &
