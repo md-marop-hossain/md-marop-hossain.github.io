@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(grep -iE 'Gemini|\\\\.png$|\\\\.webp$')",
+      "Bash(node -e \"try{require.resolve\\('sharp'\\);console.log\\('sharp: available'\\)}catch\\(e\\){console.log\\('sharp: not installed'\\)}\")",
+      "Bash(cp \"c:/Users/USER/Downloads/Gemini_Generated_Image_1i77sd1i77sd1i77.png\" \"c:/Users/USER/Downloads/md-marop-hossain.github.io-main/md-marop-hossain.github.io-main/public/profile.webp.src.png\")",
+      "Bash(cwebp -q 85 -resize 800 0 \"c:/Users/USER/Downloads/md-marop-hossain.github.io-main/md-marop-hossain.github.io-main/public/profile.webp.src.png\" -o \"c:/Users/USER/Downloads/md-marop-hossain.github.io-main/md-marop-hossain.github.io-main/public/profile.webp\")"
+    ]
+  }
+}
